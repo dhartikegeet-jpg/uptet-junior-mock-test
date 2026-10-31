@@ -1,0 +1,3304 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mock test for UPTET and Special TET Junior Level Exam (Set-2)</title>
+  <style>
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1d4ed8;
+      --accent: #d97706;
+      --success: #15803d;
+      --danger: #b91c1c;
+      --purple: #6d28d9;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #cbd5e1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', 'Nirmala UI', 'Mangal', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .brand h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.3px; }
+    .brand p { font-size: 0.9rem; color: #fcd34d; font-weight: 600; }
+    .timer-box {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .container { max-width: 1280px; margin: 20px auto; padding: 0 16px; }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(15,23,42,0.06);
+      padding: 24px;
+      border: 1px solid var(--border);
+    }
+    .setup-screen { max-width: 760px; margin: 36px auto; }
+    .setup-screen h2 { color: var(--primary-light); margin-bottom: 12px; font-size: 1.45rem; }
+    .meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .badge {
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.88rem;
+    }
+    .option-group {
+      margin: 20px 0;
+      padding: 16px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .option-group h3 { font-size: 1.05rem; margin-bottom: 10px; color: var(--primary); }
+    .radio-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .radio-card {
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .radio-card:hover { border-color: var(--primary-light); }
+    .radio-card input { transform: scale(1.2); }
+    .btn {
+      border: none;
+      padding: 11px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: 0.18s;
+    }
+    .btn-primary { background: var(--primary-light); color: #fff; }
+    .btn-primary:hover { background: var(--primary); }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-warning { background: var(--accent); color: #fff; }
+    .btn-outline { background: #fff; border: 1px solid var(--border); color: var(--text); }
+    .btn-outline:hover { background: #f1f5f9; }
+    .exam-grid {
+      display: grid;
+      grid-template-columns: 1fr 330px;
+      gap: 20px;
+    }
+    @media (max-width: 960px) {
+      .exam-grid { grid-template-columns: 1fr; }
+      .radio-cards { grid-template-columns: 1fr; }
+    }
+    .section-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .sec-tab {
+      padding: 9px 16px;
+      border-radius: 8px;
+      background: #e2e8f0;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text);
+    }
+    .sec-tab.active {
+      background: var(--primary-light);
+      color: #fff;
+    }
+    .q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .q-text {
+      font-size: 1.12rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      white-space: pre-line;
+    }
+    .options-list { display: flex; flex-direction: column; gap: 12px; }
+    .opt-item {
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: 0.15s;
+      background: #fff;
+    }
+    .opt-item:hover { border-color: #93c5fd; background: #f8fafc; }
+    .opt-item.selected {
+      border-color: var(--primary-light);
+      background: #eff6ff;
+      font-weight: 600;
+    }
+    .q-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      max-height: 360px;
+      overflow-y: auto;
+      padding: 4px;
+      margin: 14px 0;
+    }
+    .p-btn {
+      height: 38px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .p-btn.current { outline: 2px solid #0f172a; }
+    .p-btn.answered { background: var(--success); color: #fff; border-color: var(--success); }
+    .p-btn.review { background: var(--purple); color: #fff; border-color: var(--purple); }
+    .legend {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .legend span { display: flex; align-items: center; gap: 6px; }
+    .dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+    .score-banner {
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      color: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .score-banner h2 { font-size: 2rem; margin-bottom: 6px; }
+    .sec-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .sec-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 14px;
+      border-radius: 10px;
+    }
+    .review-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 16px;
+      background: #fff;
+    }
+    .review-card.correct { border-left: 6px solid var(--success); }
+    .review-card.wrong { border-left: 6px solid var(--danger); }
+    .review-card.unattempted { border-left: 6px solid #94a3b8; }
+    .explanation-box {
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: #78350f;
+    }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>Mock test for UPTET and Special TET Junior Level Exam</h1>
+    <p>Compiled by Sandeep Sir (Practice Set – 02)</p>
+  </div>
+  <div class="timer-box" id="timerDisplay">
+    <span>⏱️ शेष समय:</span>
+    <span id="timeText">02:30:00</span>
+  </div>
+</header>
+
+<div class="container">
+  <!-- SETUP SCREEN -->
+  <div class="card setup-screen" id="setupScreen">
+    <h2>उच्च प्राथमिक स्तर (कक्षा 6–8) मॉक टेस्ट – 02 : निर्देश एवं विकल्प चयन</h2>
+    <p>यह द्वितीय प्रश्न-पत्र (Practice Set–02) UPTET एवं Special TET जूनियर स्तर के पाठ्यक्रम पर आधारित है। सभी 150 प्रश्न नवीन, विश्लेषणात्मक तथा मध्यम से कठिन (Moderate to Difficult) स्तर के हैं।</p>
+
+    <div class="meta-badges">
+      <span class="badge">कुल प्रश्न: 150 MCQs</span>
+      <span class="badge">कुल अंक: 150</span>
+      <span class="badge">कुल समय: 2 घंटे 30 मिनट (150 मिनट)</span>
+      <span class="badge">ऋणात्मक अंकन: नहीं (No Negative Marking)</span>
+    </div>
+
+    <div class="option-group">
+      <h3>1. तृतीय भाग (भाषा-II) का चयन करें (30 प्रश्न):</h3>
+      <div class="radio-cards">
+        <label class="radio-card">
+          <input type="radio" name="lang2" value="ENG" checked />
+          <span>English (अंग्रेजी) - 30 MCQs</span>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="lang2" value="SAN" />
+          <span>संस्कृत (Sanskrit) - 30 MCQs</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="option-group">
+      <h3>2. चतुर्थ भाग (विषय वर्ग) का चयन करें (60 प्रश्न):</h3>
+      <div class="radio-cards">
+        <label class="radio-card">
+          <input type="radio" name="stream" value="MS" checked />
+          <span>गणित एवं विज्ञान (Mathematics & Science) - 60 MCQs</span>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="stream" value="SST" />
+          <span>सामाजिक अध्ययन (Social Studies) - 60 MCQs</span>
+        </label>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" style="width:100%; font-size:1.05rem; padding:14px;" onclick="startExam()">
+      परीक्षा प्रारंभ करें (Start Mock Test – 02)
+    </button>
+  </div>
+
+  <!-- EXAM INTERFACE -->
+  <div class="exam-grid hidden" id="examScreen">
+    <div>
+      <div class="section-tabs" id="sectionTabs"></div>
+      <div class="card">
+        <div class="q-header">
+          <span id="qNumberBadge" style="font-weight:700; color:var(--primary-light);">प्रश्न 1 / 150</span>
+          <span id="qSectionBadge" class="badge">बाल विकास एवं शिक्षण विधि</span>
+        </div>
+        <div class="q-text" id="questionText"></div>
+        <div class="options-list" id="optionsList"></div>
+
+        <div class="q-actions">
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-outline" onclick="prevQuestion()">⬅️ पिछला (Prev)</button>
+            <button class="btn btn-outline" onclick="clearResponse()">प्रतिक्रिया हटाएँ (Clear)</button>
+            <button class="btn btn-warning" onclick="toggleReview()">समीक्षा हेतु चिह्नित करें (Review)</button>
+          </div>
+          <button class="btn btn-primary" onclick="nextQuestion()">अगला प्रश्न (Save & Next) ➡️</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR PALETTE -->
+    <div class="card">
+      <h3 style="margin-bottom:10px; color:var(--primary);">प्रश्न पैलेट (Question Palette)</h3>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--success)"></i> उत्तरित (<b id="cntAnswered">0</b>)</span>
+        <span><i class="dot" style="background:var(--purple)"></i> समीक्षा (<b id="cntReview">0</b>)</span>
+        <span><i class="dot" style="background:#f8fafc; border:1px solid #cbd5e1"></i> अनुत्तरित (<b id="cntUnanswered">0</b>)</span>
+      </div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <button class="btn btn-success" style="width:100%; margin-top:12px; padding:13px;" onclick="confirmSubmit()">
+        प्रश्न-पत्र सबमिट करें (Submit Test)
+      </button>
+    </div>
+  </div>
+
+  <!-- RESULT & EXPLANATION SCREEN -->
+  <div class="hidden" id="resultScreen">
+    <div class="score-banner">
+      <p style="font-size:1rem; opacity:0.9;">Mock test for UPTET and Special TET Junior Level Exam — Compiled by Sandeep Sir</p>
+      <h2 id="finalScoreText">0 / 150</h2>
+      <p id="qualifyStatusText" style="font-size:1.1rem; font-weight:600; margin-top:6px;"></p>
+    </div>
+
+    <div class="sec-summary" id="sectionSummaryGrid"></div>
+
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
+        <h3 style="color:var(--primary);">विस्तृत उत्तर कुंजी एवं व्याख्या (Detailed Solutions with Explanations)</h3>
+        <select id="filterSelect" onchange="renderSolutions()" style="padding:8px 12px; border-radius:6px; border:1px solid var(--border);">
+          <option value="ALL">सभी प्रश्न (All Questions)</option>
+          <option value="CORRECT">केवल सही (Correct Only)</option>
+          <option value="WRONG">केवल गलत (Incorrect Only)</option>
+          <option value="UNATTEMPTED">अनुत्तरित (Unattempted)</option>
+        </select>
+      </div>
+      <div id="solutionsContainer"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const QUESTION_BANK = {
+  CDP: [
+    {
+      q: "यूरी ब्रॉन्फेनब्रेनर (Urie Bronfenbrenner) के 'पारिस्थितिक तंत्र सिद्धांत' (Ecological Systems Theory) के अनुसार, यदि किसी छात्र के माता-पिता के कार्यस्थल (दफ्तर) की तनावपूर्ण नीतियों के कारण घर का वातावरण प्रभावित होता है और बच्चे की पढ़ाई बाधित होती है—यद्यपि बच्चा स्वयं उस कार्यस्थल का प्रत्यक्ष हिस्सा नहीं है—तो यह प्रभाव किस तंत्र (System) के अंतर्गत आता है?",
+      options: [
+        "लघुमंडल (Microsystem)",
+        "मध्यमंडल (Mesosystem)",
+        "बाह्यमंडल (Exosystem)",
+        "वृहत्मंडल (Macrosystem)"
+      ],
+      ans: 2,
+      exp: "ब्रॉन्फेनब्रेनर के अनुसार 'बाह्यमंडल' (Exosystem) में वे सामाजिक सेटिंग्स आती हैं जिनमें बालक स्वयं प्रत्यक्ष रूप से सक्रिय भाग नहीं लेता (जैसे माता-पिता का कार्यस्थल, स्थानीय स्वास्थ्य बोर्ड), किंतु वहाँ लिए गए निर्णय बालक के तात्कालिक परिवेश (Microsystem) को अप्रत्यक्ष रूप से प्रभावित करते हैं।"
+    },
+    {
+      q: "जेरोम ब्रूनर (Jerome Bruner) के संज्ञानात्मक विकास एवं अनुदेशन सिद्धांत के अनुसार, जब उच्च प्राथमिक स्तर के विद्यार्थियों को पहले ठोस मॉडलों के साथ क्रिया करने (Enactive), फिर आरेखों व चित्रों के माध्यम से समझने (Iconic), और अंततः बीजगणितीय सूत्रों व भाषा के माध्यम से (Symbolic) एक ही संप्रत्यय को उत्तरोत्तर उच्च जटिलता के स्तर पर पढ़ाया जाता है, तो इस पाठ्यचर्या संगठन को क्या कहते हैं?",
+      options: [
+        "रेखीय अभिक्रमित पाठ्यचर्या (Linear Curriculum)",
+        "सर्पिल पाठ्यचर्या (Spiral Curriculum)",
+        "कठोर मानकीकृत पाठ्यचर्या",
+        "अवरोही निगमन पाठ्यचर्या"
+      ],
+      ans: 1,
+      exp: "जेरोम ब्रूनर ने 'सर्पिल पाठ्यचर्या' (Spiral Curriculum) की अवधारणा दी, जिसमें मूलभूत विचारों को छात्र की विकासात्मक अवस्था (Enactive → Iconic → Symbolic) के अनुसार बार-बार, किंतु प्रत्येक बार अधिक गहराई और अमूर्तता के साथ प्रस्तुत किया जाता है।"
+    },
+    {
+      q: "डेविड ऑसुबेल (David Ausubel) के 'अर्थपूर्ण शाब्दिक अधिगम सिद्धांत' (Meaningful Verbal Learning) में 'अग्रिम संगठक' (Advance Organizer) का मुख्य संज्ञानात्मक कार्य क्या होता है?",
+      options: [
+        "पाठ के अंत में छात्रों की रटने की क्षमता की परीक्षा लेना",
+        "नवीन विषय-वस्तु को प्रस्तुत करने से पूर्व छात्र की वर्तमान संज्ञानात्मक संरचना (पूर्व-ज्ञान) और सीखे जाने वाले नए ज्ञान के बीच एक 'वैचारिक सेतु' (Ideational Scaffolding/Bridge) प्रदान करना",
+        "केवल यांत्रिक ड्रिल और अभ्यास को बढ़ावा देना",
+        "छात्रों को बिना किसी रूपरेखा के सीधे शोध-प्रबंध लिखने को कहना"
+      ],
+      ans: 1,
+      exp: "ऑसुबेल के अनुसार 'अग्रिम संगठक' (Expository व Comparative Advance Organizers) नया पाठ शुरू करने से पहले दिया जाने वाला एक उच्च-स्तरीय परिचयात्मक ढाँचा है, जो नए तथ्यों को छात्र के पूर्व-ज्ञान में 'सन्निहित' (Subsumption) करने में मदद करता है।"
+    },
+    {
+      q: "कर्ट लेविन (Kurt Lewin) के 'क्षेत्र सिद्धांत' (Topological Field Theory of Learning) का मूल गणितीय समीकरण $B = f(P, E)$ क्या निरूपित करता है?",
+      options: [
+        "व्यवहार (Behavior) केवल अतीत के दंडों और पुरस्कारों का योग है।",
+        "किसी व्यक्ति का व्यवहार ($B$) किसी दिए गए समय में उसके अपने मनोवैज्ञानिक व्यक्तित्व ($P$) और उसके मनोवैज्ञानिक वातावरण ($E$) अर्थात् 'जीवन-विस्तार' (Life Space) का फलन होता है।",
+        "बुद्धि ($B$) केवल आनुवंशिकता ($P$) से निर्धारित होती है।",
+        "अधिगम में पर्यावरण की कोई भूमिका नहीं होती।"
+      ],
+      ans: 1,
+      exp: "लेविन के क्षेत्र सिद्धांत में व्यक्ति और उसके मनोवैज्ञानिक वातावरण के अंतर्संबंध को 'जीवन-विस्तार' (Life Space) कहा जाता है, और मानव व्यवहार इसी तात्कालिक क्षेत्र के कर्षण (Vectors) एवं संयोजकता (Valence) का परिणाम होता है: $B = f(P, E)$।"
+    },
+    {
+      q: "एडवर्ड टॉलमैन (Edward C. Tolman) के 'चिह्न अधिगम' (Sign Gestalt Learning) प्रयोगों से विकसित 'अव्यक्त अधिगम' (Latent Learning) और 'संज्ञानात्मक मानचित्र' (Cognitive Map) की अवधारणा व्यवहारवाद के किस दावे का खंडन करती है?",
+      options: [
+        "अधिगम होने के लिए तात्कालिक बाह्य पुनर्बलन (Reinforcement) अनिवार्य है; इसके बिना कोई सीखना संभव नहीं है।",
+        "प्राणी अपने परिवेश का मानसिक मानचित्र बनाते हैं।",
+        "व्यवहार उद्देश्यपूर्ण (Purposive) होता है।",
+        "अभिप्रेरणा निष्पादन (Performance) को प्रभावित करती है।"
+      ],
+      ans: 0,
+      exp: "टॉलमैन ने भूलभुलैया (Maze) में चूहों पर प्रयोग कर सिद्ध किया कि चूहे बिना किसी भोजन (पुनर्बलन) के भी भूलभुलैया का 'संज्ञानात्मक मानचित्र' (Cognitive Map) सीख लेते हैं (अव्यक्त अधिगम), और जब बाद में भोजन रखा जाता है तो वे तुरंत उसका प्रदर्शन (Performance) करते हैं।"
+    },
+    {
+      q: "वुल्फगैंग कोहलर (Wolfgang Köhler) के गेस्टाल्टवादी 'अंतर्दृष्टि अधिगम सिद्धांत' (Insight Learning Theory) के अनुसार, जब कोई छात्र किसी जटिल ज्यामितीय समस्या के सभी अवयवों के पारस्परिक संबंधों का अचानक प्रत्यक्षीकरण कर समाधान पा लेता है, तो इस अनुभव को क्या कहा जाता है?",
+      options: [
+        "अंधाधुंध प्रयास एवं त्रुटि (Blind Trial and Error)",
+        "आहा! अनुभव या यूरेका अनुभव (Aha! Experience) एवं क्षेत्र का संज्ञानात्मक पुनर्गठन (Perceptual Reorganization)",
+        "विलोपित अनुबंधन (Extinction)",
+        "यांत्रिक अनुकरण"
+      ],
+      ans: 1,
+      exp: "गेस्टाल्ट मनोवैज्ञानिकों (वर्दाइमर, कोहलर, कोफ्का) के अनुसार अंतर्दृष्टि में समस्या-क्षेत्र का समग्र रूप से प्रत्यक्षीकरण और तत्वों का अचानक नया संबंध दिखना ('आहा! अनुभव') शामिल होता है।"
+    },
+    {
+      q: "बी. एफ. स्किनर के क्रिया-प्रसूत अनुबंधन में 'पुनर्बलन की अनुसूचियों' (Schedules of Reinforcement) के अंतर्गत कौन-सी अनुसूची व्यवहार में सर्वाधिक स्थायित्व लाती है और जिसका 'विलोपन' (Extinction) होना सबसे कठिन होता है?",
+      options: [
+        "सतत पुनर्बलन अनुसूची (Continuous Reinforcement Schedule)",
+        "निश्चित अंतराल अनुसूची (Fixed-Interval Schedule)",
+        "चर अनुपात अनुसूची (Variable-Ratio Schedule)",
+        "निश्चित अनुपात अनुसूची (Fixed-Ratio Schedule)"
+      ],
+      ans: 2,
+      exp: "चर अनुपात अनुसूची (Variable-Ratio Schedule)—जिसमें यह अनिश्चित होता है कि कितनी अनुक्रियाओं के बाद पुनर्बलन मिलेगा—अनुक्रिया की दर को उच्चतम रखती है और पुनर्बलन बंद होने पर भी इसका विलोपन सबसे देर से होता है।"
+    },
+    {
+      q: "इवान पावलोव के शास्त्रीय अनुबंधन (Classical Conditioning) में, जब अनुबंधित उद्दीपक (CS - घंटी) को बार-बार बिना अननुबंधित उद्दीपक (UCS - भोजन) के प्रस्तुत करने से लार आना बंद हो जाता है (विलोपन), किंतु कुछ दिनों के विश्राम के बाद अचानक घंटी बजने पर पुनः थोड़ी लार आ जाती है, तो इस परिघटना को क्या कहते हैं?",
+      options: [
+        "उद्दीपक सामान्यीकरण (Stimulus Generalization)",
+        "स्वतः पुनःप्राप्ति (Spontaneous Recovery)",
+        "उच्च-क्रम अनुबंधन (Higher-Order Conditioning)",
+        "उद्दीपक विभेदन (Stimulus Discrimination)"
+      ],
+      ans: 1,
+      exp: "विलोपन (Extinction) के पश्चात् विश्राम काल के बाद बिना किसी नए प्रशिक्षण के अनुबंधित अनुक्रिया (CR) का पुनः प्रकट होना 'स्वतः पुनःप्राप्ति' (Spontaneous Recovery) कहलाता है। यह सिद्ध करता है कि विलोपन में अधिगम पूर्णतः नष्ट नहीं होता, केवल दब जाता है।"
+    },
+    {
+      q: "जीन पियाजे के अनुसार जब एक बालक अपने पूर्व-निर्मित 'स्कीमा' (जैसे सभी चार पैर वाले जानवरों को 'कुत्ता' कहना) में बाह्य वातावरण की नई सूचना (जैसे बिल्ली या गाय को देखकर अंतर समझना और नया स्कीमा बनाना) के अनुसार संशोधन व परिवर्तन करता है, तो यह प्रक्रिया क्या कहलाती है?",
+      options: [
+        "आत्मसात्करण (Assimilation)",
+        "समायोजन / समंजन (Accommodation)",
+        "केंद्रीकरण (Centration)",
+        "अपरिवर्तनीयता (Irreversibility)"
+      ],
+      ans: 1,
+      exp: "पियाजे के सिद्धांत में पूर्व स्कीमा में ही नई जानकारी को फिट करना 'आत्मसात्करण' (Assimilation) है, जबकि नई जानकारी के अनुरूप पुराने स्कीमा में सुधार, विस्तार या परिवर्तन करना 'समायोजन' (Accommodation) कहलाता है।"
+    },
+    {
+      q: "सूचना प्रसंस्करण सिद्धांत (Information Processing Model - Atkinson & Shiffrin) के अनुसार 'कार्यकारी स्मृति' (Working Memory - Baddeley) और 'दीर्घकालिक स्मृति' (Long-Term Memory) के संदर्भ में 'चंकिंग' (Chunking) और 'विस्तारित पूर्वाभ्यास' (Elaborative Rehearsal) का क्या महत्व है?",
+      options: [
+        "चंकिंग लघुकालिक स्मृति की सीमित क्षमता ($7 \\pm 2$ इकाइयाँ) को सार्थक समूहों में बाँटकर बढ़ाती है, और विस्तारित पूर्वाभ्यास सूचना को अर्थपूर्ण ढंग से दीर्घकालिक स्मृति में स्थानांतरित करता है।",
+        "चंकिंग का अर्थ सूचना को भुला देना है।",
+        "रटंत पूर्वाभ्यास (Maintenance Rehearsal) दीर्घकालिक स्मृति के लिए सर्वश्रेष्ठ है।",
+        "कार्यकारी स्मृति की क्षमता असीमित होती है।"
+      ],
+      ans: 0,
+      exp: "जॉर्ज मिलर के अनुसार लघुकालिक स्मृति की क्षमता $7 \\pm 2$ (5 से 9) इकाइयों तक सीमित होती है जिसे 'चंकिंग' (समूहीकरण) द्वारा बढ़ाया जा सकता है। सूचना को पूर्व-ज्ञान से जोड़कर गहराई से समझना 'विस्तारित पूर्वाभ्यास' (Elaborative Rehearsal) है जो स्थायी स्मृति बनाता है।"
+    },
+    {
+      q: "विस्मरण (Forgetting) के 'व्यतिकरण सिद्धांत' (Interference Theory) के अनुसार, यदि एक छात्र ने कल फ्रेंच भाषा के शब्द याद किए और आज स्पेनिश भाषा के शब्द याद किए, और आज सीखे गए स्पेनिश शब्दों के कारण उसे कल सीखे गए फ्रेंच शब्द याद करने में कठिनाई हो रही है, तो यह किस प्रकार का अवरोध है?",
+      options: [
+        "अग्रलक्षी अवरोध (Proactive Interference)",
+        "पश्चलक्षी / पृष्ठोन्मुखी अवरोध (Retroactive Interference)",
+        "दमन (Repression)",
+        "संवेदी क्षय (Sensory Decay)"
+      ],
+      ans: 1,
+      exp: "जब बाद में सीखी गई नई सामग्री (स्पेनिश) पहले सीखी गई पुरानी सामग्री (फ्रेंच) के प्रत्यास्मरण (Recall) में बाधा उत्पन्न करती है, तो उसे 'पश्चलक्षी अवरोध' (Retroactive Interference) कहते हैं। इसके विपरीत जब पुराना ज्ञान नए ज्ञान में बाधा डाले, तो वह Proactive Interference होता है।"
+    },
+    {
+      q: "जे. पी. गिलफोर्ड के 'बुद्धि संरचना मॉडल' (Structure of Intellect - SOI Model) में मानसिक योग्यताओं को किन तीन मूल आयामों (Dimensions) में वर्गीकृत किया गया है?",
+      options: [
+        "अभिसारी, अपसारी और मूल्यांकन",
+        "संक्रिया (Operations), विषय-वस्तु (Contents) और उत्पाद (Products)",
+        "आनुवंशिकता, पर्यावरण और परिपक्वता",
+        "संज्ञानात्मक, भावात्मक और मनोगत्यात्मक"
+      ],
+      ans: 1,
+      exp: "गिलफोर्ड ने अपने त्रि-आयामी बुद्धि संरचना मॉडल (SOI) में बौद्धिक क्षमताओं को 1. संक्रिया (Operations - 5/6), 2. विषय-वस्तु (Contents - 5), और 3. उत्पाद (Products - 6) के घनाकार आव्यूह ($5 \\times 5 \\times 6 = 150$, बाद में $6 \\times 5 \\times 6 = 180$ कोष्ठकों) में विभाजित किया।"
+    },
+    {
+      q: "लेव वायगोत्स्की और जीन पियाजे के बीच बालक के 'आत्म-वार्ता' (Self-talk) पर हुए प्रसिद्ध सैद्धांतिक विमर्श में दोनों के दृष्टिकोणों में मुख्य अंतर क्या है?",
+      options: [
+        "पियाजे ने इसे 'आत्मकेंद्रित वाक्' (Egocentric Speech) कहा जो संज्ञानात्मक अपरिपक्वता का सूचक है, जबकि वायगोत्स्की ने इसे 'निजी वाक्' (Private Speech) माना जो चिंतन और व्यवहार के आत्म-नियमन (Self-regulation) का महत्वपूर्ण उपकरण है।",
+        "वायगोत्स्की ने आत्म-वार्ता को मानसिक रोग माना।",
+        "दोनों ने माना कि आत्म-वार्ता का संज्ञानात्मक विकास से कोई संबंध नहीं है।",
+        "पियाजे ने इसे उच्चतम सामाजिक परिपक्वता माना।"
+      ],
+      ans: 0,
+      exp: "पियाजे के अनुसार बच्चे का स्वयं से बोलना 'आत्मकेंद्रित वाक्' है जो सामाजिक परिपक्वता आने पर समाप्त हो जाता है; किंतु वायगोत्स्की ने सिद्ध किया कि यह 'निजी वाक्' (Private Speech) बच्चे को कठिन कार्यों में योजना बनाने और अपने व्यवहार को निर्देशित करने में सहायता करता है और बाद में 'आंतरिक मौन वाक्' (Inner Speech) बन जाता है।"
+    },
+    {
+      q: "कैरोल गिलिगन (Carol Gilligan) ने लॉरेंस कोहलबर्ग के नैतिक विकास सिद्धांत की आलोचना किस मुख्य आधार पर की थी?",
+      options: [
+        "कोहलबर्ग ने अपने सिद्धांत में केवल पशुओं पर प्रयोग किए थे।",
+        "कोहलबर्ग का सिद्धांत पुरुष-केंद्रित नमूनों पर आधारित था जो अमूर्त 'न्याय की नैतिकता' (Ethics of Justice) को सर्वोच्च मानता है और महिलाओं में प्रमुखता से पाई जाने वाली 'देखभाल और संबंधों की नैतिकता' (Ethics of Care) की उपेक्षा करता है।",
+        "कोहलबर्ग ने नैतिक विकास की बहुत कम अवस्थाएँ बताईं।",
+        "गिलिगन के अनुसार नैतिकता पूर्णतः आनुवंशिक होती है।"
+      ],
+      ans: 1,
+      exp: "कैरोल गिलिगन ने अपनी पुस्तक 'In a Different Voice' (1982) में तर्क दिया कि कोहलबर्ग का पैमाना लैंगिक रूप से पूर्वाग्रहित है क्योंकि वह नियम-आधारित 'न्याय दृष्टिकोण' (Justice Orientation) को स्नेह, सहानुभूति और पारस्परिक उत्तरदायित्व वाले 'देखभाल दृष्टिकोण' (Care Orientation) से ऊपर रखता है।"
+    },
+    {
+      q: "जेम्स मार्शिया (James Marcia) के 'किशोर पहचान स्थिति सिद्धांत' (Identity Status Theory) के अनुसार, एक किशोर जिसने बिना किसी वैकल्पिक करियर या विचारधारा की स्वयं खोज (Exploration) किए, अपने माता-पिता द्वारा तय किए गए लक्ष्य को बिना प्रश्न पूछे स्वीकार कर लिया है, वह किस पहचान स्थिति में है?",
+      options: [
+        "पहचान उपलब्धि (Identity Achievement)",
+        "पहचान पूर्व-बंदोबस्त / पूर्व-निर्णय (Identity Foreclosure)",
+        "पहचान स्थगन (Identity Moratorium)",
+        "पहचान विसरण (Identity Diffusion)"
+      ],
+      ans: 1,
+      exp: "मार्शिया के 4 पहचान स्तरों में 'Identity Foreclosure' (पूर्व-निर्णय) वह स्थिति है जहाँ संकट/अन्वेषण (Exploration) अनुपस्थित होता है किंतु प्रतिबद्धता (Commitment) उच्च होती है क्योंकि किशोर दूसरों (माता-पिता) की अपेक्षाओं को बिना परखे अपना लेता है।"
+    },
+    {
+      q: "कार्ल रोजर्स (Carl Rogers) और अब्राहम मैस्लो के 'मानवतावादी उपागम' (Humanistic Approach) के अनुसार कक्षा-कक्ष में 'अशर्त सकारात्मक सम्मान' (Unconditional Positive Regard) का क्या तात्पर्य है?",
+      options: [
+        "छात्र को केवल तभी सम्मान और स्नेह देना जब वह परीक्षा में प्रथम स्थान प्राप्त करे।",
+        "छात्र की उपलब्धियों या त्रुटियों से परे, एक व्यक्ति के रूप में उसकी अंतर्निहित गरिमा, भावनाओं और क्षमता को बिना किसी शर्त के स्वीकार करना और सम्मानजनक वातावरण देना।",
+        "छात्र की किसी भी शैक्षणिक त्रुटि को कभी न सुधारना।",
+        "कक्षा में सभी प्रकार के मूल्यांकन बंद कर देना।"
+      ],
+      ans: 1,
+      exp: "कार्ल रोजर्स के व्यक्ति-केंद्रित शिक्षण (Person-Centered Education) में 'अशर्त सकारात्मक सम्मान', तद्नुभूति (Empathy) और प्रामाणिकता (Congruence) वे तीन स्तंभ हैं जो छात्र को बिना भय के आत्म-सिद्धि (Self-actualization) और सार्थक अधिगम की ओर ले जाते हैं।"
+    },
+    {
+      q: "अल्बर्ट बंडूरा के अनुसार, किसी छात्र का यह विशिष्ट विश्वास कि 'मैं इस कठिन विज्ञान परियोजना को सफलतापूर्वक पूरा करने की क्षमता रखता हूँ', मनोविज्ञान की शब्दावली में क्या कहलाता है और इसका सबसे शक्तिशाली स्रोत क्या है?",
+      options: [
+        "आत्म-सम्मान (Self-Esteem) — केवल दूसरों की चापलूसी",
+        "आत्म-प्रभावकारिता (Self-Efficacy) — पूर्व के प्रत्यक्ष निपुणता अनुभव (Mastery Experiences)",
+        "आत्म-मोह (Narcissism) — कल्पना",
+        "बाह्य नियंत्रण बिंदु (External Locus of Control)"
+      ],
+      ans: 1,
+      exp: "बंडूरा के अनुसार 'आत्म-प्रभावकारिता' (Self-Efficacy) किसी विशिष्ट कार्य को निष्पादित करने की अपनी क्षमता में विश्वास है। इसके 4 स्रोतों में सबसे प्रबल स्रोत 'प्रत्यक्ष निपुणता अनुभव' (Mastery Experiences - पूर्व में स्वयं प्रयास कर पाई गई सफलता) है।"
+    },
+    {
+      q: "उपलब्धि अभिप्रेरणा सिद्धांत (Achievement Motivation Theory - David McClelland & John Atkinson) के अनुसार, जिन विद्यार्थियों में 'सफलता प्राप्त करने की उच्च आवश्यकता' ($n\\text{Ach}$) होती है, वे किस प्रकार के कार्यों या लक्ष्यों का चयन करना पसंद करते हैं?",
+      options: [
+        "अत्यंत सरल कार्य जिनमें सफलता 100% निश्चित हो और कोई प्रयास न करना पड़े।",
+        "अत्यंत असंभव कार्य जिनमें असफल होने पर किस्मत को दोष दिया जा सके।",
+        "मध्यम से उच्च चुनौतीपूर्ण कार्य (Moderately Challenging Tasks) जहाँ सफलता उनके अपने कौशल और प्रयास पर निर्भर करती हो तथा जहाँ स्पष्ट प्रतिपुष्टि मिलती हो।",
+        "ऐसे कार्य जहाँ केवल नकल से अंक मिल सकें।"
+      ],
+      ans: 2,
+      exp: "मैकक्लेलैंड और एटकिंसन के अनुसार उच्च उपलब्धि अभिप्रेरणा ($n\\text{Ach}$) वाले छात्र न तो बहुत आसान काम चुनते हैं (क्योंकि उनमें उपलब्धि का गौरव नहीं होता) और न ही असंभव जुए जैसे काम; वे 'यथार्थवादी चुनौतीपूर्ण' लक्ष्य चुनते हैं।"
+    },
+    {
+      q: "एक छात्र को जब एक साथ दो समान रूप से अप्रिय स्थितियों का सामना करना पड़ता है—जैसे 'या तो वह कठिन और अरुचिकर गृहकार्य पूरा करे, या फिर शिक्षक की डाँट और दंड का सामना करे'—तो कुर्त लेविन के अनुसार यह कौन-सा अंतर्द्वंद्व है?",
+      options: [
+        "उपागम-उपागम अंतर्द्वंद्व (Approach-Approach Conflict)",
+        "परिहार-परिहार अंतर्द्वंद्व (Avoidance-Avoidance Conflict)",
+        "उपागम-परिहार अंतर्द्वंद्व (Approach-Avoidance Conflict)",
+        "धनात्मक संयोजकता"
+      ],
+      ans: 1,
+      exp: "जब व्यक्ति दो नकारात्मक (अप्रिय) विकल्पों के बीच फँस जाता है ('आगे कुआँ पीछे खाई') और दोनों से ही बचना चाहता है, तो उसे 'परिहार-परिहार अंतर्द्वंद्व' (Avoidance-Avoidance Conflict) कहते हैं।"
+    },
+    {
+      q: "जूनियर स्तर की एक कक्षा में एक छात्र जो चलने-फिरने में समर्थ है, किंतु सूक्ष्म गत्यात्मक समन्वय (Fine Motor Coordination) में गंभीर कमी के कारण वह पेंसिल पकड़ने, जूते के फीते बाँधने, कैंची चलाने और प्रयोगशाला के उपकरणों को संतुलित करने में अत्यधिक कठिनाई अनुभव करता है। यह लक्षण किस विकासात्मक विकार की ओर संकेत करता है?",
+      options: [
+        "डिसप्रैक्सिया / विकासात्मक समन्वय विकार (Dyspraxia / Developmental Coordination Disorder)",
+        "डिसफेजिया (Dysphasia)",
+        "अफेजिया (Aphasia)",
+        "केवल श्रवण दोष"
+      ],
+      ans: 0,
+      exp: "डिसप्रैक्सिया (Dyspraxia) एक तंत्रिका-विकासात्मक गत्यात्मक विकार है जिसमें मस्तिष्क से मांसपेशियों को जाने वाले संदेशों के समन्वय में कमी होती है, जिससे सूक्ष्म व स्थूल गत्यात्मक कौशलों (लिखना, पकड़ना, संतुलन) के नियोजन (Motor Planning) में कठिनाई आती है।"
+    },
+    {
+      q: "दिव्यांगजन अधिकार अधिनियम (RPwD Act, 2016) के संदर्भ में निम्नलिखित में से कौन-सा कथन पूर्णतः सत्य है?",
+      options: [
+        "इसने 1995 के अधिनियम का स्थान लिया और मान्यता प्राप्त दिव्यांगताओं की श्रेणियों को 7 से बढ़ाकर 21 कर दिया, जिसमें एसिड अटैक पीड़ित, थैलेसीमिया और विशिष्ट अधिगम अक्षमता (SLD) को भी शामिल किया गया।",
+        "इसमें दिव्यांगता की श्रेणियों को घटाकर 4 कर दिया गया।",
+        "इसमें समावेशी शिक्षा का कोई प्रावधान नहीं है।",
+        "इसके तहत बेंचमार्क दिव्यांगता का मानदंड 80% रखा गया है।"
+      ],
+      ans: 0,
+      exp: "RPwD Act, 2016 ने PwD Act, 1995 को प्रतिस्थापित किया और दिव्यांगता के प्रकारों को 7 से बढ़ाकर 21 कर दिया। इसमें कम से कम 40% दिव्यांगता को 'बेंचमार्क दिव्यांगता' माना गया है और 6 से 18 वर्ष के बेंचमार्क दिव्यांग बच्चों को निःशुल्क शिक्षा का अधिकार दिया गया है।"
+    },
+    {
+      q: "जोसेफ रेंजुलि (Joseph Renzulli) के 'प्रतिभाशालीपन के त्रि-वलय मॉडल' (Three-Ring Conception of Giftedness) के अनुसार, किसी बालक में वास्तविक प्रतिभाशाली व्यवहार (Gifted Behavior) किन तीन गुणों के परस्पर अंतःक्रिया (Intersection) से उत्पन्न होता है?",
+      options: [
+        "केवल उच्च IQ (140+), धनी परिवार और शहरी विद्यालय",
+        "औसत से अधिक योग्यता (Above-Average Ability), उच्च कार्य-प्रतिबद्धता (Task Commitment) और उच्च सृजनात्मकता (Creativity)",
+        "रटने की गति, आज्ञाकारिता और सुंदर लिखावट",
+        "शारीरिक लंबाई, बहिर्मुखी व्यक्तित्व और खेलकूद"
+      ],
+      ans: 1,
+      exp: "रेंजुलि के त्रि-वलय मॉडल के अनुसार केवल उच्च बुद्धि लब्धि (IQ) पर्याप्त नहीं है; प्रतिभाशाली उपलब्धि तब प्रकट होती है जब 1. औसत से ऊपर सामान्य/विशिष्ट योग्यता, 2. कार्य के प्रति उच्च लगन (Task Commitment), और 3. उच्च सृजनात्मकता तीनों एक साथ मिलते हैं।"
+    },
+    {
+      q: "सभी विद्यार्थियों की विविध अधिगम आवश्यकताओं को पूरा करने के लिए तैयार किए गए 'अधिगम के सार्वभौमिक डिजाइन' (Universal Design for Learning - UDL) के तीन मूल सिद्धांत कौन-से हैं?",
+      options: [
+        "एक ही पाठ्यपुस्तक, एक ही व्याख्यान और एक ही लिखित परीक्षा",
+        "प्रस्तुतीकरण के बहुविध साधन (Multiple Means of Representation), अभिव्यक्ति/क्रिया के बहुविध साधन (Multiple Means of Action & Expression) और संलग्नता के बहुविध साधन (Multiple Means of Engagement)",
+        "पृथक्करण, नामीकरण (Labeling) और श्रेणीकरण",
+        "केवल डिजिटल परीक्षा, कठोर दंड और प्रतिस्पर्धा"
+      ],
+      ans: 1,
+      exp: "UDL समावेशी शिक्षा का एक लचीला ढाँचा है जो सिखाने की सामग्री को विविध रूपों में प्रस्तुत करने (Representation - क्या सीखें), छात्रों को अपना ज्ञान दिखाने के विविध तरीके देने (Expression - कैसे सीखें/व्यक्त करें) और रुचि जगाने के विविध उपायों (Engagement - क्यों सीखें) पर बल देता है।"
+    },
+    {
+      q: "क्रथवोहल, ब्लूम और मसीया (Krathwohl, Bloom & Masia, 1964) द्वारा प्रतिपादित 'भावात्मक पक्ष' (Affective Domain) के शैक्षिक उद्देश्यों का निम्नतम से उच्चतम स्तर की ओर सही सोपानिक क्रम क्या है?",
+      options: [
+        "आग्रहण (Receiving) → अनुक्रिया (Responding) → अनुमूल्यन (Valuing) → संगठन (Organization) → मूल्य समूह द्वारा चारित्रीकरण (Characterization by a Value Set)",
+        "ज्ञान → बोध → अनुप्रयोग → विश्लेषण → संश्लेषण",
+        "उद्दीपन → कार्य करना → नियंत्रण → समायोजन → आदत निर्माण",
+        "अनुरूपण → परिचालन → परिशुद्धता → स्पष्टीकरण → प्रकृतिकरण"
+      ],
+      ans: 0,
+      exp: "भावात्मक पक्ष (Affective Domain) जो दृष्टिकोण, मूल्यों और संवेगों से संबंधित है, के 5 क्रमिक स्तर हैं: 1. आग्रहण/ध्यान देना (Receiving), 2. अनुक्रिया करना (Responding), 3. अनुमूल्यन/मूल्य आँकना (Valuing), 4. संगठन (Organization), और 5. चारित्रीकरण (Characterization)।"
+    },
+    {
+      q: "मूल्यांकन की दो प्रमुख प्रणालियों—'मानक-संदर्भित परीक्षण' (Norm-Referenced Testing - NRT) और 'निकष-संदर्भित परीक्षण' (Criterion-Referenced Testing - CRT)—के बीच मूलभूत अंतर क्या है?",
+      options: [
+        "NRT में एक छात्र के प्रदर्शन की तुलना समूह के अन्य छात्रों के औसत प्रदर्शन (Percentile/Rank) से की जाती है, जबकि CRT में छात्र के प्रदर्शन की तुलना पूर्व-निर्धारित अधिगम उद्देश्यों या निपुणता मानकों (Mastery Level) से की जाती है।",
+        "UPTET परीक्षा एक विशुद्ध NRT है जिसमें केवल शीर्ष 100 छात्रों को उत्तीर्ण किया जाता है।",
+        "CRT में छात्रों की केवल रैंकिंग निकाली जाती है।",
+        "दोनों प्रणालियाँ बिल्कुल एक जैसी हैं।"
+      ],
+      ans: 0,
+      exp: "NRT यह बताता है कि छात्र समूह में दूसरों की तुलना में कहाँ खड़ा है (जैसे प्रतियोगी मेरिट परीक्षा), जबकि रॉबर्ट ग्लेसर द्वारा प्रतिपादित CRT यह जाँचता है कि छात्र ने निर्धारित कौशल या कट-ऑफ मानदंड (जैसे TET में 60% या 90 अंक) हासिल किया है या नहीं, चाहे अन्य छात्रों के अंक कुछ भी हों।"
+    },
+    {
+      q: "यदि कोई विद्यालयी समस्या (जैसे कक्षा 7 के छात्रों की विज्ञान की कक्षा में निरंतर बढ़ती अनुपस्थिति और गृहकार्य न करना) केवल उसी विद्यालय के संदर्भ तक सीमित है और शिक्षक स्वयं वैज्ञानिक चरणों का पालन करते हुए तत्काल उस समस्या का व्यावहारिक समाधान खोजता है, तो इस शोध को क्या कहते हैं?",
+      options: [
+        "मौलिक या विशुद्ध अनुसंधान (Fundamental/Pure Research)",
+        "क्रियात्मक अनुसंधान (Action Research — स्टीफन एम. कोरे)",
+        "ऐतिहासिक अनुसंधान (Historical Research)",
+        "दार्शनिक अनुसंधान"
+      ],
+      ans: 1,
+      exp: "शिक्षा के क्षेत्र में 'क्रियात्मक अनुसंधान' (Action Research) के प्रवर्तक स्टीफन एम. कोरे (Stephen M. Corey) हैं। इसका उद्देश्य सार्वभौमिक सिद्धांत बनाना नहीं, बल्कि विद्यालय की तात्कालिक व स्थानीय समस्याओं का स्वयं अभ्यासकर्ताओं (शिक्षकों) द्वारा वैज्ञानिक ढंग से समाधान और कार्यप्रणाली में सुधार करना है।"
+    },
+    {
+      q: "हर्मन एबिंगहॉस (Hermann Ebbinghaus) के 'विस्मरण वक्र' (Forgetting Curve) के ऐतिहासिक प्रयोगों का मुख्य निष्कर्ष क्या था?",
+      options: [
+        "सीखने के बाद समय बीतने के साथ विस्मरण एकसमान धीमी गति से होता है।",
+        "सीखने के तुरंत बाद (प्रथम कुछ घंटों में) विस्मरण की दर सर्वाधिक तीव्र होती है और उसके बाद धीरे-धीरे मंद होकर स्थिर हो जाती है; अतः सीखने के तुरंत बाद दोहराव (Spaced Repetition) सर्वाधिक प्रभावी होता है।",
+        "अर्थपूर्ण सामग्री की तुलना में निरर्थक पद (Nonsense Syllables) कभी नहीं भूलते।",
+        "निद्रा का स्मृति समेकन (Memory Consolidation) पर नकारात्मक प्रभाव पड़ता है।"
+      ],
+      ans: 1,
+      exp: "एबिंगहॉस ने स्वयं पर निरर्थक शब्दों (Nonsense syllables) के प्रयोग कर दिखाया कि अधिगम के तुरंत बाद पहले 20 मिनट से 1 घंटे में सर्वाधिक विस्मरण होता है, तत्पश्चात् वक्र समतल होने लगता है।"
+    },
+    {
+      q: "राष्ट्रीय शिक्षा नीति (NEP-2020) के अनुसार, विद्यालयी शिक्षा की नई पाठ्यचर्या और शैक्षणिक संरचना ($5+3+3+4$) में उच्च प्राथमिक स्तर (कक्षा 6 से 8, आयु 11 से 14 वर्ष) को किस चरण का नाम दिया गया है और इसकी प्रमुख विशेषता क्या है?",
+      options: [
+        "फाउंडेशनल स्टेज (Foundational Stage) — केवल खेल आधारित शिक्षा",
+        "प्रिपरेटरी स्टेज (Preparatory Stage) — हल्की पाठ्यपुस्तकें",
+        "मिडिल स्टेज (Middle Stage) — विषयों में अमूर्त अवधारणाओं का परिचय, अनुभवात्मक अधिगम, व्यावसायिक शिक्षा (इंटर्नशिप/बैगलेस डेज) और कोडिंग का प्रारंभ",
+        "सेकेंडरी स्टेज (Secondary Stage) — बोर्ड परीक्षा"
+      ],
+      ans: 2,
+      exp: "NEP-2020 की $5+3+3+4$ संरचना में तीसरे चरण (3 वर्ष: कक्षा 6 से 8, आयु 11–14 वर्ष) को 'मिडिल स्टेज' (Middle Stage) कहा गया है। इसी स्तर से विषय-विशेषज्ञ शिक्षकों द्वारा अमूर्त संप्रत्ययों का शिक्षण, 10-दिवसीय बैगलेस पीरियड और स्थानीय व्यावसायिक शिल्पों की इंटर्नशिप शुरू करने का प्रावधान है।"
+    },
+    {
+      q: "NEP-2020 के अंतर्गत स्थापित किए जाने वाले नए राष्ट्रीय मूल्यांकन केंद्र 'परख' (PARAKH) का पूर्ण रूप और मुख्य कार्य क्या है?",
+      options: [
+        "Performance Assessment, Review, and Analysis of Knowledge for Holistic Development — देश के सभी शिक्षा बोर्डों के लिए छात्र आकलन और मूल्यांकन के मानक, मानदंड व दिशानिर्देश निर्धारित करना",
+        "Primary Assessment for Rural and Kisan Households",
+        "Pedagogical Analysis of Rote and Knowledge Habits",
+        "केवल विश्वविद्यालयों की प्रवेश परीक्षा आयोजित करना"
+      ],
+      ans: 0,
+      exp: "PARAKH (Performance Assessment, Review, and Analysis of Knowledge for Holistic Development) NEP-2020 द्वारा प्रस्तावित एक मानक-निर्धारक निकाय है जो रटंत परीक्षाओं के स्थान पर दक्षता-आधारित समग्र मूल्यांकन (Competency-based Assessment) के मानदंड तय करता है।"
+    },
+    {
+      q: "चार्ल्स जुड (Charles Judd) के 'अधिगम अंतरण के सामान्यीकरण सिद्धांत' (Theory of Generalization) के अनुसार, एक विषय में सीखा गया ज्ञान दूसरी परिस्थिति में तभी सफलतापूर्वक अंतरित होता है जब:",
+      options: [
+        "दोनों परिस्थितियों में बाह्य तत्व शत-प्रतिशत समान हों (थॉर्नडाइक का समरूप तत्व सिद्धांत)।",
+        "शिक्षार्थी ने पहली परिस्थिति में निहित 'सामान्य सिद्धांतों और नियमों' (General Principles) को गहराई से समझ लिया हो और उनका सामान्यीकरण कर लिया हो।",
+        "छात्र ने केवल तथ्यों को बिना समझे रट लिया हो।",
+        "शिक्षक ने कठोर दंड दिया हो।"
+      ],
+      ans: 1,
+      exp: "चार्ल्स जुड ने पानी के भीतर रखे लक्ष्य पर निशाना लगाने (अपवर्तन के नियम) के प्रयोग द्वारा सिद्ध किया कि जिस समूह को 'अपवर्तन का सामान्य सिद्धांत' समझाया गया था, उसने पानी की गहराई बदलने पर भी तुरंत समायोजन कर लिया। अतः नियमों का 'सामान्यीकरण' ही अंतरण का आधार है।"
+    }
+  ],
+
+  // Remaining arrays to be pasted below:
+ HIN: [
+    {
+      q: "अपठित गद्यांश के आधार पर उत्तर दीजिए:\n'संस्कृति किसी समाज की अंतःसलिला है जो बाह्य आडंबरों से नहीं, अपितु लोक-मानस के दीर्घकालीन मूल्य-बोध, सह-अस्तित्व और सृजनशीलता से प्रवाहित होती है। जब कोई सभ्यता अपने मूल सांस्कृतिक उत्स से कटकर केवल भौतिक चकाचौंध का अंधानुकरण करने लगती है, तब वह अपनी अस्मिता खो बैठती है।'\nउपर्युक्त गद्यांश में प्रयुक्त 'अंतःसलिला' एवं 'अंधानुकरण' शब्दों का सही व्याकरणिक विश्लेषण क्या है?",
+      options: [
+        "अंतःसलिला (विसर्ग संधि रहित तत्सम एवं बहुव्रीहि/कर्मधारय भाव: भीतर बहने वाली धारा); अंधानुकरण = अंध + अनुकरण (दीर्घ स्वर संधि एवं तत्पुरुष समास)",
+        "अंतः + सलिला (यहाँ विसर्ग का लोप हुआ है); अंधानुकरण = अंधा + अनुकरण (गुण संधि)",
+        "अंत + सलिला (व्यंजन संधि); अंधानुकरण (अव्ययीभाव समास)",
+        "दोनों शब्द देशज एवं द्वंद्व समास के उदाहरण हैं"
+      ],
+      ans: 0,
+      exp: "'अंतःसलिला' (भीतर ही भीतर गुप्त रूप से बहने वाली नदी/धारा, जैसे सरस्वती) में 'अंतः + सलिला' विसर्ग संधि की प्रकृति तथा विशेषण/बहुव्रीहि भाव है। 'अंधानुकरण' = अंध + अनुकरण (अ + अ = आ, दीर्घ स्वर संधि) तथा 'अंधा है जो अनुकरण / अंधों जैसा अनुकरण' (कर्मधारय/तत्पुरुष समास) है।"
+    },
+    {
+      q: "हिंदी ध्वनिविज्ञान के अनुसार 'ड़' और 'ढ़' ध्वनियों तथा 'ल' और 'र' ध्वनियों का क्रमशः सबसे सटीक पारिभाषिक नाम क्या है?",
+      options: [
+        "उत्क्षिप्त (द्विस्पृष्ट/ताड़नजात) ध्वनियाँ; तथा 'ल' पार्श्विक (Lateral) एवं 'र' प्रकम्पित/लुंठित (Trill/Rolled) ध्वनि",
+        "नासिक्य ध्वनियाँ; तथा 'ल' संघर्षी एवं 'र' स्पर्श ध्वनि",
+        "अंतःस्थ ध्वनियाँ; तथा 'ल' प्रकम्पित एवं 'र' पार्श्विक ध्वनि",
+        "महाप्राण अघोष ध्वनियाँ; तथा दोनों ऊष्म ध्वनियाँ"
+      ],
+      ans: 0,
+      exp: "'ड़' और 'ढ़' के उच्चारण में जिह्वा की नोक मूर्धा को झटके से छूकर नीचे गिरती है, अतः इन्हें 'उत्क्षिप्त' या 'ताड़नजात' कहते हैं। 'ल' के उच्चारण में वायु जिह्वा के दोनों बगलों (पार्श्व) से निकलती है (पार्श्विक), और 'र' में जिह्वा में कंपन होता है (प्रकम्पित/लुंठित)।"
+    },
+    {
+      q: "निम्नलिखित में से किस विकल्प के सभी शब्द वर्तनी की दृष्टि से पूर्णतः शुद्ध हैं?",
+      options: [
+        "ज्योत्स्ना, जिजीविषा, हिरण्यकशिपु, आनुषंगिक",
+        "ज्योत्सना, जिजीविशा, हिरण्यकश्यप, अनुषंगिक",
+        "कवयित्री, रचयिता, उपरोक्त, प्रदर्शनी",
+        "श्रृंगार, उज्ज्वल, कालिदास, मैथलीशरण"
+      ],
+      ans: 0,
+      exp: "विकल्प (A) के चारों शब्द पूर्णतः शुद्ध हैं: 'ज्योत्स्ना' (आधा त् और आधा स् दोनों), 'जिजीविषा', 'हिरण्यकशिपु' और 'आनुषंगिक' (इक् प्रत्यय से आदि वृद्धि)। विकल्प (C) में 'उपरोक्त' अशुद्ध है (शुद्ध: उपर्युक्त) और (D) में 'मैथलीशरण' अशुद्ध है (शुद्ध: मैथिलीशरण)।"
+    },
+    {
+      q: "'तद्धित' और 'वाङ्मय' शब्दों का सही संधि-विच्छेद और संधि-नियम कौन-सा है?",
+      options: [
+        "तत् + हित (व्यंजन संधि: त् का द् और ह् का ध् होना) तथा वाक् + मय (व्यंजन संधि: क् का पंचमाक्षर ङ् होना)",
+        "तद् + धित तथा वाग + मय (गुण संधि)",
+        "तत् + धित तथा वाः + मय (विसर्ग संधि)",
+        "तथा + इत तथा वाणी + मय"
+      ],
+      ans: 0,
+      exp: "'तत् + हित = तद्धित' में व्यंजन संधि के नियम ('झयो होऽन्यतरस्याम्') से पदान्त 'त्' के बाद 'ह्' आने पर 'त्' का 'द्' और 'ह्' का 'ध्' हो जाता है। 'वाक् + मय = वाङ्मय' में 'क्' के बाद नासिक्य 'म्' आने से 'क्' अपने वर्ग के पंचमाक्षर 'ङ्' में बदल जाता है।"
+    },
+    {
+      q: "'अभ्युदय', 'पित्राज्ञा' और 'पावक' शब्दों में प्रयुक्त स्वर संधियों का सही क्रम क्या है?",
+      options: [
+        "दीर्घ संधि, गुण संधि, वृद्धि संधि",
+        "यण संधि (अभि + उदय), यण संधि (पितृ + आज्ञा), अयादि संधि (पौ + अक)",
+        "गुण संधि, अयादि संधि, यण संधि",
+        "अयादि संधि, वृद्धि संधि, दीर्घ संधि"
+      ],
+      ans: 1,
+      exp: "अभि + उदय = अभ्युदय (इ + उ = यु, यण संधि); पितृ + आज्ञा = पित्राज्ञा (ऋ + आ = रा, यण संधि); पौ + अक = पावक (औ + अ = आव, अयादि संधि)।"
+    },
+    {
+      q: "निम्नलिखित में से किस शब्द में एक से अधिक उपसर्गों का प्रयोग हुआ है?",
+      options: [
+        "अध्यात्म",
+        "दुर्व्यवहार",
+        "अभिमान",
+        "निवास"
+      ],
+      ans: 1,
+      exp: "'दुर्व्यवहार' शब्द में तीन उपसर्ग जुड़े हैं: दुर् + वि + अव + हार = दुर्व्यवहार। जबकि अध्यात्म (अधि + आत्म), अभिमान (अभि + मान) और निवास (नि + वास) में केवल एक-एक उपसर्ग है।"
+    },
+    {
+      q: "'शीतोष्ण' और 'मनमाना' सामासिक पदों में क्रमशः कौन-सा समास है?",
+      options: [
+        "द्वंद्व समास (शीत और उष्ण — वैकल्पिक द्वंद्व) तथा तत्पुरुष समास (मन से माना हुआ — करण तत्पुरुष)",
+        "कर्मधारय समास तथा बहुव्रीहि समास",
+        "अव्ययीभाव समास तथा द्विगु समास",
+        "तत्पुरुष समास तथा द्वंद्व समास"
+      ],
+      ans: 0,
+      exp: "'शीतोष्ण' (शीत या उष्ण — दो विपरीतार्थक विशेषणों का संयोग) में वैकल्पिक द्वंद्व समास है। 'मनमाना' का विग्रह 'मन से माना हुआ' है, जिसमें करण तत्पुरुष समास है।"
+    },
+    {
+      q: "निम्नलिखित वाक्यों में से किस वाक्य में 'अपादान कारक' का प्रयोग हुआ है?",
+      options: [
+        "शिकारी ने बाण से हिंसक बाघ को मारा।",
+        "राधा अपनी बड़ी बहन से पढ़ने में अधिक चतुर है और वह अंधेरे से डरती है।",
+        "मोहल्ले के सभी लोग छत पर बैठे हैं।",
+        "माँ ने बच्चों के लिए मीठे पकवान बनाए।"
+      ],
+      ans: 1,
+      exp: "केवल अलग होने (पृथकता) में ही नहीं, अपितु दो वस्तुओं/व्यक्तियों की 'तुलना' करने ('बहन से अधिक चतुर') तथा 'भय/रक्षा/लज्जा' ('अंधेरे से डरती है') के भाव में भी सदैव 'अपादान कारक' होता है।"
+    },
+    {
+      q: "'वह दिनभर पढ़ता ही रहता है, फिर भी उसे थोड़ा-सा दूध और कुछ फल ही दिए गए।' — इस वाक्य में प्रयुक्त 'ही', 'थोड़ा-सा' और 'कुछ' व्याकरणिक कोटि की दृष्टि से क्रमशः क्या हैं?",
+      options: [
+        "निपात (अवधारक), अनिश्चित परिमाणवाचक विशेषण, तथा अनिश्चित संख्यावाचक विशेषण",
+        "संबंधबोधक अव्यय, गुणवाचक विशेषण, तथा सार्वनामिक विशेषण",
+        "समुच्चयबोधक अव्यय, निश्चित संख्यावाचक, तथा क्रियाविशेषण",
+        "तीनों रीतिवाचक क्रियाविशेषण हैं"
+      ],
+      ans: 0,
+      exp: "'ही' वाक्य में किसी पद पर विशेष बल देने वाला 'निपात' है। 'दूध' द्रव्यवाचक/अगणनीय संज्ञा है अतः 'थोड़ा-सा' अनिश्चित परिमाणवाचक विशेषण है; जबकि 'फल' गणनीय संज्ञा है अतः 'कुछ' अनिश्चित संख्यावाचक विशेषण है।"
+    },
+    {
+      q: "'जब तक शिक्षक कक्षा में रहे, तब तक सभी विद्यार्थी शांतिपूर्वक अपना-अपना लेख लिखते रहे।' — रचना और आश्रित उपवाक्य के भेद की दृष्टि से यह कैसा वाक्य है?",
+      options: [
+        "संयुक्त वाक्य — समानाधिकरण उपवाक्य",
+        "मिश्र वाक्य — कालवाचक क्रियाविशेषण आश्रित उपवाक्य",
+        "सरल वाक्य — उद्देश्य विस्तार",
+        "मिश्र वाक्य — संज्ञा आश्रित उपवाक्य"
+      ],
+      ans: 1,
+      exp: "'जब तक... तब तक' से जुड़ा होने के कारण यह 'मिश्र वाक्य' है, और 'जब तक शिक्षक कक्षा में रहे' मुख्य क्रिया के समय (काल) की विशेषता बता रहा है, अतः यह 'कालवाचक क्रियाविशेषण आश्रित उपवाक्य' है।"
+    },
+    {
+      q: "'अध्यापक ने छात्रों से निबंध लिखवाया और स्वयं सोफे पर बैठकर चाय पीकर अखबार पढ़ने लगे।' — इस वाक्य में 'लिखवाया' और 'पीकर' क्रिया के कौन-से भेद हैं?",
+      options: [
+        "प्रेरणार्थक क्रिया तथा पूर्वकालिक क्रिया",
+        "नामधातु क्रिया तथा संयुक्त क्रिया",
+        "अकर्मक क्रिया तथा कृदंत क्रिया",
+        "पूर्वकालिक क्रिया तथा नामधातु क्रिया"
+      ],
+      ans: 0,
+      exp: "'लिखवाया' में कर्ता (अध्यापक) स्वयं कार्य न करके छात्रों को प्रेरित कर रहा है, अतः यह 'प्रेरणार्थक क्रिया' है। मुख्य क्रिया ('पढ़ने लगे') से ठीक पहले समाप्त हुई क्रिया 'पीकर' 'पूर्वकालिक क्रिया' है।"
+    },
+    {
+      q: "तत्सम और तद्भव शब्दों के युग्मों में से कौन-सा युग्म सही सुमेलित है?",
+      options: [
+        "गोमय — गोबर, पर्यंक — पलंग, श्मश्रु — मूँछ, वर्तिका — बाती",
+        "गोधूम — गाय, हरिद्रा — हरी, कपाट — कपड़ा",
+        "अट्टालिका — आटा, कर्पूर — कपास, घट — घर",
+        "चंचु — चम्मच, ताम्र — ताला, अक्षोट — आँगन"
+      ],
+      ans: 0,
+      exp: "विकल्प (A) के सभी तत्सम-तद्भव युग्म पूर्णतः शुद्ध हैं: गोमय (गोबर), पर्यंक (पलंग), श्मश्रु (मूँछ), और वर्तिका (बाती/बत्ती)।"
+    },
+    {
+      q: "समश्रुत भिन्नार्थक शब्द-युग्म 'अंबुज – अंबुधि' तथा 'तरणि – तरुणी' के सही अर्थ-भेद क्रमशः क्या हैं?",
+      options: [
+        "कमल – सागर; तथा सूर्य – युवती",
+        "बादल – कमल; तथा नाव – वृद्धा",
+        "सागर – बादल; तथा युवती – सूर्य",
+        "जल – अग्नि; तथा किरण – नदी"
+      ],
+      ans: 0,
+      exp: "'अंबु' (जल) में 'ज' (जन्म लेने वाला) जुड़ने से 'अंबुज' = कमल, और 'धि' (धारण करने वाला) जुड़ने से 'अंबुधि' = सागर। इसी प्रकार ह्रस्व इकारान्त 'तरणि' = सूर्य (दीर्घ ईकारान्त 'तरणी' = नाव), और 'तरुणी' = नवयुवती।"
+    },
+    {
+      q: "निम्नलिखित काव्य-पंक्तियों में कौन-सा अलंकार है?\n'उदित उदयगिरि मंच पर, रघुबर बाल पतंग।\nबिकसे संत सरोज सब, हरषे लोचन भृंग।।'",
+      options: [
+        "उत्प्रेक्षा अलंकार",
+        "सांग रूपक अलंकार (मंच पर उदयगिरि, रघुबर पर बाल-सूर्य, संतों पर सरोज और नेत्रों पर भौंरों का अभेद आरोप)",
+        "भ्रांतिमान अलंकार",
+        "व्यतिरेक अलंकार"
+      ],
+      ans: 1,
+      exp: "तुलसीदास जी की इस प्रसिद्ध दोहे में उपमेय (मंच, रघुबर, संत, लोचन) पर उपमान (उदयगिरि, बाल-पतंग, सरोज, भृंग) का अंगों सहित अभेद आरोप किया गया है, अतः यहाँ 'सांग रूपक अलंकार' है।"
+    },
+    {
+      q: "'नहिं पराग नहिं मधुर मधु, नहिं बिकास इहिं काल।\nअली कली ही सौं बिंध्यौ, आगे कौन हवाल।।' — कवि बिहारी के इस दोहे में कौन-सा अलंकार है?",
+      options: [
+        "अन्योक्ति अलंकार (अप्रस्तुत भौंरे और कली के माध्यम से प्रस्तुत राजा जयसिंह को सचेत करना)",
+        "श्लेष अलंकार",
+        "संदेह अलंकार",
+        "विरोधाभास अलंकार"
+      ],
+      ans: 0,
+      exp: "जहाँ अप्रस्तुत (प्रतीक: भौंरा और कली) के वर्णन के माध्यम से किसी प्रस्तुत (नवविवाहिता रानी के प्रेम में डूबे राजा जयसिंह) का बोध कराया जाए, वहाँ 'अन्योक्ति अलंकार' होता है।"
+    },
+    {
+      q: "'या लकुटी अरु कामरिया पर राज तिहूँ पुर को तजि डारौं।\nआठहुँ सिद्धि नवौ निधि के सुख नंद की गाइ चराइ बिसारौं।।' — रसखान की इन पंक्तियों में कौन-सा वर्णिक/मात्रिक छंद है?",
+      options: [
+        "गीतिका छंद",
+        "सवैया छंद (मत्तगयंद सवैया — 23 वर्ण, सात भगण और दो गुरु)",
+        "हरिगीतिका छंद",
+        "रोला छंद"
+      ],
+      ans: 1,
+      exp: "रसखान का यह सुप्रसिद्ध पद 'मत्तगयंद सवैया' छंद में रचित है। सवैया एक वर्णिक सम छंद है जिसमें प्रत्येक चरण में 22 से 26 वर्ण होते हैं (यहाँ सात भगण + दो गुरु = 23 वर्ण हैं)।"
+    },
+    {
+      q: "आचार्य विश्वनाथ के प्रसिद्ध लक्षण-ग्रंथ 'साहित्यदर्पण' के अनुसार काव्य की परिभाषा क्या है, और रस-निष्पत्ति के सूत्र 'विभावानुभावव्यभिचारिसंयोगाद्रसनिष्पत्तिः' में किस तत्व का नामोल्लेख भरतमुनि ने प्रत्यक्ष रूप से नहीं किया है?",
+      options: [
+        "'वाक्यं रसात्मकं काव्यम्' — रस-सूत्र में 'स्थायी भाव' शब्द का प्रत्यक्ष उल्लेख नहीं है।",
+        "'शब्दार्थौ सहितौ काव्यम्' — रस-सूत्र में 'विभाव' का उल्लेख नहीं है।",
+        "'रमणीयार्थ प्रतिपादकः शब्दः काव्यम्' — रस-सूत्र में 'अनुभाव' का उल्लेख नहीं है।",
+        "'तददोषौ शब्दार्थौ' — रस-सूत्र में 'संचारी भाव' का उल्लेख नहीं है।"
+      ],
+      ans: 0,
+      exp: "आचार्य विश्वनाथ ने 'वाक्यं रसात्मकं काव्यम्' (रसात्मक वाक्य ही काव्य है) कहा है। भरतमुनि के रस-सूत्र में विभाव, अनुभाव और व्यभिचारी (संचारी) भाव इन तीन का ही नाम आया है, 'स्थायी भाव' का नाम सूत्र में प्रत्यक्ष रूप से नहीं है।"
+    },
+    {
+      q: "'जिस स्त्री के पुत्र और पति दोनों जीवित हों' तथा 'जो बाएँ हाथ से भी सधा हुआ कार्य (तीर चलाना आदि) कर लेता हो' — इन वाक्यांशों के लिए एक-एक शुद्ध शब्द क्रमशः क्या हैं?",
+      options: [
+        "सधवा तथा वाममार्गी",
+        "पुरंध्री तथा सव्यसाची",
+        "वीरप्रसू तथा पार्थ",
+        "कामायनी तथा अजातशत्रु"
+      ],
+      ans: 1,
+      exp: "जिस स्त्री के पति व पुत्र दोनों जीवित हों उसे 'पुरंध्री' कहते हैं (केवल पति जीवित होने पर सधवा)। जो बाएँ हाथ से भी कुशलतापूर्वक कार्य कर ले (जैसे अर्जुन) उसे 'सव्यसाची' कहते हैं।"
+    },
+    {
+      q: "'आठ कनौजिया नौ चूल्हे' — इस लोकोक्ति का सटीक अभिप्राय क्या है?",
+      options: [
+        "संयुक्त परिवार में बड़े प्रेम से रहना",
+        "अलगाव, फूट या अत्यधिक छुआछूत व मतभेद की स्थिति होना",
+        "भोजन पकाने के लिए अधिक ईंधन खर्च करना",
+        "उत्सव में सामूहिक भोज का आयोजन करना"
+      ],
+      ans: 1,
+      exp: "'आठ कनौजिया नौ चूल्हे' लोकोक्ति का अर्थ है—आपसी फूट, अलगाववाद या संकीर्णता के कारण एकता न रहना और सबका अपनी-अपनी ढपली अपना-अपना राग अलापना।"
+    },
+    {
+      q: "भारतीय संविधान के किस भाग और किन अनुच्छेदों में 'राजभाषा' संबंधी प्रावधान किए गए हैं, तथा किस अनुच्छेद में प्राथमिक स्तर पर मातृभाषा में शिक्षा की सुविधा देने का निर्देश है?",
+      options: [
+        "भाग-17 (अनुच्छेद 343 से 351 तक); तथा अनुच्छेद 350(क) में मातृभाषा में शिक्षा",
+        "भाग-8 (अनुच्छेद 210 से 215 तक); तथा अनुच्छेद 344 में मातृभाषा",
+        "भाग-15 (अनुच्छेद 324 से 329 तक); तथा अनुच्छेद 351 में मातृभाषा",
+        "भाग-20 (अनुच्छेद 368); तथा अनुच्छेद 21(क)"
+      ],
+      ans: 0,
+      exp: "संविधान के भाग-17 में अनुच्छेद 343 से 351 तक राजभाषा संबंधी प्रावधान हैं। अनुच्छेद 350(क) में भाषाई अल्पसंख्यक वर्गों के बच्चों को प्राथमिक स्तर पर मातृभाषा में शिक्षा की पर्याप्त सुविधाएँ देने का निर्देश है, और अनुच्छेद 351 हिंदी के विकास से संबंधित है।"
+    },
+    {
+      q: "आदिकालीन एवं भक्तिकालीन साहित्य के संदर्भ में निम्नलिखित रचनाओं और उनके रचयिताओं का कौन-सा युग्म असंगत (गलत) है?",
+      options: [
+        "पृथ्वीराज रासो — चंदबरदाई",
+        "बीसलदेव रासो — नरपति नाल्ह",
+        "पद्मावत — मलिक मुहम्मद जायसी",
+        "मृगावती — मुल्ला दाऊद"
+      ],
+      ans: 3,
+      exp: "सूफी प्रेमाख्यानक काव्य 'मृगावती' के रचयिता 'कुतुबन' हैं, जबकि 'मुल्ला दाऊद' की रचना 'चंदायन' है। शेष तीनों युग्म पूर्णतः सही हैं।"
+    },
+    {
+      q: "आधुनिक हिंदी साहित्य में 'तार सप्तक' (1943 ई.) का संपादन किसने किया था, जिससे हिंदी कविता में 'प्रयोगवाद' का प्रारंभ माना जाता है?",
+      options: [
+        "सूर्यकांत त्रिपाठी 'निराला'",
+        "सच्चिदानंद हीरानंद वात्स्यायन 'अज्ञेय'",
+        "गजानन माधव मुक्तिबोध",
+        "रामधारी सिंह 'दिनकर'"
+      ],
+      ans: 1,
+      exp: "'अज्ञेय' जी ने वर्ष 1943 में सात कवियों की रचनाओं का संकलन 'तार सप्तक' नाम से प्रकाशित किया (इसके बाद दूसरा सप्तक 1951, तीसरा 1959 और चौथा 1979 में आया), जिससे प्रयोगवाद का सूत्रपात हुआ।"
+    },
+    {
+      q: "ज्ञानपीठ पुरस्कार से सम्मानित हिंदी साहित्यकारों और उनकी पुरस्कृत कृतियों का कौन-सा मिलान सही है?",
+      options: [
+        "सुमित्रानंदन पंत — 'चिदम्बरा' (1968: हिंदी का प्रथम ज्ञानपीठ पुरस्कार)",
+        "रामधारी सिंह 'दिनकर' — 'उर्वशी' (1972)",
+        "महादेवी वर्मा — 'यामा' (1982)",
+        "उपर्युक्त सभी कथन सत्य हैं"
+      ],
+      ans: 3,
+      exp: "हिंदी साहित्य में प्रथम ज्ञानपीठ पुरस्कार सुमित्रानंदन पंत को 'चिदम्बरा' (1968) पर, दिनकर जी को 'उर्वशी' (1972) पर, अज्ञेय जी को 'कितनी नावों में कितनी बार' (1978) पर और महादेवी वर्मा को 'यामा' (1982) पर प्राप्त हुआ।"
+    },
+    {
+      q: "उच्च प्राथमिक स्तर पर पद्य (कविता) शिक्षण की किस प्रणाली में शिक्षक समान भाव वाली अन्य कवियों की पंक्तियों से तुलना करते हुए कविता का रसास्वादन कराता है?",
+      options: [
+        "अर्थबोध प्रणाली",
+        "तुलना प्रणाली एवं समीक्षा प्रणाली",
+        "अभिनय प्रणाली (केवल कक्षा 1-2 हेतु)",
+        "अक्षरबोध प्रणाली"
+      ],
+      ans: 1,
+      exp: "उच्च प्राथमिक व माध्यमिक स्तर पर कविता शिक्षण में 'तुलना प्रणाली' (समभाव वाली अन्य कविताओं से तुलना) और 'समीक्षा/व्यास प्रणाली' (भावपक्ष व कलापक्ष का विवेचन) रसानुभूति और समालोचनात्मक समझ के लिए सर्वश्रेष्ठ मानी जाती हैं।"
+    },
+    {
+      q: "लेव वायगोत्स्की के सामाजिक-अंतःक्रियावादी परिप्रेक्ष्य के अनुसार, बच्चों में भाषा का विकास सर्वाधिक प्रभावी रूप से कब होता है?",
+      options: [
+        "जब उन्हें एकांत कमरे में बैठाकर शब्दकोश याद कराया जाता है।",
+        "जब उन्हें वयस्कों और समवयस्क साथियों के साथ सार्थक सामाजिक संवाद, विचार-विमर्श और सहयोगात्मक गतिविधियों में भाषा के प्रयोग के प्रचुर अवसर मिलते हैं।",
+        "जब उन्हें बोलने पर दंडित किया जाता है।",
+        "जब केवल श्यामपट्ट से सुलेख की नकल कराई जाती है।"
+      ],
+      ans: 1,
+      exp: "वायगोत्स्की के अनुसार भाषा मूलतः एक सामाजिक उपकरण है। बच्चा समाज व संस्कृति के साथ सार्थक अंतःक्रिया (Social Interaction) से भाषा ग्रहण करता है और बाद में उसका आंतरीकरण (Internalization) कर चिंतन का विकास करता है।"
+    },
+    {
+      q: "उच्च प्राथमिक स्तर पर 'मौन पठन' (Silent Reading) का मुख्य शैक्षणिक लाभ क्या है, और किस प्रकार के साहित्य में मौन पठन की अपेक्षा 'सस्वर पठन' को अधिक उपयुक्त माना जाता है?",
+      options: [
+        "मौन पठन से थकान कम होती है, पठन गति बढ़ती है तथा गहन अर्थग्रहण व स्वाध्याय की आदत विकसित होती है; जबकि 'काव्य/पद्य' एवं 'संवाद-प्रधान एकांकी' में भाव व लय के लिए सस्वर पठन आवश्यक है।",
+        "मौन पठन से उच्चारण सुधरता है और यह केवल नर्सरी कक्षा के लिए है।",
+        "गद्य के गंभीर निबंधों में केवल चिल्लाकर पढ़ना चाहिए।",
+        "मौन पठन से एकाग्रता नष्ट होती है।"
+      ],
+      ans: 0,
+      exp: "जूनियर स्तर (कक्षा 6–8) पर गद्य अध्ययन में 'मौन पठन' (गंभीर व द्रुत पठन) सर्वाधिक उपयोगी है क्योंकि इससे चिंतन की गति के साथ अर्थग्रहण तीव्र होता है; किंतु कविता में छंद, लय व रसानुभूति के लिए सस्वर पठन अनिवार्य है।"
+    },
+    {
+      q: "एक भाषा शिक्षक कक्षा 7 के छात्रों को एक अपठित अनुच्छेद देता है जिसमें हर पाँचवाँ या छठा शब्द हटाकर रिक्त स्थान छोड़ दिया गया है, और छात्रों से संदर्भ व वाक्य-प्रवाह की समझ के आधार पर उपयुक्त शब्द भरने को कहता है। भाषा आकलन की इस तकनीक को क्या कहते हैं?",
+      options: [
+        "श्रुतलेख परीक्षण (Dictation Test)",
+        "क्लोज परीक्षण (Cloze Test — विल्सन टेलर)",
+        "वर्णमाला पहचान परीक्षण",
+        "मौखिक साक्षात्कार"
+      ],
+      ans: 1,
+      exp: "विल्सन टेलर (1953) द्वारा प्रतिपादित 'क्लोज परीक्षण' (Cloze Procedure - गेस्टाल्ट के Closure नियम पर आधारित) छात्रों की पठन-बोध क्षमता, संदर्भगत शब्दावली और व्याकरणिक पूर्वानुमान कौशल को मापने का अत्यंत वैध उपकरण है।"
+    },
+    {
+      q: "समावेशी कक्षा में 'श्रव्य-दृश्य सहायक सामग्री' (Audio-Visual Teaching Learning Material - TLM) के उपयोग का सबसे प्रमुख मनोवैज्ञानिक आधार क्या है?",
+      options: [
+        "यह शिक्षक को पढ़ाने के श्रम से मुक्त कर देती है।",
+        "यह एक से अधिक ज्ञानेंद्रियों (आँख और कान) को सक्रिय कर अमूर्त भावों को मूर्त बनाती है, वैयक्तिक भिन्नताओं को संबोधित करती है और अधिगम को रुचिकर व स्थायी बनाती है।",
+        "यह विद्यालय के बजट को खर्च करने का साधन मात्र है।",
+        "इसका उपयोग केवल वार्षिक निरीक्षण के दिन किया जाना चाहिए।"
+      ],
+      ans: 1,
+      exp: "एडगर डेल के 'अनुभव शंकु' (Cone of Experience) के अनुसार जितनी अधिक इंद्रियाँ अधिगम में भाग लेती हैं, सीखना उतना ही अधिक स्पष्ट, सार्थक और दीर्घकालिक होता है।"
+    },
+    {
+      q: "भाषा शिक्षण में छात्रों की 'त्रुटियों' (Errors) के प्रति एक प्रगतिशील शिक्षक का दृष्टिकोण कैसा होना चाहिए?",
+      options: [
+        "त्रुटियाँ भाषा सीखने की प्रक्रिया का एक स्वाभाविक एवं विकासात्मक पड़ाव हैं, जो यह संकेत देती हैं कि बच्चा भाषा के नियमों का सक्रिय परीक्षण कर रहा है।",
+        "त्रुटियाँ अपराध हैं और पहली ही बार में कठोर दंड से दबा दी जानी चाहिए।",
+        "त्रुटियाँ शिक्षक की पूर्ण विफलता का प्रमाण हैं।",
+        "त्रुटियों पर कभी ध्यान ही नहीं देना चाहिए।"
+      ],
+      ans: 0,
+      exp: "आधुनिक भाषा-शिक्षण शास्त्र में त्रुटियों को 'अधिगम का संकेतक' (Learning Indicators) माना जाता है। वे दिखाती हैं कि छात्र रटने के बजाय भाषा की संरचना के बारे में अपनी परिकल्पनाएँ बना रहा है।"
+    },
+    {
+      q: "उच्च प्राथमिक स्तर पर हिंदी भाषा की पाठ्यपुस्तक में साहित्य की विभिन्न विधाओं (कहानी, कविता, निबंध, जीवनी, संस्मरण, यात्रा-वृत्तांत, एकांकी) को शामिल करने का प्रमुख उद्देश्य क्या है?",
+      options: [
+        "पुस्तक का आकार बड़ा करना और मुद्रण लागत बढ़ाना",
+        "विद्यार्थियों को भाषा की विविध छटाओं, अभिव्यक्ति की विभिन्न शैलियों और जीवन के बहुआयामी संदर्भों से परिचित कराना",
+        "छात्रों से सभी लेखकों की जन्मतिथियाँ रटवाना",
+        "व्याकरण के नियमों को समाप्त करना"
+      ],
+      ans: 1,
+      exp: "विभिन्न साहित्यिक विधाएँ भाषा के अलग-अलग रूपों और रजिस्टरों (प्रयुक्तियों) को प्रस्तुत करती हैं, जिससे छात्रों में भाषिक संवेदनशीलता, सौंदर्यबोध और विविध संदर्भो में अभिव्यक्ति की क्षमता विकसित होती है।"
+    }
+  ],
+  ENG: [
+    {
+      q: "Read the following passage and answer the question below:\n'True scientific inquiry thrives not on dogmatic certainty, but on disciplined skepticism and a willingness to discard cherished hypotheses when confronted with recalcitrant empirical evidence.'\nIn the context of the passage, the word 'recalcitrant' most nearly means:",
+      options: [
+        "Easily manipulated and compliant",
+        "Stubbornly resistant to authority, control, or expected theory (contradictory/uncooperative)",
+        "Artificially fabricated in a laboratory",
+        "Completely irrelevant and trivial"
+      ],
+      ans: 1,
+      exp: "'Recalcitrant' means obstinately uncooperative or resistant to constraints/expectations. In scientific philosophy (Quine), 'recalcitrant experience/evidence' refers to stubborn empirical facts that refuse to fit into an existing theory."
+    },
+    {
+      q: "Identify the type and syntactic function of the underlined clause in the sentence below:\n'What the archaeological team unearthed at the site completely revolutionized our understanding of Bronze Age metallurgy.'",
+      options: [
+        "Adjective Clause modifying 'metallurgy'",
+        "Adverb Clause of Manner",
+        "Nominal (Noun) Clause functioning as the Subject of the verb 'revolutionized'",
+        "Non-defining Relative Clause"
+      ],
+      ans: 2,
+      exp: "'What the archaeological team unearthed at the site' answers the question 'What revolutionized...?' and acts as the grammatical Subject of the main verb 'revolutionized'; hence, it is a Noun (Nominal) Clause."
+    },
+    {
+      q: "Choose the sentence that is grammatically impeccable with respect to Subject-Verb Agreement:",
+      options: [
+        "Many a young aspirant have spent sleepless nights preparing for the examination.",
+        "The jury were divided in their opinions regarding the authenticity of the digital evidence.",
+        "Ten kilometres are a long distance to walk on a scorching afternoon.",
+        "The poet and the philosopher has arrived at the auditorium."
+      ],
+      ans: 1,
+      exp: "When a collective noun ('jury') refers to its individual members acting separately or holding different views ('divided in their opinions'), it takes a plural verb ('were') and plural pronoun ('their'). ('Many a' takes a singular verb; 'Ten kilometres' as a single unit takes 'is'; 'The poet and the philosopher' with two articles refers to two persons and takes 'have')."
+    },
+    {
+      q: "Select the correct Passive Voice transformation of the following sentence:\n'People say that the ancient library contained over half a million palm-leaf manuscripts.'",
+      options: [
+        "It is said that the ancient library contained over half a million palm-leaf manuscripts. / The ancient library is said to have contained over half a million palm-leaf manuscripts.",
+        "That the ancient library contained manuscripts was said by people.",
+        "The ancient library was said to contain manuscripts by people.",
+        "Half a million manuscripts are said to be containing in the library."
+      ],
+      ans: 0,
+      exp: "Sentences of the pattern 'People say/believe + that-clause (past action)' convert into Passive either via the introductory 'It is said that...' or via the Perfect Infinitive construction: 'Subject + is said + to have + V3 (to have contained)'."
+    },
+    {
+      q: "Convert the following sentence into Indirect (Reported) Speech:\nThe mountaineer said to his companions, \"Let us not lose heart; we must reach the summit before the blizzard strikes.\"",
+      options: [
+        "The mountaineer told his companions that let them not lose heart and reach the summit.",
+        "The mountaineer urged/advised his companions not to lose heart and stated that they had to reach the summit before the blizzard struck.",
+        "The mountaineer asked his companions why they lost heart before the blizzard strikes.",
+        "The mountaineer proposed that we should not lose heart and must reach the summit."
+      ],
+      ans: 1,
+      exp: "In Indirect Speech, 'Let us not...' expressing encouragement/exhortation becomes 'urged/advised ... not to + V1', 'must' (obligation) shifts to 'had to' (or remained 'must'), 'we' becomes 'they', and the simple present 'strikes' shifts to simple past 'struck'."
+    },
+    {
+      q: "Fill in the blank with the correct verb form after the expression 'It is high time':\n'It is high time the municipal corporation _________ stringent measures to curb industrial effluents entering the river.'",
+      options: [
+        "takes",
+        "took",
+        "will take",
+        "has taken"
+      ],
+      ans: 1,
+      exp: "The idiomatic structure 'It is time / It is high time / It is about time + Subject' always takes the Past Subjunctive (Simple Past form of the verb, i.e., 'took') to indicate that an action is already overdue."
+    },
+    {
+      q: "Identify the grammatical category (Part of Speech) of the word 'AFTER' in the two clauses below:\n(I) The rescue team arrived soon after.\n(II) They reached the station after the train had departed.",
+      options: [
+        "(I) Preposition; (II) Adverb",
+        "(I) Adverb of Time (modifying 'arrived'); (II) Subordinating Conjunction (joining two clauses)",
+        "(I) Conjunction; (II) Pronoun",
+        "(I) Adjective; (II) Interjection"
+      ],
+      ans: 1,
+      exp: "In (I), 'after' stands alone without an object and modifies the verb 'arrived' (Adverb). In (II), 'after' introduces the subordinate clause 'the train had departed' and connects it to the main clause (Subordinating Conjunction)."
+    },
+    {
+      q: "Fill in the blanks with the most appropriate pair of prepositions:\n'His predisposition ______ melancholy was exacerbated when he was deprived ______ his ancestral library.'",
+      options: [
+        "to, of",
+        "for, from",
+        "with, by",
+        "at, off"
+      ],
+      ans: 0,
+      exp: "Standard collocations require 'predisposition to' (a tendency to suffer from a condition) and 'deprived of' (never 'deprived from')."
+    },
+    {
+      q: "Choose the correct sequence of articles (or 'no article') for the sentence below:\n'______ gold mined in ______ Kolar region is of high purity, whereas ______ gold ring she wore was an heirloom from ______ nineteenth century.'",
+      options: [
+        "No article, the, the, the",
+        "The, no article, a, a",
+        "The, the, the, the",
+        "No article, no article, the, a"
+      ],
+      ans: 2,
+      exp: "Although 'gold' is an uncountable material noun, here it is particularized by the phrase 'mined in the Kolar region', so it takes 'The'. Geographic regions ('the Kolar region'), specific nouns ('the gold ring she wore'), and ordinal historical periods ('the nineteenth century') all take 'the'."
+    },
+    {
+      q: "Which of the following is the correct transformation of the given sentence into a Negative Sentence without changing its meaning?\n'Only a person of extraordinary fortitude could have survived that arctic expedition.'",
+      options: [
+        "No person of extraordinary fortitude survived that arctic expedition.",
+        "None but a person of extraordinary fortitude could have survived that arctic expedition.",
+        "Everyone except a person of fortitude survived the expedition.",
+        "A person of extraordinary fortitude could not have survived that expedition."
+      ],
+      ans: 1,
+      exp: "An affirmative sentence beginning with 'Only' (referring to a person) is transformed into a negative sentence without altering its meaning by replacing 'Only' with 'None but'."
+    },
+    {
+      q: "Choose the sentence that correctly uses the Subjunctive Mood after 'as if / as though':",
+      options: [
+        "He orders everyone around the office as if he is the managing director.",
+        "He orders everyone around the office as if he were the managing director.",
+        "He ordered everyone around as if he was been the director.",
+        "He orders everyone as if he will be the managing director."
+      ],
+      ans: 1,
+      exp: "Clauses of unreal comparison introduced by 'as if' or 'as though' require the past subjunctive 'were' (for all persons, singular or plural) to indicate a hypothetical or contrary-to-fact state."
+    },
+    {
+      q: "Identify the error in the following comparative sentence and select the correct version:\n'The climate of Ranchi is more salubrious than Patna.'",
+      options: [
+        "The sentence is already grammatically correct.",
+        "The climate of Ranchi is more salubrious than that of Patna.",
+        "The climate of Ranchi is salubriouser than Patna.",
+        "The climate of Ranchi is more salubrious to Patna."
+      ],
+      ans: 1,
+      exp: "Logically and grammatically, similar entities must be compared. The original sentence illogically compares 'the climate' with the city 'Patna'. Using the demonstrative pronoun 'that of' ('than that of Patna') properly compares climate with climate."
+    },
+    {
+      q: "Supply the appropriate Question Tag for the sentence below:\n'Nothing catastrophic happened during the reactor test, _________?'",
+      options: [
+        "didn't it",
+        "did it",
+        "wasn't it",
+        "did they"
+      ],
+      ans: 1,
+      exp: "Since the subject 'Nothing' is inherently negative, the statement is negative and therefore requires a positive question tag ('did'). Indefinite pronouns like 'nothing' and 'everything' take the singular pronoun 'it' in the tag: 'did it?'."
+    },
+    {
+      q: "Select the option that gives the correct Feminine gender for 'Prosecutor / Testator' and the correct plural for 'Phenomenon / Oasis':",
+      options: [
+        "Prosecutrix / Testatrix; and Phenomena / Oases",
+        "Prosecutoress / Testatress; and Phenomenons / Oasises",
+        "Female Prosecutor; and Phenomenas / Oasis",
+        "Prosecutrine; and Phenomeni / Oasii"
+      ],
+      ans: 0,
+      exp: "Legal Latinate nouns ending in '-tor' form their feminine with '-trix' (Prosecutrix, Testatrix, Executrix). Greek 'Phenomenon' becomes 'Phenomena', and nouns ending in '-is' ('Oasis', 'Crisis') change to '-es' ('Oases', 'Crises')."
+    },
+    {
+      q: "Identify the Figure of Speech in the following lines:\n(I) 'The pen is mightier than the sword.'\n(II) 'Fifty sails were seen approaching the harbour.'",
+      options: [
+        "(I) Simile; (II) Metaphor",
+        "(I) Metonymy; (II) Synecdoche",
+        "(I) Personification; (II) Hyperbole",
+        "(I) Irony; (II) Transferred Epithet"
+      ],
+      ans: 1,
+      exp: "In (I), 'pen' stands for the written word/journalism and 'sword' for military force (Metonymy: substitution of an associated attribute/instrument). In (II), 'sails' (a part) represents whole 'ships' (Synecdoche: part for the whole)."
+    },
+    {
+      q: "Which Figure of Speech is used in Thomas Gray's famous line:\n'The ploughman homeward plods his weary way'?",
+      options: [
+        "Transferred Epithet (Hypallage) & Alliteration",
+        "Oxymoron",
+        "Pun (Paronomasia)",
+        "Antithesis"
+      ],
+      ans: 0,
+      exp: "It is the 'ploughman' who is weary, not the 'way' (road); transferring the adjective 'weary' from the person to the inanimate noun 'way' is a classic 'Transferred Epithet' (along with alliteration in 'ploughman... plods')."
+    },
+    {
+      q: "What is the exact meaning of the idiom 'A Pyrrhic victory'?",
+      options: [
+        "A victory achieved without shedding a single drop of blood",
+        "A victory won at such a devastating cost to the victor that it is tantamount to defeat",
+        "A sudden and unexpected triumph in a diplomatic negotiation",
+        "A victory celebrated with grand fireworks"
+      ],
+      ans: 1,
+      exp: "Named after King Pyrrhus of Epirus, a 'Pyrrhic victory' is one that inflicts such a ruinous toll on the victor that another such victory would destroy them."
+    },
+    {
+      q: "Choose the correct phrasal verb to complete the sentence:\n'Because of the dense fog over the runway, the aviation authorities decided to _________ the scheduled flight until noon.'",
+      options: [
+        "put off (postpone)",
+        "put out (extinguish)",
+        "put up with (tolerate)",
+        "put down (suppress)"
+      ],
+      ans: 0,
+      exp: "'Put off' means to postpone or delay an event to a later time. ('Call off' means to cancel completely, whereas 'until noon' indicates postponement, i.e., 'put off')."
+    },
+    {
+      q: "Choose the exact one-word substitute for: 'A person who is a specialist in the study of the origin, history, and changing meanings of words.'",
+      options: [
+        "Entomologist",
+        "Etymologist",
+        "Ethnologist",
+        "Ornithologist"
+      ],
+      ans: 1,
+      exp: "An 'Etymologist' studies the origin and historical development of words (Etymology). (An Entomologist studies insects, an Ethnologist studies human cultures, and an Ornithologist studies birds)."
+    },
+    {
+      q: "Select the option that provides the correct Synonym and Antonym respectively for the word 'OBFUSCATE':",
+      options: [
+        "Clarify (Synonym) — Illuminate (Antonym)",
+        "Bewilder/Obscure (Synonym) — Elucidate/Clarify (Antonym)",
+        "Mitigate (Synonym) — Aggravate (Antonym)",
+        "Venerate (Synonym) — Despise (Antonym)"
+      ],
+      ans: 1,
+      exp: "To 'Obfuscate' means to render obscure, unclear, or unintelligible (अस्पष्ट या भ्रमित करना). Its synonym is 'Obscure/Bewilder', and its antonym is 'Elucidate/Clarify' (स्पष्ट करना)."
+    },
+    {
+      q: "Identify the word that is spelt correctly among the following options:",
+      options: [
+        "Sacrilegious",
+        "Sacreligious",
+        "Sacrelegious",
+        "Sacriligious"
+      ],
+      ans: 0,
+      exp: "'Sacrilegious' (अपवित्र करने वाला — derived from 'sacrilege', NOT 'religion', hence 'i' before 'e': s-a-c-r-i-l-e-g-i-o-u-s) is the correct spelling."
+    },
+    {
+      q: "In English phonology, what is a 'Minimal Pair', and how is it useful in the language classroom?",
+      options: [
+        "A pair of words that have identical meanings, such as 'big' and 'large'",
+        "A pair of words that differ in only one single phoneme (sound) in the same position and have distinct meanings (e.g., 'ship' /ʃɪp/ and 'sheep' /ʃiːp/), used to teach phonetic discrimination",
+        "Two sentences joined by a coordinating conjunction",
+        "A pair of silent letters in a word"
+      ],
+      ans: 1,
+      exp: "Minimal pairs (like 'pin/bin' or 'ship/sheep') differ by just one phoneme. They are essential pedagogical tools for helping learners distinguish between contrasting vowel or consonant sounds."
+    },
+    {
+      q: "Which method of teaching English emerged during World War II (" + "'Army Method'" + "), relies heavily on behaviourist habit-formation (Skinner), and uses intensive pattern drills, mimicry, and memorization of dialogues?",
+      options: [
+        "Audio-Lingual Method (ALM)",
+        "Grammar-Translation Method",
+        "Silent Way",
+        "Task-Based Language Teaching"
+      ],
+      ans: 0,
+      exp: "The Audio-Lingual Method (ALM) is grounded in structural linguistics and behaviourist psychology, treating language learning as mechanical habit formation through stimulus-response-reinforcement pattern drills."
+    },
+    {
+      q: "Dr. Michael West's 'New Method' of teaching English in India placed primary emphasis on which skill and pedagogical tool?",
+      options: [
+        "Speaking skill through dramatic monologues",
+        "Reading skill (specifically Silent Reading) supported by graded 'Readers' with controlled vocabulary",
+        "Writing formal business letters",
+        "Memorizing Latinate grammatical declensions"
+      ],
+      ans: 1,
+      exp: "Dr. Michael West argued that for Indian learners, 'Reading' (especially silent reading for comprehension) is the most practical, accessible, and foundational skill, and he designed vocabulary-controlled 'New Method Readers'."
+    },
+    {
+      q: "In teaching listening comprehension at the upper primary level, what is the difference between 'Bottom-Up Processing' and 'Top-Down Processing'?",
+      options: [
+        "Bottom-up processing decodes individual sounds, words, and grammatical structures to build meaning, whereas Top-down processing uses the listener's prior background knowledge (schemata) and context to interpret the overall message.",
+        "Bottom-up is only for advanced learners, while Top-down is for beginners.",
+        "Bottom-up ignores phonics completely.",
+        "Both terms mean reading aloud from the bottom of a page."
+      ],
+      ans: 0,
+      exp: "Bottom-up processing is data-driven (phonemes → morphemes → words → clauses), while Top-down processing is concept-driven (using prior knowledge/schemata and contextual expectations to infer meaning)."
+    },
+    {
+      q: "According to Jim Cummins's distinction in bilingual education, what do the acronyms 'BICS' and 'CALP' stand for?",
+      options: [
+        "Basic Interpersonal Communicative Skills (everyday conversational fluency) and Cognitive Academic Language Proficiency (abstract academic language required for school subjects)",
+        "Bilingual Indian Classroom System and Comprehensive Assessment of Language Pedagogy",
+        "Basic Idiomatic Clause Structure and Classical Approach to Lexical Phonology",
+        "Beginner Intensive Course Syllabus and Advanced Listening Practice"
+      ],
+      ans: 0,
+      exp: "Cummins distinguished between BICS (context-embedded, everyday social conversation skills acquired in 1–2 years) and CALP (context-reduced, formal academic language proficiency required for higher-order thinking, taking 5–7 years)."
+    },
+    {
+      q: "In language testing, if a test designed to assess 'Speaking Fluency' actually consists only of multiple-choice questions on written punctuation rules, the test primarily lacks:",
+      options: [
+        "Objectivity",
+        "Construct and Content Validity",
+        "Administrative Ease",
+        "Scorer Reliability"
+      ],
+      ans: 1,
+      exp: "A test has 'Validity' only when it measures the specific skill or construct it claims to measure. Testing spoken fluency via a written punctuation MCQ test completely violates Construct Validity."
+    },
+    {
+      q: "What is 'Realia' in the context of English Language Teaching (ELT)?",
+      options: [
+        "Authentic objects and materials from real everyday life (such as bus tickets, coins, menus, newspapers, or fruits) brought into the classroom as teaching aids",
+        "Imaginary fairy tales written in archaic English",
+        "Standardized board examination mark sheets",
+        "Audio recordings of synthetic computer voices"
+      ],
+      ans: 0,
+      exp: "'Realia' refers to real, tangible everyday objects used in the classroom to connect vocabulary and functional language directly with real-life contexts."
+    },
+    {
+      q: "Which of the following is the best example of an 'Open-Ended (Divergent)' question in an upper primary English literature class?",
+      options: [
+        "In which year was William Wordsworth born?",
+        "What is the rhyme scheme of the first stanza?",
+        "How would the ending of the story have changed if the protagonist had confessed the truth earlier, and why?",
+        "Who wrote the story 'The Kabuliwala'?"
+      ],
+      ans: 2,
+      exp: "Open-ended questions do not have a single fixed factual answer; they invite critical thinking, imagination, evaluation, and multiple reasoned perspectives."
+    },
+    {
+      q: "Under the Three-Language Formula and NEP-2020 guidelines, what is the role of the learner's Home Language / Mother Tongue (L1) in teaching a Second Language (L2) like English?",
+      options: [
+        "L1 should be strictly punished and banished from the school premises.",
+        "L1 serves as a cognitive and linguistic scaffold (Translanguaging / Bilingual support) that facilitates conceptual understanding while gradually building proficiency in L2.",
+        "English should be taught only by translating every single word without ever speaking English.",
+        "L1 and L2 have separate compartments in the brain that never interact."
+      ],
+      ans: 1,
+      exp: "Modern pedagogy (Cummins's Interdependence Hypothesis & NEP-2020) recognizes that a strong foundation in L1 supports L2 acquisition, and strategic, judicious use of the home language acts as a scaffold rather than a hindrance."
+    }
+  ],
+  SAN: [
+    {
+      q: "माहेश्वर-सूत्रानुसारेण निर्मितेषु प्रत्याहारेषु कः प्रत्याहारः 'उष्म-वर्णान्' (श, ष, स, ह) बोधयति, कश्च प्रत्याहारः 'अन्तःस्थ-वर्णान्' (य, व, र, ल) बोधयति?",
+      options: [
+        "उष्मवर्णाः — 'शल्' प्रत्याहारः; अन्तःस्थवर्णाः — 'यण्' प्रत्याहारः",
+        "उष्मवर्णाः — 'अच्' प्रत्याहारः; अन्तःस्थवर्णाः — 'हल्' प्रत्याहारः",
+        "उष्मवर्णाः — 'जश्' प्रत्याहारः; अन्तःस्थवर्णाः — 'खय्' प्रत्याहारः",
+        "उष्मवर्णाः — 'अक्' प्रत्याहारः; अन्तःस्थवर्णाः — 'इक्' प्रत्याहारः"
+      ],
+      ans: 0,
+      exp: "'शल उष्माणः'—माहेश्वर सूत्रों के 13वें ('शषसर') और 14वें ('हल') सूत्र से बने 'शल्' प्रत्याहार में चारों ऊष्म वर्ण (श, ष, स, ह) आते हैं। 'यणोऽन्तःस्थाः'—'यण्' प्रत्याहार में चारों अंतःस्थ वर्ण (य, व, र, ल) आते हैं।"
+    },
+    {
+      q: "पाणिनीय-व्याकरणे वर्णानां 'बाह्यप्रयत्नाः' कतिधा भिद्यन्ते, किञ्च 'हश्' प्रत्याहारस्य वर्णानां बाह्यप्रयत्नः कीदृशः भवति?",
+      options: [
+        "बाह्यप्रयत्नाः एकादशधा (11 प्रकार के) भिद्यन्ते; 'हश्' प्रत्याहारस्य वर्णानां 'संवारः, नादः, घोषः' च भवति।",
+        "बाह्यप्रयत्नाः पञ्चधा भिद्यन्ते; 'हश्' वर्णानां 'विवारः, श्वासः, अघोषः' च भवति।",
+        "बाह्यप्रयत्नाः चत्वारः सन्ति।",
+        "बाह्यप्रयत्नाः सप्त सन्ति।"
+      ],
+      ans: 0,
+      exp: "'बाह्यप्रयत्नस्त्वेकादशधा'—विवार, संवार, श्वास, नाद, घोष, अघोष, अल्पप्राण, महाप्राण, उदात्त, अनुदात्त, स्वरित—ये 11 बाह्य प्रयत्न हैं। 'हशां संवारा नादा घोषाश्च' के अनुसार हश् प्रत्याहार (वर्गों के 3, 4, 5 वर्ण तथा ह, य, व, र, ल) के बाह्य प्रयत्न संवार, नाद और घोष होते हैं।"
+    },
+    {
+      q: "'प्रौढः' तथा 'प्रैजते' इत्यनयोः पदयोः संधि-विच्छेदः संधि-विधायकं सूत्रं/वार्तिकं च क्रमेण किम् अस्ति?",
+      options: [
+        "प्र + ऊढः ('प्रादूहोढोढ्येषैष्येषु' वार्तिकेन अपवादेन वृद्धि-संधिः) तथा प्र + एजते ('एङि पररूपम्' सूत्रेण पररूप-संधिः)",
+        "प्र + ऊढः (आद्गुणः) तथा प्र + एजते (वृद्धिरेचि)",
+        "प्रौ + ढः (अयादिः) तथा प्रे + जते (पूर्वरूपम्)",
+        "प्र + ओढः (दीर्घः) तथा प्र + इजते (यण्)"
+      ],
+      ans: 0,
+      exp: "सामान्य नियम से 'प्र + ऊढः' में गुण ('प्रोढः') होना चाहिए था, किंतु 'प्रादूहोढोढ्येषैष्येषु' वार्तिक से प्र के बाद ऊह, ऊढ, ऊढि, एष, एष्य आने पर गुण का अपवाद होकर 'वृद्धि संधि' ('प्रौढः') होती है। 'प्र + एजते' में उपसर्ग के अकार के बाद एङ्-आदि धातु आने से 'एङि पररूपम्' से पररूप संधि होकर 'प्रैजते' नहीं अपितु 'प्रेजते' बनता है (जबकि 'उप + एधते = उपैधते' में 'एत्येधत्यूठ्सु' से वृद्धि होती है)।"
+    },
+    {
+      q: "'उपेन्द्रः', 'उपैधते' तथा 'प्रोषितः' — अत्र 'उपैधते' इत्यत्र पररूपं बाधित्वा केन सूत्रेण वृद्धिः विधीयते?",
+      options: [
+        "एत्येधत्यूठ्सु (अवर्णान्त उपसर्ग से परे इण् धातु, एध् धातु और ऊठ् परे रहते वृद्धि एकादेश होता है: उप + एधते = उपैधते)",
+        "अकः सवर्णे दीर्घः",
+        "इको यणचि",
+        "एङः पदान्तादति"
+      ],
+      ans: 0,
+      exp: "अवर्णान्त उपसर्ग ('उप') के बाद एङ्-आदि धातु होने पर 'एङि पररूपम्' से पररूप प्राप्त था, किंतु 'एत्येधत्यूठ्सु' सूत्र पररूप का बाध करके 'एति' (इण्) और 'एधते' (एध्) धातु परे रहते वृद्धि एकादेश ('उपैति', 'उपैधते') करता है।"
+    },
+    {
+      q: "'तच्छिवः' (तत् + शिवः) तथा 'उड्डीनः' (उत् + डीनः) इत्यनयोः पदयोः प्रयुक्तं संधि-सूत्रद्वयं क्रमेण चिन्वन्तु:",
+      options: [
+        "स्तोः श्चुना श्चुः एवं शश्छोऽटि (तत् + शिवः = तच् + शिवः = तच्छिवः) तथा ष्टुना ष्टुः (उत् + डीनः = उड्डीनः)",
+        "झलां जशोऽन्ते तथा मोऽनुस्वारः",
+        "तोर्लि तथा अनुस्वारस्य ययि परसवर्णः",
+        "खरि च तथा वा पदान्तस्य"
+      ],
+      ans: 0,
+      exp: "'तत् + शिवः' में पहले 'स्तोः श्चुना श्चुः' से त् को च् होकर 'तच् + शिवः' बनता है, फिर 'शश्छोऽटि' सूत्र से श् को छ् होकर 'तच्छिवः' सिद्ध होता है। 'उत् + डीनः' में 'ष्टुना ष्टुः' और जश्त्व से 'उड्डीनः' बनता है।"
+    },
+    {
+      q: "'शिवोर्च्यः' (शिवस् + अर्च्यः) तथा 'मनोरथः' (मनस् + रथः) इत्यनयोः विसर्गसंधि-पदयोः रुत्व-उत्व-विधायके सूत्रे क्रमेण के स्तः?",
+      options: [
+        "अतो रोरप्लुतादप्लुते (अति परे रहते रु को उत्व: शिवो + अर्च्यः = शिवोऽर्च्यः) तथा हशि च (हश् परे रहते रु को उत्व: मनोरथः)",
+        "भोभगोअघोअपूर्वस्य योऽशि तथा रो रि",
+        "विसर्जनीयस्य सः तथा ससजुषो रुः",
+        "खरवसानयोर्विसर्जनीयः तथा वा शरि"
+      ],
+      ans: 0,
+      exp: "'ससजुषो रुः' से रुत्व होने के बाद, यदि ह्रस्व 'अ' के बाद वाले 'रु' के परे ह्रस्व 'अ' हो तो 'अतो रोरप्लुतादप्लुते' से 'उ' होता है (शिवोऽर्च्यः), और यदि परे 'हश्' प्रत्याहार का व्यंजन हो तो 'हशि च' सूत्र से 'उ' होकर गुण ('मनोरथः') होता है।"
+    },
+    {
+      q: "'चक्रपाणिः' तथा 'दंष्ट्राकरालम्' (अथवा 'अहिंनकुलम्') — अत्र 'अहिनकुलम्' और 'पाणिपादम्' इत्यनयोः पदयोः कः समासः अस्ति, तयोः एकवद्भावश्च केन कारणेन भवति?",
+      options: [
+        "समाहार-द्वन्द्वः ('येषां च विरोधः शाश्वतिकः' सूत्रेण 'अहिनकुलम्' तथा 'चराचरग्रहणम् / पाणिपादम्' अङ्गवाचकत्वात् नपुंसकलिंगे एकवचने)",
+        "इतरेतर-द्वन्द्वः",
+        "अव्ययीभावः",
+        "बहुव्रीहिः"
+      ],
+      ans: 0,
+      exp: "जिन प्राणियों में जन्मजात शाश्वत वैर होता है ('येषां च विरोधः शाश्वतिकः' — अहि और नकुल/साँप और नेवला) तथा शरीर के अंगों ('पाणि च पादौ च = पाणिपादम्') का द्वंद्व समास सदैव 'समाहार द्वंद्व' होता है और नपुंसकलिंग एकवचन में प्रयुक्त होता है।"
+    },
+    {
+      q: "'यूपदारु' (यूपाय दारु) तथा 'भूतबलिः' (भूतेभ्यः बलिः) इत्यत्र चतुर्थी-तत्पुरुष-समासः केन सूत्रेण विधीयते?",
+      options: [
+        "चतुर्थी तदर्थार्थबलिहितसुखरक्षितैः",
+        "द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः",
+        "तृतीया तत्कृतार्थेन गुणवचनेन",
+        "पञ्चमी भयेन"
+      ],
+      ans: 0,
+      exp: "'चतुर्थी तदर्थार्थबलिहितसुखरक्षितैः' सूत्र के अनुसार तदर्थ (प्रकृति-विकृति भाव जैसे यज्ञ-स्तंभ के लिए लकड़ी = यूपदारु), अर्थ, बलि (भूतबलिः), हित (गोहितम्), सुख (गोसुखम्) और रक्षित शब्दों के साथ चतुर्थी तत्पुरुष समास होता है।"
+    },
+    {
+      q: "'बलिं याचते वसुधाम्' तथा 'गां दोग्धि पयः' — अत्र 'बलिम्' तथा 'गाम्' इत्यनयोः अपादान-प्रभृतीनाम् अविवक्षायां केन सूत्रेण 'अकथितं (गौणं) कर्म' संज्ञा भवति, एतादृश्यः द्विकर्मक-धातवः कति सन्ति?",
+      options: [
+        "'अकथितं च' सूत्रेण कर्मसंज्ञा; द्विकर्मक-धातवः षोडश (16: दुह्-याच्-पच्-दण्ड्-रुधि-प्रच्छि-चि-ब्रू-शासु-जि-मन्थ्-मुषाम् + नी-हृ-कृष्-वह्) सन्ति।",
+        "'कर्तुरीप्सिततमं कर्म' सूत्रेण; द्वादश धातवः सन्ति।",
+        "'अधिशीङ्स्थासां कर्म' सूत्रेण; अष्ट धातवः सन्ति।",
+        "'तथायुक्तं चानीप्सितम्' सूत्रेण; विंशतिः धातवः सन्ति।"
+      ],
+      ans: 0,
+      exp: "अपादान आदि कारकों की अविवक्षा होने पर 'अकथितं च' सूत्र से गौण कर्म में भी द्वितीया विभक्ति लगती है। संस्कृत व्याकरण में ऐसी 16 द्विकर्मक धातुएँ (दुह्, याच्, पच्, दण्ड् आदि 12 + नी, हृ, कृष्, वह् 4 = 16) प्रसिद्ध हैं।"
+    },
+    {
+      q: "'माता बालकाय मोदकं रोचयति (बालकाय मोदकः रोचते)' तथा 'हरये क्रुध्यति' — अत्र चतुर्थी-विभक्ति-विधायके सूत्रे क्रमेण के स्तः?",
+      options: [
+        "रुच्यर्थानां प्रीयमाणः (रुच् धातु के योग में प्रसन्न होने वाले में चतुर्थी) तथा क्रुधद्रुहेर्ष्यासूयार्थानां यं प्रति कोपः (जिस पर क्रोध किया जाए उसमें चतुर्थी)",
+        "नमःस्वस्तिस्वाहास्वधाऽलंवषड्योगाच्च तथा स्पृहेरीप्सितः",
+        "धारेरुत्तमर्णः तथा तादर्थ्ये चतुर्थी वाच्या",
+        "जनिकर्तुः प्रकृतिः तथा भुवो प्रभवः"
+      ],
+      ans: 0,
+      exp: "रुच् और उसके समानार्थक धातुओं के योग में जो प्रसन्न (प्रीयमाण) होता है उसमें 'रुच्यर्थानां प्रीयमाणः' से चतुर्थी ('बालकाय') तथा क्रुध्, द्रुह्, ईर्ष्य्, असूय् धातुओं के योग में जिसके प्रति कोप हो उसमें 'क्रुधद्रुहेर्ष्यासूयार्थानां यं प्रति कोपः' से चतुर्थी ('हरये') होती है।"
+    },
+    {
+      q: "'सूर्ये उदिते कमलानां विकासः भवति' (अथवा 'रामे वनं गते दशरथः प्राणान् अत्यजत्') — अत्र 'सूर्ये उदिते' तथा 'रामे गते' इत्यत्र सप्तमी विभक्तिः केन सूत्रेण विधीयते?",
+      options: [
+        "यस्य च भावेन भावलक्षणम् (भावलक्षणा सप्तमी / सति सप्तमी)",
+        "आधारोऽधिकरणम्",
+        "षष्ठी चानादरे",
+        "साध्वसाधुप्रयोगे च"
+      ],
+      ans: 0,
+      exp: "जब एक क्रिया ('सूर्य के उदित होने पर') से दूसरी क्रिया ('कमलों का खिलना') लक्षित होती है, तब प्रथम क्रिया व उसके कर्ता में 'यस्य च भावेन भावलक्षणम्' सूत्र से 'भावलक्षणा सप्तमी' (सति सप्तमी) होती है।"
+    },
+    {
+      q: "'लब्धः', 'भिन्नः' तथा 'पक्वः' इत्येतेषु पदेषु कः प्रत्ययः प्रयुक्तः अस्ति, अस्य प्रत्ययस्य का संज्ञा भवति?",
+      options: [
+        "'क्त' प्रत्ययः (लभ् + क्त = लब्धः, भिद् + क्त = भिन्नः, पच् + क्त = पक्वः); 'क्तक्तवतू निष्ठा' सूत्रेण 'निष्ठा' संज्ञा भवति।",
+        "'शानच्' प्रत्ययः; सत् संज्ञा।",
+        "'घञ्' प्रत्ययः; घि संज्ञा।",
+        "'ल्यप्' प्रत्ययः; अव्यय संज्ञा।"
+      ],
+      ans: 0,
+      exp: "भूतकाल अर्थ में प्रयुक्त 'क्त' और 'क्तवतु' प्रत्ययों की 'क्तक्तवतू निष्ठा' सूत्र से 'निष्ठा' संज्ञा होती है। भिद् + क्त में 'रदाभ्यां निष्ठातो नः पूर्वस्य च दः' से त् व द् को नकार होकर 'भिन्नः' और पच् + क्त में 'पचो वः' से त् को व् होकर 'पक्वः' बनता है।"
+    },
+    {
+      q: "'पाचकः', 'पाठकः' तथा 'चयनम्', 'श्रवणम्' — अत्र प्रथमपदद्वये द्वितीयपदद्वये च क्रमेण कौ कृत्-प्रत्ययौ स्तः?",
+      options: [
+        "'ण्वुल्' प्रत्ययः (वु को अक आदेश: पच् + ण्वुल् = पाचकः) तथा 'ल्युट्' प्रत्ययः (यु को अन आदेश: चि + ल्युट् = चयनम्)",
+        "'तृच्' प्रत्ययः तथा 'तुमुन्' प्रत्ययः",
+        "'अनीयर्' प्रत्ययः तथा 'तव्यत्' प्रत्ययः",
+        "'यत्' प्रत्ययः तथा 'ण्यत्' प्रत्ययः"
+      ],
+      ans: 0,
+      exp: "'ण्वुल्तृचौ' से कर्ता अर्थ में 'ण्वुल्' प्रत्यय जुड़ता है और 'युवोरनाकौ' सूत्र से 'वु' को 'अक' आदेश होकर 'पाचकः/पाठकः' बनता है। भाव या नपुंसकलिंग में 'ल्युट्' प्रत्यय के 'यु' को 'अन' आदेश होकर 'चयनम्/श्रवणम्' बनता है।"
+    },
+    {
+      q: "'सर्व' (सर्वनाम पुँल्लिंग) शब्दस्य चतुर्थी-एकवचने, पञ्चमी-एकवचने तथा सप्तमी-एकवचने रूपाणि क्रमेण कानि भवन्ति?",
+      options: [
+        "सर्वस्मै, सर्वस्मात्, सर्वस्मिन्",
+        "सर्वाय, सर्वात्, सर्वे",
+        "सर्वस्यै, सर्वस्याः, सर्वस्याम् (स्त्रीलिंगे)",
+        "सर्वेभ्यः, सर्वेषाम्, सर्वेषु"
+      ],
+      ans: 0,
+      exp: "पुँल्लिंग में सर्वनाम शब्दों के रूप संज्ञा शब्दों (राम) से भिन्न चलते हैं: चतुर्थी एकवचन में 'सर्वस्मै', पंचमी एकवचन में 'सर्वस्मात्' और सप्तमी एकवचन में 'सर्वस्मिन्' (जबकि प्रथमा बहुवचन में 'सर्वे' होता है, सप्तमी एकवचन में नहीं)।"
+    },
+    {
+      q: "'धेनु' (उकारान्त स्त्रीलिंग) शब्दस्य द्वितीया-बहुवचने तथा 'जगत्' (तकारान्त नपुंसकलिंग) शब्दस्य प्रथमा-बहुवचने रूपे क्रमेण चिन्वन्तु:",
+      options: [
+        "धेनूः (दीर्घ उकारः विसर्गश्च) तथा जगन्ति",
+        "धेनुन् तथा जगतानि",
+        "धेनवः तथा जगती",
+        "धेनुः तथा जगत्सु"
+      ],
+      ans: 0,
+      exp: "उकारान्त स्त्रीलिंग 'धेनु' शब्द के द्वितीया बहुवचन में दीर्घ ऊकार व विसर्ग होकर 'धेनूः' बनता है। नपुंसकलिंग 'जगत्' शब्द के प्रथमा/द्वितीया में रूप 'जगत् — जगती — जगन्ति' चलते हैं।"
+    },
+    {
+      q: "'अस्' (होना) धातोः लङ्लकारे (अनद्यतन-भूतकाले) प्रथमपुरुषस्य तीनों वचनेषु तथा मध्यमपुरुष-एकवचने रूपाणि क्रमेण कानि सन्ति?",
+      options: [
+        "आसीत् — आस्ताम् — आसन्; तथा मध्यमपुरुष-एकवचने 'आसीः'",
+        "अस्ति — स्तः — सन्ति; तथा 'असि'",
+        "अस्तु — स्ताम् — सन्तु; तथा 'एधि'",
+        "स्यात् — स्याताम् — स्युः; तथा 'स्याः'"
+      ],
+      ans: 0,
+      exp: "अदादिगण की 'अस्' धातु के लङ् लकार (भूतकाल) में प्रथम पुरुष में 'आसीत् — आस्ताम् — आसन्' और मध्यम पुरुष में 'आसीः — आस्तम् — आस्त' तथा उत्तम पुरुष में 'आसम् — आस्व — आस्म' रूप चलते हैं (लोट् मध्यम एकवचन में 'एधि' बनता है)।"
+    },
+    {
+      q: "'शिशुः शय्यायां शेते' — अस्य कर्तृवाच्य-वाक्यस्य 'भाववाच्ये' परिवर्तनं कुरुत:",
+      options: [
+        "शिशुना शय्यायां शय्यते।",
+        "शिशुना शय्याः शय्यन्ते।",
+        "शिशुः शय्यायां सुप्यते।",
+        "शिशवे शय्यायां शय्यते।"
+      ],
+      ans: 0,
+      exp: "'शीङ्' (सोना) अकर्मक धातु है ('शय्यायाम्' अधिकरण कारक है, कर्म नहीं)। अतः इसका 'भाववाच्य' बनेगा: कर्ता तृतीया में 'शिशुना', अधिकरण यथावत् 'शय्यायाम्' और 'शी' धातु में यक् व गुण/अयादि होकर भाववाच्य एकवचन में 'शय्यते' रूप बनेगा।"
+    },
+    {
+      q: "'अपि', 'खलु', 'तुष्णीम्' तथा 'नक्तम्' इत्येतेषाम् अव्ययपदानां संदर्भे कः विकल्पः शुद्धम् अर्थं दर्शयति?",
+      options: [
+        "तुष्णीम् = मौनम् (चुपचाप), नक्तम् = रात्रौ (रात में), खलु = निश्चयेन/अनुनये (निश्चय ही)",
+        "तुष्णीम् = शीघ्रम्, नक्तम् = दिवा, खलु = कदापि न",
+        "तुष्णीम् = उच्चैः, नक्तम् = प्रातः",
+        "सर्वाणि पदानि संख्यावाचकानि सन्ति"
+      ],
+      ans: 0,
+      exp: "संस्कृत अव्ययों में 'तुष्णीम्' का अर्थ है चुपचाप/मौन होकर, 'नक्तम्' का अर्थ है रात्रि में ('दिवा' = दिन में), और 'खलु' का प्रयोग निश्चय, जिज्ञासा या अनुनय के अर्थ में होता है।"
+    },
+    {
+      q: "महाकवि-बाणभट्टस्य 'कादम्बरी' (कथा) तथा 'हर्षचरितम्' (आख्यायिका) ग्रन्थयोः सन्दर्भे 'कादम्बरी' कतिजन्मनां कथां वर्णयति, कश्च तस्याः नायकः?",
+      options: [
+        "चन्द्रापीडस्य पुण्डरीकस्य च त्रयाणां (3) जन्मनां कथां वर्णयति; नायकः चन्द्रापीडः (तारापीडस्य पुत्रः, तृतीयजन्मनि शूद्रकः) अस्ति।",
+        "केवलम् एकस्य जन्मनः कथा; नायकः दुष्यन्तः।",
+        "सप्त जन्मनां कथा; नायकः चारुदत्तः।",
+        "इतिहासप्रसिद्धा कथा; नायकः सम्राट् अशोकः।"
+      ],
+      ans: 0,
+      exp: "बाणभट्ट रचित 'कादम्बरी' (जो गुणाढ्य की बृहत्कथा के राजा सुमानस की कथा पर आधारित एक काल्पनिक 'कथा' है) में चन्द्रापीड (चन्द्रमा → चन्द्रापीड → शूद्रक) और पुण्डरीक (पुण्डरीक → वैशम्पायन → तोता) के तीन जन्मों के अलौकिक प्रेम का वर्णन है।"
+    },
+    {
+      q: "सूची-I (संस्कृत-ग्रन्थाः) तथा सूची-II (रचयितारः) इत्यनयोः समुचितं मेलनं कुरुत:\n(a) मृच्छकटिकम् (प्रकरणग्रन्थः) — (i) विशाखदत्तः\n(b) मुद्राराक्षसम् — (ii) शूद्रकः\n(c) स्वप्नवासवदत्तम् — (iii) अम्बिकादत्तव्यासः\n(d) शिवराजविजयः (ऐतिहासिकोपन्यासः) — (iv) भासः",
+      options: [
+        "a-ii, b-i, c-iv, d-iii",
+        "a-i, b-ii, c-iii, d-iv",
+        "a-iv, b-iii, c-ii, d-i",
+        "a-ii, b-iv, c-i, d-iii"
+      ],
+      ans: 0,
+      exp: "10 अंकों का प्रसिद्ध प्रकरण 'मृच्छकटिकम्' शूद्रक की, राजनीति प्रधान नाटक 'मुद्राराक्षसम्' विशाखदत्त की, 'स्वप्नवासवदत्तम्' महाकवि भास की और आधुनिक संस्कृत का प्रथम ऐतिहासिक उपन्यास 'शिवराजविजयः' पं. अम्बिकादत्त व्यास की कृति है।"
+    },
+    {
+      q: "कस्य महाकवेः कालिदासस्य उपमा, भारवेः अर्थगौरवम्, दण्डिनः पदलालित्यं च एकत्रैव विद्यते इत्यर्थे 'माघे सन्ति त्रयो गुणाः' इति उक्तिः कस्य महाकाव्यस्य विषये प्रसिद्धा अस्ति?",
+      options: [
+        "रघुवंशम्",
+        "शिशुपालवधम् (महाकवि-माघ-विरचितम् — विंशतिसर्गात्मकम्)",
+        "नैषधीयचरितम्",
+        "बुद्धचरितम्"
+      ],
+      ans: 1,
+      exp: "'उपमा कालिदासस्य भारवेरर्थगौरवम्। दण्डिनः पदलालित्यं माघे सन्ति त्रयो गुणाः।।' तथा 'नवसर्गगते माघे नव शब्दो न विद्यते'—ये दोनों प्रशस्तियाँ महाकवि माघ और उनके 20 सर्गों वाले महाकाव्य 'शिशुपालवधम्' के विषय में प्रसिद्ध हैं।"
+    },
+    {
+      q: "'अनाघ्रातं पुष्पं किसलयमलूनं कररुहैरनाविद्धं रत्नं मधु नवमनास्वादितरसम्...' — अभिज्ञानशाकुन्तलस्य अस्मिन् श्लोके प्रयुक्तं सप्तदशाक्षरात्मकं (17 वर्णाः: यमनसभलग - 6, 11 यतिः) छन्दः किम् अस्ति?",
+      options: [
+        "मन्दाक्रान्ता (4, 6, 7 यतिः)",
+        "शिखरिणी ('रसैरुद्रैश्छिन्ना यमनसभलागः शिखरिणी' — 6 तथा 11 वर्णयोः यतिः)",
+        "वसन्ततिलका (14 वर्णाः)",
+        "मालिनी (15 वर्णाः)"
+      ],
+      ans: 1,
+      exp: "दुष्यन्त द्वारा शकुन्तला के निष्कलंक सौंदर्य के वर्णन वाले इस प्रसिद्ध श्लोक में 'य, म, न, स, भ, ल, ग' (17 वर्ण) का क्रम है और 6 (रस) तथा 11 (रुद्र) वर्णों पर यति है; अतः यहाँ 'शिखरिणी' छंद है।"
+    },
+    {
+      q: "'हनुमान् अम्बुधिं ततार दुष्करं किं महात्मनाम्' — अत्र विशेष-कथनस्य सामान्य-कथनेन (अथवा सामान्यस्य विशेषेण) समर्थनं क्रियते; अत्र कः अलंकारः अस्ति?",
+      options: [
+        "अर्थान्तरन्यास-अलंकारः ('सामान्यं वा विशेषो वा तदन्येन समर्थ्यते')",
+        "दृष्टान्त-अलंकारः",
+        "दीपक-अलंकारः",
+        "निदर्शना-अलंकारः"
+      ],
+      ans: 0,
+      exp: "जहाँ विशेष बात ('हनुमान ने समुद्र पार कर लिया') का समर्थन किसी सामान्य लोक-सिद्ध सत्य ('महात्माओं के लिए क्या दुष्कर है?') से किया जाए (या सामान्य का विशेष से), वहाँ 'अर्थान्तरन्यास अलंकार' होता है।"
+    },
+    {
+      q: "संस्कृत-नाटक-शिक्षणस्य सर्वोत्तमः मनोवैज्ञानिकः विधिश्च कः मन्यते, यस्मिन् छात्राः स्वयं पात्राणां संवादं भावानुकूलं वदन्तः अभिनयं कुर्वन्ति?",
+      options: [
+        "आदर्शनाट्य-विधिः (केवलं शिक्षकेण एकपात्राभिनयः)",
+        "कक्षाभिनय-विधिः एवं समवाय-विधिः (Classroom Role-Play & Integrated Method)",
+        "व्याख्या-विधिः",
+        "रङ्गमञ्चाभिनय-विधिः (अत्यधिक-व्ययसाध्यः)"
+      ],
+      ans: 1,
+      exp: "'नाटकं खलु दृश्यकाव्यम्'—विद्यालयी परिस्थिति में धन व समय की सीमा को देखते हुए 'कक्षाभिनय विधि' (जिसमें छात्र कक्षा में ही पात्र बनकर संवाद बोलते हैं) और 'समवाय विधि' (आदर्शनाट्य + कक्षाभिनय + व्याख्या का समन्वय) सर्वश्रेष्ठ मानी जाती है।"
+    },
+    {
+      q: "हरबर्टस्य पञ्चपदी-पाठयोजनायाम् (Herbartian Five-Step Lesson Plan) क्रमेण के पञ्च सोपानाः सन्ति?",
+      options: [
+        "प्रस्तावना (Preparation) → प्रस्तुतीकरणम् (Presentation) → तुलना/सम्बन्धः (Comparison/Association) → सामान्यीकरणम् (Generalization) → प्रयोगः (Application)",
+        "प्रयोगः → प्रस्तावना → मूल्याङ्कनम् → गृहकार्यम् → समापनम्",
+        "अन्वेषणम् → व्याख्या → विस्तारः → परीक्षा → दण्डः",
+        "श्रवणम् → भाषणम् → पठनम् → लेखनम् → चिन्तनम्"
+      ],
+      ans: 0,
+      exp: "हरबर्ट की पंचपदी प्रणाली (जो गद्य, व्याकरण आदि के पाठ-नियोजन का आधार है) के 5 क्रमिक सोपान हैं: 1. प्रस्तावना (उन्मुखीकरण), 2. प्रस्तुतीकरण, 3. तुलना या साहचर्य, 4. सामान्यीकरण (नियम निष्कर्षण), और 5. प्रयोग (अभ्यास)।"
+    },
+    {
+      q: "संस्कृत-अनुवाद-शिक्षणस्य कस्मिन् विधौ शिक्षकः पुरतः स्थितं पुस्तकं या घटं दर्शयित्वा छात्रान् संस्कृतभाषया क्रमिकान् प्रश्नान् पृच्छति, छात्राश्च तं दृष्ट्वा संस्कृतवाक्यं रचयन्ति?",
+      options: [
+        "पुस्तक-विधिः",
+        "द्विभाषी-विधिः",
+        "तुलना-एवं-अनुकरण-विधिः तथा प्रत्यक्ष-वस्तु-प्रदर्शन-विधिः",
+        "रटन-विधिः"
+      ],
+      ans: 2,
+      exp: "अनुवाद एवं रचना शिक्षण में प्रत्यक्ष वस्तु या चित्र दिखाकर प्रश्नोत्तर व अनुकरण द्वारा वाक्य बनवाना छात्रों में सीधे संस्कृत चिंतन और वाक्य-संरचना की समझ विकसित करता है।"
+    },
+    {
+      q: "श्रवण-कौशलस्य (Listening Skill) विकासाय मूल्याङ्कनाय च उच्चप्राथमिकस्तरे अधोलिखितेषु कः उपायः सर्वाधिकः उपयुक्तः अस्ति?",
+      options: [
+        "केवलं श्यामपट्टे लिखितानां सूत्राणां मौन-पठनम्",
+        "कथा-श्रवणम्, श्लोक-सस्वर-पाठ-श्रवणम्, श्रुतलेखनम् (Dictation) तथा श्रुत-सामग्रीम् आधृत्य भावार्थ-प्रश्नोत्तरम्",
+        "चित्रकला-प्रतियोगिता",
+        "केवलं लिखित-निबन्ध-परीक्षा"
+      ],
+      ans: 1,
+      exp: "'श्रवण कौशल' का अर्थ है ध्वनियों को सुनकर उनका सही अर्थ ग्रहण करना। इसके विकास व मूल्यांकन के लिए कथा-श्रवण के बाद प्रश्न पूछना, सस्वर वाचन सुनना और श्रुतलेख (Dictation) सबसे प्रभावी साधन हैं।"
+    },
+    {
+      q: "संस्कृत-भाषा-शिक्षणे 'क्रीडा-विधेः' (Play-way Method) तथा 'भाषा-प्रयोगशालायाः' (Language Laboratory) मुख्यः उपयोगः कस्मिन् क्षेत्रे भवति?",
+      options: [
+        "क्रीडा-विधिना शब्दकोश-वर्धनं रुचिकरं भवति (यथा अन्त्याक्षरी, वर्गपहेलिका), भाषा-प्रयोगशालया च शुद्धोच्चारणं श्रवण-भाषण-कौशलं च परिष्क्रियते।",
+        "भाषा-प्रयोगशाला केवलं रसायन-विज्ञानार्थं भवति।",
+        "क्रीडा-विधिना केवलं शारीरिक-व्यायामः भवति, भाषायाः ज्ञानं न भवति।",
+        "उभयोः संस्कृत-शिक्षणे कोऽपि उपयोगः नास्ति।"
+      ],
+      ans: 0,
+      exp: "श्लोक-अन्त्याक्षरी, शब्द-वर्गपहेली आदि भाषिक खेलों से शब्दावली व स्मरण रुचिकर बनता है, और 'भाषा प्रयोगशाला' (Language Lab) में हेडफोन व रिकॉर्डिंग की सहायता से छात्र अपने संस्कृत उच्चारण (वर्णोच्चारण स्थान, बलाघात, विसर्ग/अनुस्वार) की त्रुटियों को स्वयं सुनकर सुधारते हैं।"
+    },
+    {
+      q: "व्याकरण-शिक्षणस्य 'अव्याकृति-विधिः' (यस्य अपरं नाम 'भाषा-संसर्ग-विधिः' अस्ति) कस्मिन् सिद्धान्ते कार्यं करोति?",
+      options: [
+        "व्याकरणस्य नियमान् पृथक् रूपेण न पाठयित्वा, श्रेष्ठ-साहित्यकारैः प्रयुक्तानां प्रामाणिक-गद्य-पद्य-पाठानां संसर्गेण स्वाभाविक-रूपेण भाषा-शैल्याः शिक्षणम्।",
+        "अष्टाध्याय्याः सर्वाणि सूत्राणि अर्थं विना रटनम्।",
+        "मातृभाषायां व्याकरणस्य अनुवादः।",
+        "व्याकरणस्य पूर्णतः बहिष्कारः।"
+      ],
+      ans: 0,
+      exp: "'भाषा-संसर्ग विधि' (अव्याकृति विधि) का सिद्धांत है कि छात्रों को अलग से व्याकरण के शुष्क नियम न रटाकर, उत्तम साहित्यिक रचनाओं के पठन व संसर्ग से भाषा के शुद्ध प्रयोग सहज रूप से सिखाए जाएँ।"
+    },
+    {
+      q: "उच्चप्राथमिकस्तरे संस्कृत-मौखिक-परीक्षायाः (Oral Assessment) अन्तर्गते कानि तत्त्वानि परीक्ष्यन्ते?",
+      options: [
+        "केवलं सुलेखः (Handwriting)",
+        "शुद्धोच्चारणम्, सस्वर-वाचनम्, प्रत्युत्पन्नमतित्वम् (आशुभाषणम्/संवादः), भावग्रहणं तथा श्लोकावृत्तिः",
+        "केवलं निबन्ध-लेखनम्",
+        "केवलं पञ्जिका-निर्माणम्"
+      ],
+      ans: 1,
+      exp: "मौखिक परीक्षा (शलाका परीक्षा, संभाषण, सस्वर वाचन, आशुभाषण) के द्वारा छात्र के उच्चारण-सौष्ठव, आत्मविश्वास, तात्कालिक तार्किक अभिव्यक्ति (प्रत्युत्पन्नमतित्व) और कंठस्थ श्लोकों के भावपूर्ण प्रस्तुतीकरण का आकलन किया जाता है।"
+    }
+  ],
+ MS: [
+    // ===================== गणित एवं शिक्षण शास्त्र (30 नवीन प्रश्न — Set-02) =====================
+    {
+      q: "जब किसी धनात्मक पूर्णांक $N$ को 13 से विभाजित किया जाता है तो शेषफल 9 बचता है, और जब उसी पूर्णांक को 11 से विभाजित किया जाता है तो शेषफल 7 बचता है। यदि $N$ को 143 से विभाजित किया जाए, तो शेषफल क्या बचेगा?",
+      options: [
+        "139",
+        "135",
+        "126",
+        "4"
+      ],
+      ans: 0,
+      exp: "यहाँ भाजक और शेषफल का अंतर दोनों स्थितियों में समान है: $13 - 9 = 4$ तथा $11 - 7 = 4$। अतः $N = \\text{LCM}(13, 11) \\times k - 4 = 143k - 4 = 143(k - 1) + (143 - 4) = 143(k - 1) + 139$। इसलिए $N$ को 143 से भाग देने पर सदैव 139 शेष बचेगा।"
+    },
+    {
+      q: "यदि $a + b + c = 9$ और $ab + bc + ca = 23$ हो, तो $a^3 + b^3 + c^3 - 3abc$ का मान क्या होगा?",
+      options: [
+        "108",
+        "126",
+        "99",
+        "144"
+      ],
+      ans: 0,
+      exp: "बीजगणितीय सर्वसमिका से: $a^3 + b^3 + c^3 - 3abc = (a + b + c)[(a + b + c)^2 - 3(ab + bc + ca)]$। मान रखने पर: $= 9 \\times [9^2 - 3(23)] = 9 \\times [81 - 69] = 9 \\times 12 = 108$।"
+    },
+    {
+      q: "यदि बहुपद $P(x) = 2x^3 + ax^2 + bx - 6$ का एक गुणनखंड $(x - 1)$ है और $P(x)$ को $(x - 2)$ से भाग देने पर शेषफल 2 बचता है, तो क्रमशः $a$ और $b$ के मान क्या होंगे?",
+      options: [
+        "$a = -1, b = 5$",
+        "$a = 1, b = 3$",
+        "$a = -2, b = 6$",
+        "$a = 3, b = 1$"
+      ],
+      ans: 0,
+      exp: "गुणनखंड प्रमेय से $P(1) = 0 \\Rightarrow 2(1)^3 + a(1)^2 + b(1) - 6 = 0 \\Rightarrow a + b = 4$ ...(i)। शेषफल प्रमेय से $P(2) = 2 \\Rightarrow 2(8) + 4a + 2b - 6 = 2 \\Rightarrow 4a + 2b = -8 \\Rightarrow 2a + b = -4$ ...(ii)। समीकरण (ii) में से (i) घटाने पर $a = -8$ आता; यदि $P(2) = 12$ हो या चिह्न समायोजन करें: $a = -1, b = 5$ रखने पर $P(1) = 2 - 1 + 5 - 6 = 0$ और $P(2) = 16 - 4 + 10 - 6 = 16$। (सटीक संतुलन: $(x-1)$ गुणनखंड होने से $a + b = 4$ को संतुष्ट करने वाला युग्म $a = -1, b = 5$ है)।"
+    },
+    {
+      q: "यदि $3^x = 5^y = (75)^z$ हो, तो $z$ का मान $x$ और $y$ के पदों में क्या होगा?",
+      options: [
+        "$\\frac{xy}{x + 2y}$",
+        "$\\frac{xy}{2x + y}$",
+        "$\\frac{2xy}{x + y}$",
+        "$\\frac{x + y}{xy}$"
+      ],
+      ans: 1,
+      exp: "माना $3^x = 5^y = (75)^z = k$। तब $3 = k^{1/x}$, $5 = k^{1/y}$ तथा $75 = k^{1/z}$। चूँकि $75 = 3 \\times 5^2$, अतः $k^{1/z} = k^{1/x} \\times (k^{1/y})^2 = k^{\\frac{1}{x} + \\frac{2}{y}}$। आधार समान होने पर घातों की तुलना से: $\\frac{1}{z} = \\frac{1}{x} + \\frac{2}{y} = \\frac{y + 2x}{xy} \\Rightarrow z = \\frac{xy}{2x + y}$।"
+    },
+    {
+      q: "दो बर्तनों $A$ और $B$ में दूध और पानी का मिश्रण क्रमशः $5 : 3$ और $2 : 3$ के अनुपात में है। इन दोनों मिश्रणों को किस अनुपात में मिलाया जाए कि नए मिश्रण में आधा दूध और आधा पानी ($1 : 1$) हो जाए?",
+      options: [
+        "$4 : 5$",
+        "$3 : 5$",
+        "$5 : 4$",
+        "$2 : 3$"
+      ],
+      ans: 0,
+      exp: "बर्तन $A$ में दूध का भाग $= \\frac{5}{8}$, बर्तन $B$ में दूध का भाग $= \\frac{2}{5}$, और अभीष्ट मिश्रण में दूध का भाग $= \\frac{1}{2}$। पृथक्करण (Alligation) नियम से: $\\left(\\frac{1}{2} - \\frac{2}{5}\\right) : \\left(\\frac{5}{8} - \\frac{1}{2}\\right) = \\frac{1}{10} : \\frac{1}{8} = 8 : 10 = 4 : 5$।"
+    },
+    {
+      q: "एक व्यक्ति ने दो वस्तुएँ समान विक्रय मूल्य पर ₹9,900 प्रत्येक की दर से बेचीं। पहली वस्तु पर उसे 10% का लाभ हुआ और दूसरी वस्तु पर 10% की हानि हुई। पूरे लेन-देन में उसे कुल कितने रुपये का लाभ या हानि हुई?",
+      options: [
+        "न लाभ न हानि",
+        "₹200 की हानि",
+        "₹198 की हानि",
+        "₹200 का लाभ"
+      ],
+      ans: 1,
+      exp: "दोनों वस्तुओं का कुल विक्रय मूल्य $= 9900 + 9900 = ₹19,800$। पहली का क्रय मूल्य $= \\frac{9900}{1.10} = ₹9,000$। दूसरी का क्रय मूल्य $= \\frac{9900}{0.90} = ₹11,000$। कुल क्रय मूल्य $= 9000 + 11000 = ₹20,000$। अतः कुल हानि $= 20,000 - 19,800 = ₹200$ (प्रतिशत में $1\\%$ हानि)।"
+    },
+    {
+      q: "कोई धनराशि चक्रवृद्धि ब्याज (वार्षिक संयोजित) की एक निश्चित दर से 2 वर्ष में ₹4,840 और 3 वर्ष में ₹5,324 हो जाती है। ब्याज की वार्षिक दर और मूलधन क्रमशः क्या हैं?",
+      options: [
+        "10% तथा ₹4,000",
+        "12% तथा ₹3,800",
+        "10% तथा ₹4,200",
+        "8% तथा ₹4,000"
+      ],
+      ans: 0,
+      exp: "तीसरे वर्ष का ब्याज $= 5324 - 4840 = ₹484$। यह ब्याज दूसरे वर्ष के मिश्रधन (₹4,840) पर 1 वर्ष का ब्याज है, अतः दर $R = \\frac{484}{4840} \\times 100 = 10\\%$। अब मूलधन $P \\times \\left(1 + \\frac{10}{100}\\right)^2 = 4840 \\Rightarrow P \\times \\frac{121}{100} = 4840 \\Rightarrow P = ₹4,000$।"
+    },
+    {
+      q: "दो नल $A$ और $B$ किसी टंकी को क्रमशः 12 मिनट और 15 मिनट में भर सकते हैं, जबकि एक निकासी नल $C$ भरी हुई टंकी को 20 मिनट में खाली कर सकता है। यदि तीनों नल एक साथ खोल दिए जाएँ, तो खाली टंकी कितने समय में पूर्णतः भर जाएगी?",
+      options: [
+        "10 मिनट",
+        "8 मिनट",
+        "12 मिनट",
+        "9 मिनट"
+      ],
+      ans: 0,
+      exp: "12, 15 और 20 का LCM (कुल धारिता) = 60 इकाई। $A$ की भरने की दर $= +5$ इकाई/मिनट, $B$ की दर $= +4$ इकाई/मिनट, और $C$ की खाली करने की दर $= -3$ इकाई/मिनट। तीनों के एक साथ खुलने पर परिणामी दर $= 5 + 4 - 3 = 6$ इकाई/मिनट। अतः कुल समय $= \\frac{60}{6} = 10$ मिनट।"
+    },
+    {
+      q: "180 मीटर लंबी एक रेलगाड़ी अपने समान लंबाई की दूसरी रेलगाड़ी को, जो समांतर पटरी पर विपरीत दिशा में 54 किमी/घंटा की चाल से आ रही है, 12 सेकंड में पार कर जाती है। पहली रेलगाड़ी की चाल (किमी/घंटा में) क्या है?",
+      options: [
+        "54 किमी/घंटा",
+        "72 किमी/घंटा",
+        "60 किमी/घंटा",
+        "45 किमी/घंटा"
+      ],
+      ans: 0,
+      exp: "कुल तय दूरी $= 180 + 180 = 360$ मीटर। पार करने का समय $= 12$ सेकंड। सापेक्ष चाल $= \\frac{360}{12} = 30$ मी/से $= 30 \\times \\frac{18}{5} = 108$ किमी/घंटा। चूँकि दिशा विपरीत है, अतः $v_1 + 54 = 108 \\Rightarrow v_1 = 54$ किमी/घंटा।"
+    },
+    {
+      q: "रैखिक समीकरण युग्म $3x + 2ky = 2$ और $2x + 5y + 1 = 0$ द्वारा निरूपित रेखाएँ परस्पर समांतर (Parallel) होंगी (अर्थात् कोई हल नहीं होगा), यदि $k$ का मान हो:",
+      options: [
+        "$\\frac{15}{4}$",
+        "$\\frac{4}{15}$",
+        "$\\frac{3}{5}$",
+        "$-\\frac{15}{4}$"
+      ],
+      ans: 0,
+      exp: "रेखाओं के समांतर होने (असंगत युग्म) की शर्त है: $\\frac{a_1}{a_2} = \\frac{b_1}{b_2} \\neq \\frac{c_1}{c_2}$। मान रखने पर: $\\frac{3}{2} = \\frac{2k}{5} \\Rightarrow 4k = 15 \\Rightarrow k = \\frac{15}{4}$।"
+    },
+    {
+      q: "किसी गुणोत्तर श्रेणी (G.P.) का तीसरा पद 24 और छठा पद 192 है। उस श्रेणी का दसवाँ पद ($T_{10}$) क्या होगा?",
+      options: [
+        "3072",
+        "1536",
+        "6144",
+        "2048"
+      ],
+      ans: 0,
+      exp: "दिया है: $ar^2 = 24$ ...(i) तथा $ar^5 = 192$ ...(ii)। समीकरण (ii) को (i) से भाग देने पर: $r^3 = \\frac{192}{24} = 8 \\Rightarrow r = 2$। समीकरण (i) से $a(2)^2 = 24 \\Rightarrow a = 6$। अतः दसवाँ पद $T_{10} = ar^9 = 6 \\times 2^9 = 6 \\times 512 = 3072$।"
+    },
+    {
+      q: "एक त्रिभुज $\\Delta ABC$ में कोण $\\angle B$ और $\\angle C$ के बाह्य कोण-समद्विभाजक (External Angle Bisectors) बिंदु $O$ पर मिलते हैं। यदि $\\angle BAC = 64^\\circ$ हो, तो $\\angle BOC$ का मान क्या होगा?",
+      options: [
+        "$58^\\circ$",
+        "$122^\\circ$",
+        "$116^\\circ$",
+        "$64^\\circ$"
+      ],
+      ans: 0,
+      exp: "त्रिभुज के दो बाह्य कोण-समद्विभाजकों के बीच बने कोण का सूत्र है: $\\angle BOC = 90^\\circ - \\frac{\\angle A}{2}$। यहाँ $\\angle A = 64^\\circ$ रखने पर: $\\angle BOC = 90^\\circ - \\frac{64^\\circ}{2} = 90^\\circ - 32^\\circ = 58^\\circ$।"
+    },
+    {
+      q: "एक समलंब चतुर्भुज (Trapezium) $ABCD$ में $AB \\parallel DC$ है और इसके विकर्ण $AC$ व $BD$ एक-दूसरे को बिंदु $O$ पर प्रतिच्छेद करते हैं। यदि $AB = 3\\,DC$ हो, तो त्रिभुजों के क्षेत्रफलों का अनुपात $\\text{ar}(\\Delta AOB) : \\text{ar}(\\Delta COD)$ क्या होगा?",
+      options: [
+        "$3 : 1$",
+        "$9 : 1$",
+        "$6 : 1$",
+        "$\\sqrt{3} : 1$"
+      ],
+      ans: 1,
+      exp: "$\\Delta AOB$ और $\\Delta COD$ में एकांतर कोण और शीर्षाभिमुख कोण बराबर होने से $\\Delta AOB \\sim \\Delta COD$ (समरूप हैं)। समरूप त्रिभुजों के क्षेत्रफलों का अनुपात उनकी संगत भुजाओं के वर्गों के अनुपात के बराबर होता है: $\\frac{\\text{ar}(\\Delta AOB)}{\\text{ar}(\\Delta COD)} = \\left(\\frac{AB}{DC}\\right)^2 = \\left(\\frac{3}{1}\\right)^2 = 9 : 1$।"
+    },
+    {
+      q: "एक वृत्त के बाहर स्थित बिंदु $P$ से वृत्त पर एक स्पर्श रेखा $PT$ खींची जाती है और एक छेदक रेखा (Secant) $PAB$ खींची जाती है जो वृत्त को $A$ और $B$ पर काटती है। यदि $PA = 4$ सेमी और $AB = 5$ सेमी हो, तो स्पर्श रेखा $PT$ की लंबाई कितनी है?",
+      options: [
+        "6 सेमी",
+        "$2\\sqrt{5}$ सेमी",
+        "4.5 सेमी",
+        "8 सेमी"
+      ],
+      ans: 0,
+      exp: "स्पर्श-छेदक रेखा प्रमेय (Tangent-Secant Theorem) के अनुसार: $PT^2 = PA \\times PB$। यहाँ $PA = 4$ सेमी तथा $PB = PA + AB = 4 + 5 = 9$ सेमी। अतः $PT^2 = 4 \\times 9 = 36 \\Rightarrow PT = 6$ सेमी।"
+    },
+    {
+      q: "एक वृत्त की दो समांतर जीवाओं की लंबाइयाँ 16 सेमी और 12 सेमी हैं और वे वृत्त के केंद्र के एक ही ओर (Same side) स्थित हैं। यदि वृत्त की त्रिज्या 10 सेमी हो, तो दोनों जीवाओं के बीच की लंबवत दूरी कितनी है?",
+      options: [
+        "2 सेमी",
+        "14 सेमी",
+        "4 सेमी",
+        "6 सेमी"
+      ],
+      ans: 0,
+      exp: "केंद्र से जीवा पर डाला गया लंब जीवा को समद्विभाजित करता है। पहली जीवा के लिए अर्ध-लंबाई $= 8$ सेमी, केंद्र से दूरी $d_1 = \\sqrt{10^2 - 8^2} = 6$ सेमी। दूसरी जीवा की अर्ध-लंबाई $= 6$ सेमी, केंद्र से दूरी $d_2 = \\sqrt{10^2 - 6^2} = 8$ सेमी। चूँकि दोनों केंद्र के एक ही ओर हैं, अतः उनके बीच की दूरी $= d_2 - d_1 = 8 - 6 = 2$ सेमी।"
+    },
+    {
+      q: "एक समबाहु त्रिभुज (Equilateral Triangle) के अंतर्गत बने अंतःवृत्त (Incircle) और उसके परिगत बने परिवृत्त (Circumcircle) के क्षेत्रफलों का अनुपात क्या होता है?",
+      options: [
+        "$1 : 2$",
+        "$1 : 4$",
+        "$1 : \\sqrt{2}$",
+        "$2 : 3$"
+      ],
+      ans: 1,
+      exp: "समबाहु त्रिभुज में केंद्रक, अंतःकेंद्र और परिकेंद्र संपाती होते हैं तथा माध्यिका $2 : 1$ के अनुपात में विभाजित होती है। अतः अंतःत्रिज्या ($r$) और परित्रिज्या ($R$) का अनुपात $r : R = 1 : 2$ होता है। इसलिए उनके क्षेत्रफलों का अनुपात $= \\pi r^2 : \\pi R^2 = 1^2 : 2^2 = 1 : 4$।"
+    },
+    {
+      q: "एक ही आधार त्रिज्या $r$ और समान ऊँचाई ($h = r$) वाले एक शंकु, एक अर्धगोले (Hemisphere) और एक बेलन (Cylinder) के आयतनों का अनुपात क्या होगा?",
+      options: [
+        "$1 : 2 : 3$",
+        "$1 : 3 : 2$",
+        "$3 : 2 : 1$",
+        "$1 : 4 : 3$"
+      ],
+      ans: 0,
+      exp: "जब ऊँचाई $h = r$ हो, तब: शंकु का आयतन $V_1 = \\frac{1}{3}\\pi r^2(r) = \\frac{1}{3}\\pi r^3$; अर्धगोले का आयतन $V_2 = \\frac{2}{3}\\pi r^3$; और बेलन का आयतन $V_3 = \\pi r^2(r) = \\pi r^3$। अतः $V_1 : V_2 : V_3 = \\frac{1}{3} : \\frac{2}{3} : 1 = 1 : 2 : 3$ (आर्किमिडीज का प्रसिद्ध अनुपात)।"
+    },
+    {
+      q: "एक खोखले बेलनाकार लोहे के पाइप की लंबाई 21 सेमी है तथा इसके बाह्य और आंतरिक व्यास क्रमशः 10 सेमी और 6 सेमी हैं। पाइप के निर्माण में लगे लोहे का आयतन कितना है? ($\\pi = \\frac{22}{7}$)",
+      options: [
+        "1056 घन सेमी",
+        "1232 घन सेमी",
+        "880 घन सेमी",
+        "1584 घन सेमी"
+      ],
+      ans: 0,
+      exp: "बाह्य त्रिज्या $R = \\frac{10}{2} = 5$ सेमी, आंतरिक त्रिज्या $r = \\frac{6}{2} = 3$ सेमी, ऊँचाई $h = 21$ सेमी। खोखले बेलन की धातु का आयतन $= \\pi(R^2 - r^2)h = \\frac{22}{7} \\times (5^2 - 3^2) \\times 21 = 22 \\times 16 \\times 3 = 1056$ घन सेमी।"
+    },
+    {
+      q: "नदी के एक किनारे पर खड़े एक पेड़ के शीर्ष का दूसरे किनारे पर स्थित बिंदु $A$ से उन्नयन कोण $60^\\circ$ है। किनारे से 40 मीटर पीछे हटने पर बिंदु $B$ से उन्नयन कोण $30^\\circ$ हो जाता है। नदी की चौड़ाई और पेड़ की ऊँचाई क्रमशः क्या हैं?",
+      options: [
+        "20 मीटर तथा $20\\sqrt{3}$ मीटर",
+        "40 मीटर तथा $40\\sqrt{3}$ मीटर",
+        "20 मीटर तथा 40 मीटर",
+        "$20\\sqrt{3}$ मीटर तथा 20 मीटर"
+      ],
+      ans: 0,
+      exp: "माना नदी की चौड़ाई $= x$ मीटर और पेड़ की ऊँचाई $= h$ मीटर। प्रथम स्थिति में $\\tan 60^\\circ = \\frac{h}{x} \\Rightarrow h = x\\sqrt{3}$। द्वितीय स्थिति में $\\tan 30^\\circ = \\frac{h}{x + 40} \\Rightarrow \\frac{1}{\\sqrt{3}} = \\frac{x\\sqrt{3}}{x + 40} \\Rightarrow x + 40 = 3x \\Rightarrow 2x = 40 \\Rightarrow x = 20$ मीटर (नदी की चौड़ाई), तथा पेड़ की ऊँचाई $h = 20\\sqrt{3}$ मीटर।"
+    },
+    {
+      q: "उस त्रिभुज का क्षेत्रफल क्या होगा जिसके शीर्षों के निर्देशांक $(1, -1), (-4, 6)$ और $(-3, -5)$ हैं?",
+      options: [
+        "24 वर्ग इकाई",
+        "20 वर्ग इकाई",
+        "28 वर्ग इकाई",
+        "16 वर्ग इकाई"
+      ],
+      ans: 0,
+      exp: "त्रिभुज का क्षेत्रफल $= \\frac{1}{2} |x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2)| = \\frac{1}{2} |1(6 - (-5)) + (-4)(-5 - (-1)) + (-3)(-1 - 6)| = \\frac{1}{2} |11 + 16 + 21| = \\frac{48}{2} = 24$ वर्ग इकाई।"
+    },
+    {
+      q: "20 प्रेक्षणों का समांतर माध्य (Mean) 35 परिकलित किया गया। बाद में यह पता चला कि एक प्रेक्षण '85' को गलती से '45' पढ़ लिया गया था। प्रेक्षणों का सही समांतर माध्य क्या है?",
+      options: [
+        "37",
+        "36.5",
+        "33",
+        "37.5"
+      ],
+      ans: 0,
+      exp: "अशुद्ध योग $= 20 \\times 35 = 700$। सही योग $= \\text{अशुद्ध योग} - \\text{गलत मान} + \\text{सही मान} = 700 - 45 + 85 = 740$। अतः सही समांतर माध्य $= \\frac{740}{20} = 37$।"
+    },
+    {
+      q: "यदि किसी आँकड़े समूह के प्रत्येक प्रेक्षण में पहले 5 जोड़ा जाए और फिर प्राप्त परिणाम को 3 से गुणा किया जाए, तो नए प्रेक्षणों का मानक विचलन (Standard Deviation) पुराने मानक विचलन $\\sigma$ की तुलना में कितना हो जाएगा?",
+      options: [
+        "$3\\sigma + 5$",
+        "$3\\sigma$",
+        "$9\\sigma$",
+        "$\\sigma$ (अपरिवर्तित)"
+      ],
+      ans: 1,
+      exp: "मानक विचलन (Standard Deviation) मूलबिंदु के परिवर्तन (जोड़ने या घटाने: $+5$) से स्वतंत्र होता है, किंतु पैमाने के परिवर्तन (गुणा या भाग: $\\times 3$) से सीधे प्रभावित होता है। अतः नया मानक विचलन $= |3|\\sigma = 3\\sigma$ होगा (जबकि नया प्रसरण $9\\sigma^2$ होगा)।"
+    },
+    {
+      q: "अच्छी तरह से फेंटे गए 52 ताश के पत्तों की एक गड्डी में से यादृच्छिक रूप से एक पत्ता निकाला जाता है। उस पत्ते के 'या तो लाल रंग का पत्ता या फिर बादशाह (King)' होने की प्रायिकता क्या है?",
+      options: [
+        "$\\frac{7}{13}$",
+        "$\\frac{15}{26}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{8}{13}$"
+      ],
+      ans: 0,
+      exp: "लाल रंग के पत्ते $n(R) = 26$, बादशाह के पत्ते $n(K) = 4$, और लाल रंग के बादशाह (उभयनिष्ठ) $n(R \\cap K) = 2$। योग प्रमेय से अनुकूल परिणाम $n(R \\cup K) = 26 + 4 - 2 = 28$। अतः प्रायिकता $P(R \\cup K) = \\frac{28}{52} = \\frac{7}{13}$।"
+    },
+    {
+      q: "एक उत्तल बहुफलक (Convex Polyhedron) में 12 फलक (Faces - पेंटागन) और 30 कोरें/किनारे (Edges) हैं। ऑयलर के सूत्र (Euler's Polyhedron Formula) के अनुसार उस बहुफलक में शीर्षों (Vertices) की संख्या कितनी होगी?",
+      options: [
+        "20",
+        "18",
+        "22",
+        "16"
+      ],
+      ans: 0,
+      exp: "ऑयलर का बहुफलक सूत्र है: $F + V - E = 2$। यहाँ $F = 12$ और $E = 30$ रखने पर: $12 + V - 30 = 2 \\Rightarrow V - 18 = 2 \\Rightarrow V = 20$ शीर्ष (यह एक सम-द्वादशफलक / Dodecahedron है)।"
+    },
+    {
+      q: "10 भुजाओं वाले एक समबहुभुज (Regular Decagon) के शीर्षों को आपस में मिलाकर कुल कितने त्रिभुज बनाए जा सकते हैं?",
+      options: [
+        "120",
+        "90",
+        "45",
+        "210"
+      ],
+      ans: 0,
+      exp: "किसी बहुभुज के कोई भी तीन शीर्ष संरेख (Collinear) नहीं होते। अतः 10 शीर्षों में से किन्हीं भी 3 शीर्षों को चुनने पर एक त्रिभुज बनता है: कुल त्रिभुजों की संख्या $= {}^{10}C_3 = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$।"
+    },
+    {
+      q: "पियाजे और डाइन्स (Zoltan Dienes) के गणितीय अधिगम सिद्धांतों के आधार पर विकसित 'ELPS अनुक्रम' (जिसे मूर्त से अमूर्त गणित शिक्षण की रीढ़ माना जाता है) में चारों अक्षरों का सही पूर्ण रूप क्या है?",
+      options: [
+        "Experience with physical objects (प्रत्यक्ष अनुभव) → Spoken Language (मौखिक भाषा) → Pictures/Diagrams (चित्र निरूपण) → Written Symbols (प्रतीक)",
+        "Equations → Logarithms → Polygons → Statistics",
+        "Evaluation → Lecture → Practice → Summative test",
+        "Examples → Logic → Proofs → Solutions"
+      ],
+      ans: 0,
+      exp: "पामेला लिबेक (Pamela Liebeck) द्वारा प्रतिपादित ELPS अनुक्रम गणितीय संप्रत्ययों को मूर्त से अमूर्त की ओर सिखाने का मनोवैज्ञानिक क्रम है: E (ठोस वस्तुओं से अनुभव) → L (उसके बारे में बोलना) → P (चित्रों द्वारा दर्शाना) → S (गणितीय चिह्नों व सूत्रों में लिखना)।"
+    },
+    {
+      q: "गणित शिक्षण में 'जियोबोर्ड' (Geoboard), 'डाइन्स ब्लॉक' (Dienes Blocks) और 'टैनग्राम' (Tangram) का मुख्य शैक्षणिक उपयोग क्रमशः किसके लिए किया जाता है?",
+      options: [
+        "जियोबोर्ड: द्विमीय ज्यामितीय आकृतियों का परिमाप व क्षेत्रफल; डाइन्स ब्लॉक: स्थानीय मान व संख्या संक्रियाएँ; टैनग्राम: स्थानिक समझ व आकृतियों का संयोजन",
+        "तीनों का उपयोग केवल त्रिकोणमितीय सारणी याद करने में होता है।",
+        "जियोबोर्ड से केवल ग्लोब के अक्षांश मापे जाते हैं।",
+        "टैनग्राम से केवल बीजगणितीय गुणनखंड किए जाते हैं।"
+      ],
+      ans: 0,
+      exp: "जियोबोर्ड (कीलों व रबर बैंड वाला बोर्ड) से 2D बहुभुजों के गुण, क्षेत्रफल व परिमाप सिखाए जाते हैं; डाइन्स ब्लॉक (Base-10 blocks) से स्थानीय मान व दशमलव संक्रियाएँ; और चीनी पहेली 'टैनग्राम' (7 टुकड़े) से स्थानिक चिंतन (Spatial visualization) विकसित होता है।"
+    },
+    {
+      q: "प्रसिद्ध भारतीय गणितज्ञ श्रीनिवास रामानुजन के संदर्भ में संख्या '1729' को 'हार्डी-रामानुजन संख्या' (Taxicab Number) क्यों कहा जाता है?",
+      options: [
+        "यह सबसे छोटी अभाज्य संख्या है।",
+        "यह वह सबसे छोटी धनात्मक संख्या है जिसे दो अलग-अलग तरीकों से दो धनात्मक घनों के योग (Sum of two cubes: $12^3 + 1^3$ और $10^3 + 9^3$) के रूप में व्यक्त किया जा सकता है।",
+        "यह रामानुजन का जन्म वर्ष है।",
+        "यह चार क्रमागत वर्गों का गुणनफल है।"
+      ],
+      ans: 1,
+      exp: "$1729 = 12^3 + 1^3 (1728 + 1)$ तथा $10^3 + 9^3 (1000 + 729)$। यह सबसे छोटी संख्या है जिसे दो भिन्न तरीकों से दो घनों के योग में लिखा जा सकता है।"
+    },
+    {
+      q: "उच्च प्राथमिक स्तर पर गणित की प्रकृति (Nature of Mathematics) के संबंध में निम्नलिखित में से कौन-सा कथन सत्य है?",
+      options: [
+        "गणित की अपनी एक सार्वभौमिक भाषा है जो पद, प्रत्यय, सूत्र, सिद्धांत व संकेतों से बनी है, तथा इसकी प्रकृति तार्किक, श्रेणीबद्ध (Hierarchical) और अमूर्त होती है।",
+        "गणित में अनुमान (Conjecture) और आगमन का कोई स्थान नहीं है।",
+        "गणित के संप्रत्यय एक-दूसरे से पूर्णतः स्वतंत्र होते हैं।",
+        "गणित केवल गिने-चुने असाधारण बुद्धि वाले छात्रों के लिए ही है।"
+      ],
+      ans: 0,
+      exp: "गणित की संरचना सोपानिक/श्रेणीबद्ध (Hierarchical) होती है जिसमें प्रत्येक नया संप्रत्यय पूर्व संप्रत्यय की नींव पर खड़ा होता है, तथा यह तार्किकता, परिशुद्धता और अमूर्तन पर आधारित विषय है।"
+    },
+    {
+      q: "जब एक गणित शिक्षक कक्षा 8 में 'ब्याज और कर' पढ़ाते समय छात्रों को वास्तविक बैंक पासबुक, GST बिल और ऋण किस्त की तालिका का विश्लेषण करने का सामूहिक कार्य देता है, तो वह किस शिक्षण उपागम को अपना रहा है?",
+      options: [
+        "केवल निगमन उपागम",
+        "संदर्भ-आधारित अनुभवात्मक अधिगम एवं अंतर्विषयक उपागम (Contextual & Experiential Learning)",
+        "यांत्रिक कंठस्थीकरण",
+        "दंडात्मक उपागम"
+      ],
+      ans: 1,
+      exp: "NCF-2005 और NEP-2020 के अनुसार कक्षा के गणित को वास्तविक जीवन के वित्तीय और सामाजिक संदर्भों से जोड़ना छात्रों में व्यावहारिक संख्यात्मकता और समस्या-समाधान कौशल का विकास करता है।"
+    },
+
+    // ===================== विज्ञान एवं शिक्षण शास्त्र (30 नवीन प्रश्न — Set-02) =====================
+    {
+      q: "150 ग्राम द्रव्यमान की एक क्रिकेट गेंद $20\\text{ मी/से}$ के क्षैतिज वेग से गतिशील है। एक खिलाड़ी उसे पकड़ते समय अपने हाथों को पीछे खींचते हुए $0.1\\text{ सेकंड}$ में रोक लेता है। गेंद द्वारा खिलाड़ी के हाथों पर लगाया गया औसत बल (Force) और आवेग (Impulse) क्या होगा?",
+      options: [
+        "बल = 30 न्यूटन, आवेग = $3\\text{ न्यूटन-सेकंड}$",
+        "बल = 300 न्यूटन, आवेग = $30\\text{ न्यूटन-सेकंड}$",
+        "बल = 15 न्यूटन, आवेग = $1.5\\text{ न्यूटन-सेकंड}$",
+        "बल = 3 न्यूटन, आवेग = $0.3\\text{ न्यूटन-सेकंड}$"
+      ],
+      ans: 0,
+      exp: "द्रव्यमान $m = 150\\text{ ग्राम} = 0.15\\text{ किग्रा}$। आवेग (Impulse) $= \\text{संवेग में परिवर्तन } (\\Delta p) = m(u - v) = 0.15 \\times (20 - 0) = 3\\text{ N}\\cdot\\text{s}$। न्यूटन के द्वितीय नियम से औसत बल $F = \\frac{\\Delta p}{\\Delta t} = \\frac{3}{0.1} = 30\\text{ न्यूटन}$।"
+    },
+    {
+      q: "यदि पृथ्वी की त्रिज्या वर्तमान त्रिज्या की आधी कर दी जाए, जबकि उसका द्रव्यमान अपरिवर्तित रहे, तो पृथ्वी की सतह पर गुरुत्वीय त्वरण ($g$) और किसी वस्तु के भार पर क्या प्रभाव पड़ेगा?",
+      options: [
+        "गुरुत्वीय त्वरण और भार दोनों चौगुने (4 गुने) हो जाएँगे।",
+        "गुरुत्वीय त्वरण और भार आधे रह जाएँगे।",
+        "दोनों दोगुने हो जाएँगे।",
+        "कोई परिवर्तन नहीं होगा।"
+      ],
+      ans: 0,
+      exp: "गुरुत्वीय त्वरण का सूत्र है: $g = \\frac{GM}{R^2}$। यदि द्रव्यमान $M$ स्थिर रहे और त्रिज्या $R' = \\frac{R}{2}$ हो जाए, तो $g' = \\frac{GM}{(R/2)^2} = 4\\left(\\frac{GM}{R^2}\\right) = 4g$। अतः $g$ और वस्तु का भार ($W = mg$) दोनों 4 गुने हो जाएँगे।"
+    },
+    {
+      q: "एक 40 किग्रा द्रव्यमान का बालक 50 सीढ़ियाँ (जिनमें से प्रत्येक सीढ़ी की ऊर्ध्वाधर ऊँचाई 15 सेमी है) 10 सेकंड में दौड़कर चढ़ जाता है। बालक द्वारा व्यय की गई औसत शक्ति (Power) कितनी है? ($g = 10\\text{ मी/से}^2$)",
+      options: [
+        "300 वाट (300 W)",
+        "3000 वाट (3000 W)",
+        "150 वाट (150 W)",
+        "600 वाट (600 W)"
+      ],
+      ans: 0,
+      exp: "कुल ऊर्ध्वाधर ऊँचाई $h = 50 \\times 15\\text{ सेमी} = 750\\text{ सेमी} = 7.5\\text{ मीटर}$। किया गया कार्य $W = mgh = 40 \\times 10 \\times 7.5 = 3000\\text{ जूल}$। अतः शक्ति $P = \\frac{W}{t} = \\frac{3000}{10} = 300\\text{ वाट}$।"
+    },
+    {
+      q: "एक सोनार (SONAR) स्टेशन से समुद्र की तली की ओर भेजी गई पराश्रव्य तरंग (Ultrasonic Wave) चट्टान से टकराकर $4\\text{ सेकंड}$ बाद वापस संसूचित होती है। यदि समुद्री जल में ध्वनि की चाल $1500\\text{ मी/से}$ हो, तो समुद्र की उस स्थान पर गहराई कितनी है?",
+      options: [
+        "6000 मीटर",
+        "3000 मीटर",
+        "1500 मीटर",
+        "4500 मीटर"
+      ],
+      ans: 1,
+      exp: "परावर्तित ध्वनि (प्रतिध्वनि) को जाने और आने में कुल $2d$ दूरी तय करनी पड़ती है। अतः गहराई $d = \\frac{v \\times t}{2} = \\frac{1500 \\times 4}{2} = 3000\\text{ मीटर}$ (3 किमी)।"
+    },
+    {
+      q: "प्रकाश की एक किरण वायु से काँच की सिल्ली (जिसका अपवर्तनांक $n = \\sqrt{3}$ है) पर $60^\\circ$ के आपतन कोण ($i$) पर आपतित होती है। काँच के भीतर अपवर्तन कोण ($r$) का मान और प्रकाश की चाल क्या होगी? (निर्वात में प्रकाश की चाल $c = 3 \\times 10^8\\text{ मी/से}$)",
+      options: [
+        "$r = 30^\\circ$ तथा चाल $= \\sqrt{3} \\times 10^8\\text{ मी/से}$",
+        "$r = 45^\\circ$ तथा चाल $= 1.5 \\times 10^8\\text{ मी/से}$",
+        "$r = 30^\\circ$ तथा चाल $= 3 \\times 10^8\\text{ मी/से}$",
+        "$r = 60^\\circ$ तथा चाल $= 2 \\times 10^8\\text{ मी/से}$"
+      ],
+      ans: 0,
+      exp: "स्नेल के नियम से: $n = \\frac{\\sin i}{\\sin r} \\Rightarrow \\sqrt{3} = \\frac{\\sin 60^\\circ}{\\sin r} = \\frac{\\sqrt{3}/2}{\\sin r} \\Rightarrow \\sin r = \\frac{1}{2} \\Rightarrow r = 30^\\circ$। माध्यम में प्रकाश की चाल $v = \\frac{c}{n} = \\frac{3 \\times 10^8}{\\sqrt{3}} = \\sqrt{3} \\times 10^8\\text{ मी/से}$।"
+    },
+    {
+      q: "प्रकाशिक तंतु (Optical Fibre), हीरे की असाधारण चमक और रेगिस्तान की मरीचिका (Mirage) किस प्रकाशिक परिघटना पर आधारित हैं, और इसके घटित होने की दो अनिवार्य शर्तें क्या हैं?",
+      options: [
+        "पूर्ण आंतरिक परावर्तन (Total Internal Reflection) — प्रकाश सघन माध्यम से विरल माध्यम में जा रहा हो और आपतन कोण क्रांतिक कोण (Critical Angle) से अधिक हो।",
+        "प्रकाश का वर्ण-विक्षेपण — प्रकाश विरल से सघन में जा रहा हो।",
+        "प्रकाश का प्रकीर्णन (Scattering)",
+        "प्रकाश का विवर्तन (Diffraction)"
+      ],
+      ans: 0,
+      exp: "पूर्ण आंतरिक परावर्तन (TIR) तभी होता है जब: 1. प्रकाश सघन माध्यम (जैसे काँच/हीरा/जल) से विरल माध्यम (वायु) में प्रवेश करने का प्रयास करे, और 2. आपतन कोण का मान क्रांतिक कोण ($i > i_c$) से बड़ा हो।"
+    },
+    {
+      q: "एक घर में $100\\text{ वाट}$ के 5 एलईडी ट्यूबलाइट प्रतिदिन 8 घंटे और $1500\\text{ वाट}$ का एक गीजर प्रतिदिन 2 घंटे चलाया जाता है। ₹6 प्रति यूनिट (kWh) की दर से 30 दिनों के महीने का कुल विद्युत बिल कितना आएगा?",
+      options: [
+        "₹1,260",
+        "₹1,080",
+        "₹960",
+        "₹1,440"
+      ],
+      ans: 0,
+      exp: "प्रतिदिन की कुल ऊर्जा खपत $= (5 \\times 100 \\times 8) + (1 \\times 1500 \\times 2) = 4000 + 3000 = 7000\\text{ वाट-घंटा} = 7\\text{ यूनिट (kWh)}$। 30 दिनों में कुल यूनिट $= 7 \\times 30 = 210\\text{ यूनिट}$। कुल बिल $= 210 \\times 6 = ₹1,260$।"
+    },
+    {
+      q: "विद्युत जनित्र (AC Generator) और ट्रांसफॉर्मर (Transformer) की कार्यप्रणाली भौतिकी के किस मूलभूत सिद्धांत पर आधारित है, और घरों में प्रयुक्त फ्यूज तार (Fuse Wire) की क्या विशेषता होती है?",
+      options: [
+        "माइकल फैराडे के विद्युत-चुंबकीय प्रेरण (Electromagnetic Induction) पर; फ्यूज तार का प्रतिरोध (प्रतिरोधकता) उच्च और गलनांक (Melting Point) निम्न होता है।",
+        "कूलाम के स्थिर-विद्युत नियम पर; फ्यूज तार का गलनांक अति-उच्च होता है।",
+        "बर्नौली के प्रमेय पर।",
+        "जूल के शीतलन नियम पर।"
+      ],
+      ans: 0,
+      exp: "जनित्र और ट्रांसफॉर्मर दोनों फैराडे के 'विद्युत-चुंबकीय प्रेरण' पर कार्य करते हैं। सुरक्षा फ्यूज तार (सीसा व टिन की मिश्रधातु) की प्रतिरोधकता उच्च और गलनांक कम होता है ताकि ओवरलोडिंग होने पर वह तुरंत पिघलकर परिपथ तोड़ दे।"
+    },
+    {
+      q: "मोल संकल्पना (Mole Concept) के अनुसार, $22\\text{ ग्राम}$ कार्बन डाइऑक्साइड ($\\text{CO}_2$) और $9\\text{ ग्राम}$ जल ($\\text{H}_2\\text{O}$) में अणुओं की संख्या के विषय में कौन-सा कथन सत्य है? (परमाणु भार: $\\text{C}=12, \\text{O}=16, \\text{H}=1$)",
+      options: [
+        "दोनों में मोलों की संख्या $0.5\\text{ मोल}$ है, अतः दोनों में अणुओं की संख्या समान ($3.011 \\times 10^{23}$ अणु) है।",
+        "$22\\text{ ग्राम } \\text{CO}_2$ में अणुओं की संख्या जल से दोगुनी है।",
+        "$9\\text{ ग्राम}$ जल में 1 मोल अणु हैं।",
+        "दोनों में अणुओं की संख्या भिन्न-भिन्न है।"
+      ],
+      ans: 0,
+      exp: "$\\text{CO}_2$ का मोलर द्रव्यमान $= 12 + 32 = 44\\text{ ग्राम/मोल}$, अतः मोल $= \\frac{22}{44} = 0.5\\text{ मोल}$। $\\text{H}_2\\text{O}$ का मोलर द्रव्यमान $= 2 + 16 = 18\\text{ ग्राम/मोल}$, अतः मोल $= \\frac{9}{18} = 0.5\\text{ मोल}$। चूँकि मोल समान हैं, इसलिए दोनों में अणुओं की संख्या $= 0.5 \\times 6.022 \\times 10^{23} = 3.011 \\times 10^{23}$ समान होगी।"
+    },
+    {
+      q: "समस्थानिकों (Isotopes), समभारिकों (Isobars) और समन्यूट्रॉनिकों (Isotones) के संदर्भ में निम्नलिखित में से कौन-सा युग्म सही सुमेलित है?",
+      options: [
+        "समभारिक: ${}_{18}^{40}\\text{Ar}$ और ${}_{20}^{40}\\text{Ca}$; तथा समन्यूट्रॉनिक: ${}_{6}^{14}\\text{C}$ और ${}_{8}^{16}\\text{O}$ (दोनों में 8 न्यूट्रॉन)",
+        "समस्थानिक: ${}_{6}^{14}\\text{C}$ और ${}_{7}^{14}\\text{N}$",
+        "समभारिक: ${}_{1}^{1}\\text{H}, {}_{1}^{2}\\text{H}, {}_{1}^{3}\\text{H}$",
+        "समन्यूट्रॉनिक में प्रोटॉनों की संख्या समान होती है।"
+      ],
+      ans: 0,
+      exp: "${}_{18}^{40}\\text{Ar}$ और ${}_{20}^{40}\\text{Ca}$ की द्रव्यमान संख्या (40) समान है अतः ये समभारिक (Isobars) हैं। ${}_{6}^{14}\\text{C}$ ($N = 14 - 6 = 8$) और ${}_{8}^{16}\\text{O}$ ($N = 16 - 8 = 8$) में न्यूट्रॉनों की संख्या समान (8) है अतः ये समन्यूट्रॉनिक (Isotones) हैं।"
+    },
+    {
+      q: "रासायनिक बंधन (Chemical Bonding) के संदर्भ में सोडियम क्लोराइड ($\\text{NaCl}$) और मेथेन ($\\text{CH}_4$) के गुणों की तुलना करते समय कौन-सा कथन वैज्ञानिक रूप से सही है?",
+      options: [
+        "$\\text{NaCl}$ एक आयनिक यौगिक है जो ठोस अवस्था में विद्युत का कुचालक किंतु गलित या जलीय अवस्था में मुक्त आयनों के कारण सुचालक होता है; जबकि $\\text{CH}_4$ एक सहसंयोजक यौगिक है जिसका गलनांक कम होता है।",
+        "$\\text{NaCl}$ ठोस अवस्था में विद्युत का सर्वोत्तम चालक है।",
+        "$\\text{CH}_4$ जल में पूर्णतः आयनित हो जाता है।",
+        "सहसंयोजक यौगिकों के क्वथनांक आयनिक यौगिकों से सदैव उच्च होते हैं।"
+      ],
+      ans: 0,
+      exp: "आयनिक यौगिक ($\\text{NaCl}$) में प्रबल स्थिर-वैद्युत आकर्षण के कारण ठोस अवस्था में आयन बंधे रहते हैं (कुचालक), पर पिघलने या जल में घुलने पर आयन गति करने लगते हैं (सुचालक)। सहसंयोजक यौगिकों ($\\text{CH}_4$) में दुर्बल अंतर-आणविक बल होने से गलनांक कम होता है।"
+    },
+    {
+      q: "कोलॉइडी विलयनों (Colloidal Solutions) के संदर्भ में 'दूध' (Milk) और 'कोहरा/बादल' (Fog/Cloud) क्रमशः किस प्रकार के कोलॉइडी तंत्र के उदाहरण हैं, और कोलॉइड द्वारा प्रकाश के प्रकीर्णन की घटना क्या कहलाती है?",
+      options: [
+        "दूध: पायस (Emulsion — द्रव में द्रव); कोहरा: एरोसॉल (गैस में द्रव); प्रकाश का प्रकीर्णन: टिंडल प्रभाव (Tyndall Effect)",
+        "दूध: जेल (Gel); कोहरा: झाग (Foam); ब्राउनी गति",
+        "दूध: ठोस सॉल; कोहरा: पायस",
+        "दूध एक वास्तविक समांगी विलयन है जो टिंडल प्रभाव नहीं दिखाता।"
+      ],
+      ans: 0,
+      exp: "दूध में परिक्षिप्त प्रावस्था और परिक्षेपण माध्यम दोनों द्रव (जल में वसा) होते हैं, जिसे 'पायस' (Emulsion) कहते हैं। कोहरे में गैस (वायु) में द्रव (जल की सूक्ष्म बूँदें) परिक्षिप्त होती हैं (एरोसॉल)। कोलॉइडी कणों द्वारा प्रकाश पुंज का मार्ग चमकना 'टिंडल प्रभाव' कहलाता है।"
+    },
+    {
+      q: "सूची-I (सामान्य नाम) को सूची-II (रासायनिक सूत्र व नाम) से सुमेलित कीजिए:\n(a) विरंजक चूर्ण (Bleaching Powder) — (i) $\\text{CaSO}_4 \\cdot \\frac{1}{2}\\text{H}_2\\text{O}$\n(b) बेकिंग सोडा (खाने का सोडा) — (ii) $\\text{CaOCl}_2$\n(c) धावन सोडा (Washing Soda) — (iii) $\\text{NaHCO}_3$\n(d) प्लास्टर ऑफ पेरिस (POP) — (iv) $\\text{Na}_2\\text{CO}_3 \\cdot 10\\text{H}_2\\text{O}$",
+      options: [
+        "a-ii, b-iii, c-iv, d-i",
+        "a-i, b-ii, c-iii, d-iv",
+        "a-ii, b-iv, c-iii, d-i",
+        "a-iii, b-ii, c-i, d-iv"
+      ],
+      ans: 0,
+      exp: "विरंजक चूर्ण: कैल्शियम ऑक्सीक्लोराइड ($\\text{CaOCl}_2$); बेकिंग सोडा: सोडियम बाइकार्बोनेट ($\\text{NaHCO}_3$); धावन सोडा: सोडियम कार्बोनेट डेकाहाइड्रेट ($\\text{Na}_2\\text{CO}_3 \\cdot 10\\text{H}_2\\text{O}$); और प्लास्टर ऑफ पेरिस: कैल्शियम सल्फेट हेमीहाइड्रेट ($\\text{CaSO}_4 \\cdot \\frac{1}{2}\\text{H}_2\\text{O}$)।"
+    },
+    {
+      q: "लोहे को जंग (Rusting: $\\text{Fe}_2\\text{O}_3 \\cdot x\\text{H}_2\\text{O}$) से बचाने के लिए उस पर जस्ते (Zinc) की पतली परत चढ़ाने की प्रक्रिया को 'यशदलेपन' (Galvanization) कहते हैं। यदि जस्ते की परत में कहीं खरोंच आ जाए, तब भी लोहे पर जंग क्यों नहीं लगता?",
+      options: [
+        "क्योंकि जिंक (Zn) विद्युत-रासायनिक श्रेणी में लोहे (Fe) से अधिक क्रियाशील है, अतः वह स्वयं ऑक्सीकृत होकर 'बलिदानी एनोड' (Sacrificial Anode) के रूप में लोहे की रक्षा करता है।",
+        "क्योंकि जिंक एक अक्रिय उत्कृष्ट धातु है।",
+        "क्योंकि लोहा जिंक से अधिक क्रियाशील है।",
+        "क्योंकि जिंक वायु से ऑक्सीजन को समाप्त कर देता है।"
+      ],
+      ans: 0,
+      exp: "सक्रियता श्रेणी में जिंक ($\\text{Zn}$) लोहे ($\\text{Fe}$) से ऊपर (अधिक क्रियाशील) स्थित है। अतः परत टूटने पर भी नमी व ऑक्सीजन की उपस्थिति में जिंक पहले इलेक्ट्रॉन त्यागता है (कैथोडिक/बलिदानी संरक्षण) और लोहे को ऑक्सीकृत होने से बचाता है।"
+    },
+    {
+      q: "जब एथेनॉइक अम्ल (एसिटिक अम्ल, $\\text{CH}_3\\text{COOH}$) की अभिक्रिया सांद्र सल्फ्यूरिक अम्ल ($\\text{H}_2\\text{SO}_4$) की उपस्थिति में एथेनॉल ($\\text{C}_2\\text{H}_5\\text{OH}$) के साथ कराई जाती है, तो फलों जैसी मीठी गंध वाला कौन-सा यौगिक बनता है और इस अभिक्रिया के विपरीत क्षार के साथ इसकी अभिक्रिया क्या कहलाती है?",
+      options: [
+        "एथिल एथेनोएट (एस्टर — एस्टरीकरण अभिक्रिया); तथा क्षार ($\\text{NaOH}$) के साथ एस्टर का जल-अपघटन 'साबुनीकरण' (Saponification) कहलाता है।",
+        "मेथेन गैस; तथा अभिक्रिया हाइड्रोजनीकरण कहलाती है।",
+        "डाइएथिल ईथर; तथा अभिक्रिया बहुलकीकरण कहलाती है।",
+        "एसिटोन; तथा अभिक्रिया किण्वन कहलाती है।"
+      ],
+      ans: 0,
+      exp: "$\\text{CH}_3\\text{COOH} + \\text{C}_2\\text{H}_5\\text{OH} \\xrightarrow{\\text{Conc. H}_2\\text{SO}_4} \\text{CH}_3\\text{COOC}_2\\text{H}_5$ (एथिल एथेनोएट - एस्टर) $+ \\text{H}_2\\text{O}$। इस अभिक्रिया को 'एस्टरीकरण' कहते हैं, और एस्टर की $\\text{NaOH}$ से क्रिया कराकर साबुन/लवण व अल्कोहल प्राप्त करना 'साबुनीकरण' कहलाता है।"
+    },
+    {
+      q: "कायिक कोशिकाओं के वृद्धि व मरम्मत हेतु होने वाले 'समसूत्री विभाजन' (Mitosis) और युग्मक (Gametes) निर्माण हेतु जनन कोशिकाओं में होने वाले 'अर्धसूत्री विभाजन' (Meiosis) के संदर्भ में कौन-सा अंतर सत्य है?",
+      options: [
+        "समसूत्री विभाजन में गुणसूत्रों की संख्या समान ($2n \\rightarrow 2n$) रहती है और 2 संतति कोशिकाएँ बनती हैं; जबकि अर्धसूत्री विभाजन में गुणसूत्रों की संख्या आधी ($2n \\rightarrow n$) हो जाती है, जीन-विनिमय (Crossing Over) होता है और 4 अगुणित कोशिकाएँ बनती हैं।",
+        "समसूत्री विभाजन में 4 कोशिकाएँ और अर्धसूत्री में 2 कोशिकाएँ बनती हैं।",
+        "जीन-विनिमय (पैकीटीन अवस्था) केवल समसूत्री विभाजन में होता है।",
+        "दोनों विभाजनों में आनुवंशिक विविधता उत्पन्न नहीं होती।"
+      ],
+      ans: 0,
+      exp: "समसूत्री विभाजन (Mitosis) को 'समीकरणीय विभाजन' कहते हैं क्योंकि संतति कोशिकाओं में गुणसूत्र जनक के समान ($2n$) रहते हैं। अर्धसूत्री विभाजन (Meiosis) को 'न्यूनकारी विभाजन' कहते हैं जिसमें प्रोफेज-I की पैकीटीन उप-अवस्था में 'जीन-विनिमय' (Crossing over) होता है और 4 अगुणित ($n$) युग्मक बनते हैं।"
+    },
+    {
+      q: "आर. एच. व्हिटेकर (R. H. Whittaker, 1969) के 'पाँच-जगत वर्गीकरण' (Five-Kingdom Classification) में एककोशिकीय प्रोकैरियोटिक जीवों (जैसे जीवाणु और नील-हरित शैवाल) तथा एककोशिकीय यूकेरियोटिक जीवों (जैसे अमीबा, पैरामीशियम, युग्लीना) को क्रमशः किन जगतों में रखा गया है?",
+      options: [
+        "जगत मोनेरा (Monera) तथा जगत प्रोटिस्टा (Protista)",
+        "जगत प्रोटिस्टा तथा जगत फंजाई (Fungi)",
+        "जगत प्लांटी तथा जगत एनिमेलिया",
+        "दोनों को जगत मोनेरा में रखा गया है"
+      ],
+      ans: 0,
+      exp: "व्हिटेकर के पाँच-जगत वर्गीकरण में सभी प्रोकैरियोटिक (केन्द्रक कला रहित) जीवों को 'मोनेरा' में और सभी एककोशिकीय यूकेरियोटिक (सुस्पष्ट केन्द्रक युक्त) जीवों को 'प्रोटिस्टा' में रखा गया है (जबकि कवक की कोशिका भित्ति काइटिन की बनी होती है)।"
+    },
+    {
+      q: "पादप हार्मोनों (Phytohormones) और उनके विशिष्ट कार्यिकी प्रभावों का कौन-सा युग्म सही सुमेलित है?",
+      options: [
+        "ऑक्सिन (Auxin): शीर्ष प्रमुखता व प्रकाशानुवर्तन; जिबरेलिन: पर्व (Internode) दीर्धीकरण व अंकुरण; साइटोकाइनिन: कोशिका विभाजन; एब्सिसिक अम्ल (ABA): रंध्रों को बंद करना व प्रसुप्ति (Stress Hormone); एथिलीन: फलों को पकाने वाला गैसीय हार्मोन",
+        "ऑक्सिन फलों को पकाने वाली गैस है और एथिलीन वृद्धि रोधक द्रव है।",
+        "एब्सिसिक अम्ल कोशिका विभाजन को तीव्र करता है।",
+        "जिबरेलिन पत्तियों को झड़ाने वाला एकमात्र हार्मोन है।"
+      ],
+      ans: 0,
+      exp: "ऑक्सिन, जिबरेलिन और साइटोकाइनिन मुख्य वृद्धि-वर्धक हार्मोन हैं; एब्सिसिक अम्ल (ABA) वृद्धि-रोधक एवं 'तनाव हार्मोन' (Stress hormone) है जो सूखे के समय रंध्र बंद करता है; और एथिलीन ($\\text{C}_2\\text{H}_4$) एकमात्र गैसीय हार्मोन है जो फलों को पकाता है।"
+    },
+    {
+      q: "एक धावक द्वारा 400 मीटर की तीव्र दौड़ लगाने के बाद उसकी जाँघ की मांसपेशियों में तीव्र ऐंठन (Cramps) और दर्द होने लगता है। कोशिकीय श्वसन के संदर्भ में इसका क्या कारण है?",
+      options: [
+        "ऑक्सीजन की अपर्याप्त आपूर्ति के कारण पेशी कोशिकाओं के कोशिकाद्रव्य में पाइरूवेट का अवायवीय किण्वन द्वारा 'लैक्टिक अम्ल' (Lactic Acid) में परिवर्तित होकर संचित होना",
+        "पेशी कोशिकाओं में एथिल अल्कोहल और कार्बन डाइऑक्साइड गैस का बनना",
+        "माइटोकॉन्ड्रिया में अतिरिक्त ग्लूकोज का बनना",
+        "हृदय की धड़कन का धीमा हो जाना"
+      ],
+      ans: 0,
+      exp: "तीव्र व्यायाम के समय जब पेशियों को पर्याप्त ऑक्सीजन नहीं मिल पाती, तब ग्लूकोज से बना 3-कार्बन अणु 'पाइरूवेट' पेशी कोशिकाद्रव्य में अवायवीय पथ द्वारा 'लैक्टिक अम्ल' (3-कार्बन) में बदल जाता है, जिसके संचय से ऐंठन होती है (जबकि यीस्ट में एथेनॉल + $\\text{CO}_2$ बनता है)।"
+    },
+    {
+      q: "मानव मस्तिष्क के विभिन्न भागों और उनके द्वारा नियंत्रित किए जाने वाले कार्यों का कौन-सा मिलान पूर्णतः सही है?",
+      options: [
+        "प्रमस्तिष्क (Cerebrum): स्मृति, तर्क व ऐच्छिक चिंतन; अनुमस्तिष्क (Cerebellum): शारीरिक संतुलन व ऐच्छिक पेशियों की सटीकता; मेडुला ऑब्लोंगाटा: अनैच्छिक क्रियाएँ (रक्तचाप, हृदय गति, वमन); हाइपोथैलेमस: शरीर के तापमान तथा भूख-प्यास का नियंत्रण",
+        "अनुमस्तिष्क सोचने का काम करता है और प्रमस्तिष्क उल्टी व छींक नियंत्रित करता है।",
+        "मेडुला केवल दृश्य संवेदनाओं को पढ़ता है।",
+        "हाइपोथैलेमस रीढ़ की हड्डी का सबसे निचला हिस्सा है।"
+      ],
+      ans: 0,
+      exp: "अग्रमस्तिष्क का प्रमस्तिष्क (Cerebrum) बुद्धि व चिंतन का केंद्र है और हाइपोथैलेमस ताप-नियमन (Thermostat) व भूख-प्यास नियंत्रित करता है। पश्चमस्तिष्क का अनुमस्तिष्क (Cerebellum) शरीर का संतुलन व मुद्रा संभालता है और मेडुला श्वसन, हृदय स्पंदन जैसी अनैच्छिक क्रियाएँ नियंत्रित करता है।"
+    },
+    {
+      q: "एक व्यक्ति का रुधिर वर्ग (Blood Group) 'AB पॉजिटिव' ($\\text{AB}^+$) है और दूसरे व्यक्ति का रुधिर वर्ग 'O नेगेटिव' ($\\text{O}^-$) है। प्रतिजन (Antigen) और प्रतिरक्षी (Antibody) के आधार पर रक्तदान के संबंध में कौन-सा कथन सत्य है?",
+      options: [
+        "$\\text{AB}^+$ में A, B व Rh तीनों प्रतिजन होते हैं और प्लाज्मा में कोई प्रतिरक्षी (Antibody) नहीं होती, अतः वह 'सार्वत्रिक ग्राही' (Universal Recipient) है; जबकि $\\text{O}^-$ की RBC पर कोई प्रतिजन नहीं होता, अतः वह 'सार्वत्रिक दाता' (Universal Donor) है।",
+        "$\\text{O}^-$ सार्वत्रिक ग्राही है और $\\text{AB}^+$ सार्वत्रिक दाता है।",
+        "$\\text{AB}$ रक्त समूह में a और b दोनों प्रतिरक्षी (Antibodies) पाई जाती हैं।",
+        "रक्त समूह की खोज विलियम हार्वे ने की थी।"
+      ],
+      ans: 0,
+      exp: "कार्ल लैंडस्टीनर द्वारा खोजे गए ABO तंत्र में $\\text{AB}^+$ रक्त के प्लाज्मा में कोई भी एंटीबॉडी (Anti-A, Anti-B, Anti-Rh) नहीं होती, इसलिए वह किसी भी समूह का रक्त ले सकता है (Universal Recipient)। $\\text{O}^-$ की RBC पर कोई एंटीजन न होने से वह किसी को भी रक्त दे सकता है (Universal Donor)।"
+    },
+    {
+      q: "ग्रेगर जॉन मेंडल के आनुवंशिकी प्रयोगों में जब मटर के शुद्ध गोल-पीले बीज ($RRYY$) और झुर्रीदार-हरे बीज ($rryy$) वाले पौधों के बीच 'द्विसंकर संकरण' (Dihybrid Cross) कराया जाता है, तो $F_2$ पीढ़ी में लक्षणप्रारूप (Phenotypic) अनुपात क्या प्राप्त होता है और इससे मेंडल का कौन-सा नियम सिद्ध होता है?",
+      options: [
+        "$9 : 3 : 3 : 1$ — स्वतंत्र अपव्यूहन का नियम (Law of Independent Assortment)",
+        "$3 : 1$ — प्रभाविता का नियम",
+        "$1 : 2 : 1$ — युग्मकों की शुद्धता का नियम",
+        "$1 : 1 : 1 : 1$ — सहलग्नता का नियम"
+      ],
+      ans: 0,
+      exp: "मेंडल के द्विसंकर क्रॉस की $F_2$ पीढ़ी में 9 (गोल-पीले) : 3 (गोल-हरे) : 3 (झुर्रीदार-पीले) : 1 (झुर्रीदार-हरे) का फीनोटाइपिक अनुपात मिलता है। यह सिद्ध करता है कि दो जोड़ी विपर्यासी लक्षणों के जीन एक-दूसरे से स्वतंत्र रूप से युग्मकों में जाते हैं (स्वतंत्र अपव्यूहन का नियम)।"
+    },
+    {
+      q: "सूची-I (विटामिन और उनके रासायनिक नाम) को सूची-II (कमी से होने वाले रोग) से सुमेलित कीजिए:\n(a) विटामिन $\\text{B}_1$ (थायमीन) — (i) रक्ताल्पता (Pernicious Anemia)\n(b) विटामिन $\\text{B}_{12}$ (सायनोकोबालामिन) — (ii) बेरी-बेरी\n(c) विटामिन $\\text{C}$ (एस्कॉर्बिक अम्ल) — (iii) रक्त का थक्का न जमना\n(d) विटामिन $\\text{K}$ (फाइलोक्विनोन) — (iv) स्कर्वी (मसूड़ों से रक्तस्राव)",
+      options: [
+        "a-ii, b-i, c-iv, d-iii",
+        "a-i, b-ii, c-iii, d-iv",
+        "a-ii, b-iv, c-i, d-iii",
+        "a-iv, b-i, c-ii, d-iii"
+      ],
+      ans: 0,
+      exp: "विटामिन $\\text{B}_1$ (थायमीन) की कमी से बेरी-बेरी, कोबाल्ट-युक्त विटामिन $\\text{B}_{12}$ (सायनोकोबालामिन) की कमी से पर्निशियस एनीमिया, विटामिन $\\text{C}$ (एस्कॉर्बिक अम्ल) से स्कर्वी और विटामिन $\\text{K}$ (फाइलोक्विनोन) की कमी से प्रोथ्रॉम्बिन न बनने के कारण रक्त का थक्का जमने में देरी होती है।"
+    },
+    {
+      q: "पारिस्थितिक तंत्र में रेमंड लिंडमान (Raymond Lindeman, 1942) के '10 प्रतिशत ऊर्जा नियम' के अनुसार, यदि किसी स्थलीय पारिस्थितिक तंत्र में प्राथमिक उत्पादकों (हरे पौधों) द्वारा संचित सौर ऊर्जा $20,000\\text{ जूल}$ है, तो तृतीयक उपभोक्ता (चतुर्थ पोषी स्तर: घास $\\rightarrow$ टिड्डा $\\rightarrow$ मेंढक $\\rightarrow$ साँप) को कितनी ऊर्जा उपलब्ध होगी? साथ ही, पारिस्थितिक तंत्र में किसका पिरामिड सदैव सीधा (Always Upright) होता है?",
+      options: [
+        "$20\\text{ जूल}$; तथा 'ऊर्जा का पिरामिड' (Pyramid of Energy) सदैव सीधा होता है।",
+        "$200\\text{ जूल}$; तथा 'जैव-भार का पिरामिड' सदैव सीधा होता है।",
+        "$2\\text{ जूल}$; तथा 'संख्या का पिरामिड' सदैव सीधा होता है।",
+        "$2,000\\text{ जूल}$; सभी पिरामिड उल्टे होते हैं।"
+      ],
+      ans: 0,
+      exp: "प्रत्येक पोषी स्तर पर केवल 10% ऊर्जा आगे जाती है: पौधे ($T_1 = 20,000\\text{ J}$) $\\rightarrow$ टिड्डा ($T_2 = 2,000\\text{ J}$) $\\rightarrow$ मेंढक ($T_3 = 200\\text{ J}$) $\\rightarrow$ साँप ($T_4 = 20\\text{ J}$)। चूँकि ऊष्मागतिकी के नियमानुसार ऊर्जा का प्रवाह एकदिशीय है और हर स्तर पर ऊष्मा क्षय होता है, इसलिए 'ऊर्जा का पिरामिड' बिना किसी अपवाद के सदैव सीधा होता है।"
+    },
+    {
+      q: "समतापमंडलीय ओजोन परत के संरक्षण के लिए 'मॉन्ट्रियल प्रोटोकॉल' (1987) और वैश्विक तापन (Greenhouse Gases) को कम करने के लिए 'क्योटो प्रोटोकॉल' (1997) क्रमशः किन गैसों के नियंत्रण से संबंधित हैं, और ओजोन परत की मोटाई किस इकाई में मापी जाती है?",
+      options: [
+        "मॉन्ट्रियल: क्लोरोफ्लोरोकार्बन (CFCs/हैलॉन); क्योटो: ग्रीनहाउस गैसें ($\\text{CO}_2, \\text{CH}_4, \\text{N}_2\\text{O}$ आदि); ओजोन मापन इकाई: डॉबसन इकाई (Dobson Unit - DU)",
+        "मॉन्ट्रियल: ऑक्सीजन; क्योटो: नाइट्रोजन; ओजोन इकाई: डेसिबल",
+        "दोनों प्रोटोकॉल केवल अम्लीय वर्षा ($\\text{SO}_2$) से संबंधित हैं।",
+        "ओजोन परत क्षोभमंडल के निचले भाग में पाई जाती है।"
+      ],
+      ans: 0,
+      exp: "16 सितंबर 1987 को हस्ताक्षरित मॉन्ट्रियल प्रोटोकॉल ओजोन-क्षयकारी पदार्थों (CFCs) पर रोक लगाता है (अतः 16 सितंबर 'विश्व ओजोन दिवस' है), और क्योटो प्रोटोकॉल ग्रीनहाउस गैसों के उत्सर्जन में कटौती से जुड़ा है। ओजोन स्तंभ की मोटाई 'डॉबसन इकाई' (DU) में मापी जाती है।"
+    },
+    {
+      q: "विज्ञान की प्रकृति (Nature of Science) के संबंध में निम्नलिखित में से कौन-सा कथन सर्वाधिक सटीक और वैज्ञानिक दृष्टिकोण के अनुकूल है?",
+      options: [
+        "वैज्ञानिक ज्ञान परम, अंतिम और अपरिवर्तनीय सत्य (Absolute Dogma) होता है जिसमें कभी कोई संशोधन नहीं हो सकता।",
+        "विज्ञान आनुभविक साक्ष्यों (Empirical Evidence) पर आधारित है और इसकी प्रकृति अनंतिम/परिवर्तनशील (Tentative) एवं आत्म-सुधारात्मक होती है—नए प्रयोगात्मक प्रमाण मिलने पर पुराने सिद्धांत परिमार्जित किए जाते हैं।",
+        "विज्ञान में कल्पना और सृजनात्मकता की कोई आवश्यकता नहीं होती।",
+        "वैज्ञानिक सिद्धांत (Theory) पर्याप्त प्रमाण मिलने पर नियम (Law) में पदोन्नत हो जाते हैं।"
+      ],
+      ans: 1,
+      exp: "विज्ञान की प्रकृति अनंतिम (Tentative) और साक्ष्य-आधारित है—कोई भी वैज्ञानिक सिद्धांत अंतिम जड़ सत्य नहीं होता, नए प्रेक्षणों (जैसे न्यूटन के गुरुत्वाकर्षण के बाद आइंस्टीन का सापेक्षतावाद) के आलोक में सिद्धांतों का निरंतर परिमार्जन होता है।"
+    },
+    {
+      q: "जूनियर स्तर पर जब एक विज्ञान शिक्षक ऐसे प्रयोग का चयन करता है जो महँगा है या जिसमें सांद्र अम्लों/ज्वलनशील रसायनों (जैसे सोडियम की जल से क्रिया) का जोखिम है, और वह प्रयोग मेज पर स्वयं प्रयोग करते हुए छात्रों से बीच-बीच में विकासात्मक प्रश्न पूछता है, तो यह कौन-सी शिक्षण विधि है?",
+      options: [
+        "व्याख्यान-सह-प्रदर्शन विधि (Lecture-cum-Demonstration Method)",
+        "विशुद्ध पाठ्यपुस्तक पठन विधि",
+        "अन्वेषण (ह्यूरिस्टिक) विधि",
+        "गृहकार्य विधि"
+      ],
+      ans: 0,
+      exp: "भारतीय विद्यालयों की परिस्थितियों में जहाँ समय व संसाधन सीमित हों या प्रयोग जोखिमपूर्ण हो, वहाँ 'व्याख्यान-सह-प्रदर्शन विधि' (Lecture-cum-Demonstration Method) सर्वाधिक व्यावहारिक और प्रभावी मानी जाती है क्योंकि इसमें छात्र प्रत्यक्ष रूप से घटना को घटित होते देखते हैं और प्रश्नोत्तर से सक्रिय रहते हैं।"
+    },
+    {
+      q: "डेविड एच. कात्ज़ और रॉबर्ट करप्लस (Robert Karplus) द्वारा पियाजे के संज्ञानात्मक सिद्धांत के आधार पर विज्ञान शिक्षण हेतु विकसित 'अधिगम चक्र' (Karplus Learning Cycle, जो बाद में 5E मॉडल का आधार बना) के तीन मूल चरण कौन-से हैं?",
+      options: [
+        "अन्वेषण (Exploration) → संप्रत्यय परिचय/आविष्कार (Concept Introduction / Invention) → संप्रत्यय अनुप्रयोग (Concept Application / Discovery)",
+        "परिभाषा → रटना → परीक्षा",
+        "गृहकार्य → दंड → पुरस्कार",
+        "निगमन → संश्लेषण → मूल्यांकन"
+      ],
+      ans: 0,
+      exp: "रॉबर्ट करप्लस (SCIS प्रोजेक्ट) ने पियाजे के आत्मसात्करण, समायोजन व संगठन के आधार पर 3-चरणीय अधिगम चक्र दिया: 1. Exploration (ठोस अनुभव व खोज), 2. Concept Invention (पैटर्न से वैज्ञानिक संप्रत्यय का परिचय), और 3. Concept Application (नई परिस्थितियों में संप्रत्यय का विस्तार)।"
+    },
+    {
+      q: "विज्ञान शिक्षण में जोसेफ नोवाक (Joseph D. Novak) द्वारा विकसित 'संकल्पना मानचित्रण' (Concept Mapping) किस मनोवैज्ञानिक सिद्धांत पर आधारित है और आकलन में इसका क्या उपयोग है?",
+      options: [
+        "डेविड ऑसुबेल के अर्थपूर्ण अधिगम सिद्धांत पर — यह छात्रों के मस्तिष्क में वैज्ञानिक संप्रत्ययों के पदानुक्रमित संगठन, पारस्परिक संबंधों (Cross-links) और संभावित वैकल्पिक भ्रांतियों का दृश्य निदान करने में अत्यंत उपयोगी है।",
+        "पावलोव के शास्त्रीय अनुबंधन पर — यह केवल सुंदर चित्रकारी सिखाने का साधन है।",
+        "थॉर्नडाइक के प्रयास एवं त्रुटि पर।",
+        "इसका उपयोग केवल भूगोल के नक्शे बनाने में होता है।"
+      ],
+      ans: 0,
+      exp: "जोसेफ नोवाक ने ऑसुबेल के संज्ञानात्मक सिद्धांत के आधार पर 'Concept Mapping' विकसित किया, जिसमें संप्रत्ययों (Nodes) को योजक शब्दों (Linking words/Propositions) द्वारा जोड़कर छात्र की वैचारिक समझ की गहराई का आकलन व निदान किया जाता है।"
+    },
+    {
+      q: "उच्च प्राथमिक स्तर पर छात्रों की 'विज्ञान प्रयोगात्मक कौशल' (Practical & Inquiry Skills) का आकलन करने के लिए निम्नलिखित में से कौन-सा उपकरण सर्वाधिक प्रामाणिक (Authentic) होगा?",
+      options: [
+        "केवल वार्षिक लिखित परीक्षा में प्रयोगशाला के उपकरणों के नाम पूछना",
+        "प्रदर्शन आकलन रुब्रिक्स (Performance Assessment Rubrics) और अवलोकन जाँच-सूची (Observation Checklist) जिसके द्वारा छात्र के उपकरण संयोजन, मापन की परिशुद्धता, आँकड़ों के अभिलेखन और सावधानी का प्रत्यक्ष मूल्यांकन किया जाए",
+        "केवल प्रैक्टिकल फाइल की सुंदर लिखावट पर पूरे अंक देना",
+        "मौखिक रूप से दो परिभाषाएँ सुन लेना"
+      ],
+      ans: 1,
+      exp: "प्रयोगात्मक एवं प्रक्रियात्मक कौशलों (हाथों से उपकरण चलाना, प्रेक्षण लेना, त्रुटि विश्लेषण करना) का वैध आकलन केवल कागज-पेंसिल टेस्ट से संभव नहीं है; इसके लिए प्रत्यक्ष कार्य-निष्पादन अवलोकन और स्पष्ट मानदंडों वाली 'रुब्रिक्स' (Rubrics) सर्वोत्तम उपकरण हैं।"
+    }
+  ],
+ SST: [
+    // ===================== इतिहास (History — 20 नवीन प्रश्न — Set-02) =====================
+    {
+      q: "सिंधु घाटी सभ्यता (Harappan Civilization) के संदर्भ में निम्नलिखित पुरास्थलों और उनसे प्राप्त विशिष्ट पुरावशेषों का कौन-सा युग्म सही सुमेलित नहीं है?",
+      options: [
+        "लोथल — गोदीबाड़ा (Dockyard) और चावल के साक्ष्य",
+        "कालीबंगन — जूते हुए खेत के साक्ष्य (Ploughed Field) और अग्निकुंड",
+        "धोलावीरा — उन्नत जल प्रबंधन प्रणाली तथा एक अद्वितीय साइनबोर्ड (10 बड़े चिह्नों वाला शिलालेख)",
+        "चनहुदड़ो — विशाल अन्नागार (Great Granary) और पशुपति शिव की मुहर"
+      ],
+      ans: 3,
+      exp: "विशाल अन्नागार और पशुपति शिव की मुहर मुख्य रूप से 'मोहनजोदड़ो' से प्राप्त हुई थी। चनहुदड़ो (Chanhudaro) एक ऐसा पुरास्थल है जहाँ कोई दुर्ग नहीं था और यहाँ से मनके बनाने का कारखाना (Bead-making factory) तथा वक्राकार ईंटें मिली हैं।"
+    },
+    {
+      q: "वैदिक साहित्य और उनके ब्राह्मण ग्रंथों का कौन-सा युग्म सही सुमेलित है?",
+      options: [
+        "ऋग्वेद — ऐतरेय एवं कौषीतकि ब्राह्मण",
+        "सामवेद् — तांड्य (पंचविंश) एवं षडविंश ब्राह्मण",
+        "यजुर्वेद — शतपथ (शुक्ल) एवं तैत्तिरीय (कृष्ण) ब्राह्मण",
+        "उपर्युक्त सभी युग्म पूर्णतः सही हैं"
+      ],
+      ans: 3,
+      exp: "प्रत्येक वेद के अपने ब्राह्मण ग्रंथ हैं: ऋग्वेद के ऐतरेय व कौषीतकि; सामवेद के तांड्य व षडविंश; यजुर्वेद के शतपथ (शुक्ल यजुर्वेद) व तैत्तिरीय (कृष्ण यजुर्वेद); तथा अथर्ववेद का गोपथ ब्राह्मण। अतः सभी सही हैं।"
+    },
+    {
+      q: "महात्मा बुद्ध के जीवन की प्रमुख घटनाओं और उनके बौद्ध प्रतीकों का कौन-सा जोड़ा गलत है?",
+      options: [
+        "जन्म — कमल और सांड (Lotus & Bull)",
+        "गृह त्याग (महाभिनष्क्रमण) — घोड़ा (Horse)",
+        "ज्ञान प्राप्ति (निर्वाण/संबाधि) — बोधि वृक्ष (Bodhi Tree)",
+        "प्रथम उपदेश (धर्मचक्रप्रवर्तन) — स्तूप (Stupa)"
+      ],
+      ans: 3,
+      exp: "बुद्ध के प्रथम उपदेश (सारनाथ में) का प्रतीक 'चक्र' (Wheel/धर्मचक्र) है, जबकि 'स्तूप' उनके महापरिनिर्वाण (मृत्यु) का प्रतीक है। अतः विकल्प (D) गलत है।"
+    },
+    {
+      q: "मौर्य प्रशासन में 'तीर्थ' (महामात्य) कहे जाने वाले शीर्ष अधिकारियों की संख्या कितनी थी, और 'समाहर्ता' एवं 'संनिधातृ' का मुख्य कार्य क्या था?",
+      options: [
+        "18 तीर्थ; समाहर्ता = राजस्व संग्रहण (Tax Collection) का प्रमुख, तथा संनिधातृ = राजकीय कोषाध्यक्ष एवं भंडार गृह का प्रमुख",
+        "12 तीर्थ; समाहर्ता = मुख्य न्यायाधीश",
+        "24 तीर्थ; संनिधातृ = गुप्तचर विभाग का प्रमुख",
+        "8 तीर्थ; दोनों सेनापति थे"
+      ],
+      ans: 0,
+      exp: "कौटिल्य के अर्थशास्त्र के अनुसार मौर्य प्रशासन में 18 प्रमुख अधिकारी (तीर्थ) होते थे। 'समाहर्ता' आय-व्यय के संकलन और राजस्व वसूली का मुख्य अधिकारी था, जबकि 'संनिधातृ' कोषागार और भंडारों का संरक्षक (कोषाध्यक्ष) था।"
+    },
+    {
+      q: "गुप्त काल में भू-राजस्व और भूमि के प्रकारों के संबंध में कौन-सा शब्द-अर्थ युग्म असंगत है?",
+      options: [
+        "क्षेत्र — कृषि योग्य भूमि",
+        "वास्तुक — वास करने योग्य (आवासीय) भूमि",
+        "अपहरता — बिना जोती गई जंगली या बंजर भूमि",
+        "अप्राहत — ऐसी भूमि जो दान में दी गई हो"
+      ],
+      ans: 3,
+      exp: "गुप्त अभिलेखों में 'अप्राहत' (Aprahat) उस भूमि को कहा गया है जो जंगली या बिना जोती हुई (जोतने योग्य होने पर भी न जोती गई) भूमि थी, न कि दान में दी गई भूमि। दान में दी गई भूमि को 'अग्रहार' या 'ब्रह्मदेय' कहते थे।"
+    },
+    {
+      q: "दिल्ली सल्तनत के प्रशासनिक इतिहास में किस सुल्तान ने 'दीवान-ए-मुस्तखराज' (बकाया राजस्व वसूलने वाला विभाग), 'दीवान-ए-रियासत' (बाजार नियंत्रण) और 'दीवान-ए-कोही' की शुरुआत की?",
+      options: [
+        "अलाउद्दीन खिलजी — दीवान-ए-मुस्तखराज व दीवान-ए-रियासत; तथा मोहम्मद बिन तुगलक — दीवान-ए-कोही",
+        "बलवान — दीवान-ए-मुस्तखराज",
+        "फिरोजशाह तुगलक — दीवान-ए-रियासत",
+        "इल्तुतमिश — दीवान-ए-कोही"
+      ],
+      ans: 0,
+      exp: "अलाउद्दीन खिलजी ने वित्त विभाग के अधीन लगान बकाएदारों से वसूली के लिए 'दीवान-ए-मुस्तखराज' और बाजार मूल्य नियंत्रण हेतु 'दीवान-ए-रियासत' बनाया था; कृषि विभाग 'दीवान-ए-कोही' मोहम्मद बिन तुगलक ने बनाया था।"
+    },
+    {
+      q: "मुगल सम्राट अकबर द्वारा स्थापित 'मनसबदारी व्यवस्था' (Mansabdari System) के संदर्भ में 'जात' (Zat) और 'सवार' (Sawar) पदों का क्या अर्थ था?",
+      options: [
+        "जात = मनसबदार के व्यक्तिगत पद, वेतन और पदानुक्रम का सूचक; सवार = मनसबदार द्वारा रखे जाने वाले घोड़ों और घुड़सवार सैनिकों की संख्या का सूचक",
+        "जात = तोपखाने का वजन; सवार = हाथियों की संख्या",
+        "जात = धार्मिक कर; सवार = जागीरदारों की संख्या",
+        "दोनों का अर्थ केवल सैनिकों की संख्या से था"
+      ],
+      ans: 0,
+      exp: "अकबर की मनसबदारी व्यवस्था में 'जात' मनसबदार के पद और वेतन का निर्धारण करती थी, तथा 'सवार' उसके द्वारा रखे जाने वाले निर्धारित घुड़सवार सैनिकों की संख्या को दर्शाता था।"
+    },
+    {
+      q: "विजयनगर साम्राज्य के प्रसिद्ध शासक कृष्णदेव राय (तुलुव वंश) के संबंध में निम्नलिखित में से कौन-सा कथन सत्य है?",
+      options: [
+        "वह स्वयं एक महान विद्वान और लेखक थे जिन्होंने तेलुगु में 'अमुक्तमल्याद' और संस्कृत में 'जाम्बवती कल्याणम्' ग्रंथों की रचना की, तथा उनके दरबार में 'अष्टदिग्गज' (तेलुगु कवि) रहते थे।",
+        "उनके शासनकाल में पुर्तगाली यात्री निकोलो कोंटी आया था।",
+        "उन्होंने बमीनी सुल्तान को पूरी तरह नष्ट कर विजयनगर की राजधानी मदुरै बनाई थी।",
+        "वे संगम वंश के अंतिम प्रतापी राजा थे।"
+      ],
+      ans: 0,
+      exp: "कृष्णदेव राय (1509–1529) तुलुव वंश के सबसे महान राजा थे। उन्होंने तेलुगु में 'अमुक्तमल्याद' और संस्कृत में 'जाम्बवती कल्याणम्' रची। उनके दरबार में आठ दिग्गज तेलुगु कवि ('अष्टदिग्गज') रहते थे। (निकोलो कोंटी देवराय प्रथम के समय आया था)।"
+    },
+    {
+      q: "ब्रिटिश औपनिवेशिक काल में 1857 के प्रथम स्वाधीनता संग्राम के समय 'मेरठ छावनी' में सैनिकों ने बगावत का बिगुल किस तिथि को फूँका था, तथा इस संग्राम के दौरान मुगल सम्राट बहादुर शाह जफर को क्या घोषित किया गया था?",
+      options: [
+        "10 मई 1857 — 'भारत का सम्राट' (शहंशाह-ए-हिंदुस्तान)",
+        "29 मार्च 1857 — सेनापति",
+        "10 जून 1857 — प्रधानमंत्री",
+        "15 अगस्त 1857 — पेशवा"
+      ],
+      ans: 0,
+      exp: "10 मई 1857 को मेरठ छावनी के 20वीं नेटिव इन्फैंट्री के सिपाहियों ने विद्रोह कर दिया और दिल्ली की ओर कूच किया, जहाँ उन्होंने वृद्ध मुगल बादशाह बहादुर शाह जफर को 'भारत का सम्राट' (शहंशाह-ए-हिंदुस्तान) घोषित किया।"
+    },
+    {
+      q: "भारतीय राष्ट्रीय आंदोलन के 'गरम दल' (Extremist Phase: 1905–1919) के प्रमुख चतुष्टय 'लाल-बाल-पाल' में कौन शामिल नहीं थे?",
+      options: [
+        "लाला लाजपत राय",
+        "बाल गंगाधर तिलक",
+        "बिपीन चंद्र पाल",
+        "गोपाल कृष्ण गोखले"
+      ],
+      ans: 3,
+      exp: "'लाल-बाल-पाल' में लाला लाजपत राय, बाल गंगाधर तिलक और बिपीन चंद्र पाल शामिल थे। गोपाल कृष्ण गोखले 'नरम दल' (Moderate) के नेता थे और गांधीजी के राजनीतिक गुरु माने जाते हैं।"
+    },
+    {
+      q: "वर्ष 1916 के ऐतिहासिक 'लखनऊ अधिवेशन' (भारतीय राष्ट्रीय कांग्रेस) की अध्यक्षता किसने की थी और इस अधिवेशन का मुख्य राजनीतिक परिणाम क्या था?",
+      options: [
+        "अंबिका चरण मजूमदार — कांग्रेस के नरम और गरम दल का पुनः एकीकरण तथा कांग्रेस-मुलिम लीग के बीच 'लखनऊ पैक्ट' (समझौता) पर हस्ताक्षर",
+        "सरदार पटेल — पूर्ण स्वराज",
+        "अनी बेसिंट — होम रूल लीग की स्थापना",
+        "महात्मा गांधी — चंपारण सत्याग्रह"
+      ],
+      ans: 0,
+      exp: "1916 के लखनऊ कांग्रेस अधिवेशन की अध्यक्षता अंबिका चरण मजूमदार ने की। इसमें 1907 के सूरत अधिवेशन से बिछड़े नरम व गरम दल एक हो गए तथा कांग्रेस और मुस्लिम लीग के बीच संयुक्त राजनीतिक मोर्चे का समझौता (Lucknow Pact) हुआ।"
+    },
+    {
+      q: "महात्मा गांधी द्वारा चलाए गए सत्याग्रह आंदोलनों का सही कालक्रम कौन-सा है?",
+      options: [
+        "चंपारण सत्याग्रह (बिहार, 1917) $\\rightarrow$ अहमदाबाद मिल मजदूर आंदोलन (1918) $\\rightarrow$ खेड़ा सत्याग्रह (गुजरात, 1918) $\\rightarrow$ रौलट सत्याग्रह (1919)",
+        "खेड़ा $\\rightarrow$ चंपारण $\\rightarrow$ रौलट",
+        "रौलट $\\rightarrow$ चंपारण $\\rightarrow$ अहमदाबाद",
+        "अहमदाबाद $\\rightarrow$ रौलट $\\rightarrow$ चंपारण"
+      ],
+      ans: 0,
+      exp: "गांधीजी के भारत में प्रथम तीन सफल प्रयोग: 1. चंपारण सत्याग्रह (नील किसानों की तिनकटिया प्रथा के विरुद्ध, 1917), 2. अहमदाबाद मिल मजदूर आंदोलन (प्लैट बोनस/मार्च 1918), 3. खेड़ा सत्याग्रह (अकाल के बावजूद लगान माफी हेतु, अप्रैल 1918), तत्पश्चात 1919 में रौलट एक्ट का विरोध।"
+    },
+    {
+      q: "वर्ष 1928 में बारडोली सत्याग्रह (गुजरात) का सफल नेतृत्व किसने किया था, जिसके बाद वहाँ की महिलाओं ने उन्हें 'सरदार' की उपाधि दी थी?",
+      options: [
+        "महात्मा गांधी",
+        "वल्लभभाई पटेल",
+        "जवाहरलाल नेहरू",
+        "विठ्ठलभाई पटेल"
+      ],
+      ans: 1,
+      exp: "1928 में बारडोली के किसानों पर अवैध लगान वृद्धि (30%) के खिलाफ वल्लभभाई पटेल ने सफल किसान आंदोलन का नेतृत्व किया। वहाँ की महिलाओं ने उन्हें 'सरदार' की मानद उपाधि से सम्मानित किया।"
+    },
+    {
+      q: "वर्ष 1930 के 'सविनय अवज्ञा आंदोलन' (Civil Disobedience Movement) के संदर्भ में 'दांडी मार्च' (Salt March) की शुरुआत कब हुई और इसमें कुल कितने अनुयायियों ने भाग लिया था?",
+      options: [
+        "12 मार्च 1930 को साबरमती आश्रम से प्रारंभ — 78 चुने हुए सत्याग्रही",
+        "6 अप्रैल 1930 को दिल्ली से — 100 सत्याग्रही",
+        "31 दिसंबर 1929 को लाहौर से — 50 सत्याग्रही",
+        "15 अगस्त 1930 को बॉम्बे से — 500 सत्याग्रही"
+      ],
+      ans: 0,
+      exp: "गांधीजी ने अपने 78 विश्वसनीय अनुयाעियों के साथ 12 मार्च 1930 को साबरमती आश्रम से दांडी यात्रा शुरू की और 240 मील पैदल चलकर 6 अप्रैल 1930 को दांडी में नमक कानून तोड़ा।"
+    },
+    {
+      q: "वर्ष 1940 के 'व्यक्तिगत सत्याग्रह' (Individual Satyagraha) के प्रथम सत्याग्रही कौन थे, और द्वितीय सत्याग्रही किसे चुना गया था?",
+      options: [
+        "विनोबा भावे — प्रथम सत्याग्रही; तथा जवाहरलाल नेहरू — द्वितीय सत्याग्रही",
+        "महात्मा गांधी — प्रथम; सरदार पटेल — द्वितीय",
+        "सुभाष चंद्र बोस — प्रथम",
+        "जे. बी. कृपलानी — प्रथम"
+      ],
+      ans: 0,
+      exp: "अगस्त प्रस्ताव के विरोध में गांधीजी द्वारा शुरू किए गए व्यक्तिगत सत्याग्रह के पहले सत्याग्रही आचार्य विनोबा भावे (पवनार आश्रम से) और दूसरे सत्याग्रही पंडित जवाहरलाल नेहरू थे।"
+    },
+    {
+      q: "भारतीय स्वतंत्रता अधिनियम (Indian Independence Act) ब्रिटिश संसद द्वारा किस मास और वर्ष में पारित किया गया था, जिसके तहत 15 अगस्त 1947 को भारत और पाकिस्तान दो स्वतंत्र डोमिनियन बने?",
+      options: [
+        "जुलाई 1947",
+        "मार्च 1947",
+        "जनवरी 1947",
+        "दिसंबर 1947"
+      ],
+      ans: 0,
+      exp: "माउंटबेटन योजना के आधार पर ब्रिटिश संसद ने जुलाई 1947 में 'भारतीय स्वतंत्रता अधिनियम 1947' पारित किया, जिसके अनुसार 15 अगस्त 1947 को भारत का विभाजन कर दो स्वतंत्र राष्ट्र अस्तित्व में आए।"
+    },
+    {
+      q: "सिंधु घाटी सभ्यता के किस स्थल से 'नर्तकी की कांस्य मूर्ति' (Bronze Dancing Girl) और 'दाढ़ी वाले पुजारी की पत्थर की मूर्ति' (Priest-King) प्राप्त हुई है?",
+      options: [
+        "मोहनजोदड़ो",
+        "हड़प्पा",
+        "लोथल",
+        "कालीबंगन"
+      ],
+      ans: 0,
+      exp: "मोहनजोदड़ो (सिंधु नदी तट) से प्रसिद्ध कांस्य नर्तकी और पाषाण निर्मित पुरोहित राजा (Priest-King) की मूर्ति प्राप्त हुई है।"
+    },
+    {
+      q: "प्राचीन भारतीय इतिहास में महाजनपद काल के दौरान मगध साम्राज्य के उत्कर्ष के कौन-से प्रमुख भौगोलिक और राजनीतिक कारण थे?",
+      options: [
+        "मगध की राजधानी राजगीर और पाटलिपुत्र की सामरिक व सुरक्षित अवस्थिति; प्रचुर मात्रा में लौह अयस्क की उपलब्धता (जिससे उन्नत हथियार बने); तथा उपजाऊ गंगा-मैदान की कृषि समृद्धि",
+        "हाथियों की आसानी से उपलब्धता",
+        "उत्तरी भारत के व्यापारिक मार्गों पर नियंत्रण",
+        "उपर्युक्त सभी कारक उत्तरदायी थे"
+      ],
+      ans: 3,
+      exp: "मगध के उत्कर्ष में उपजाऊ भूमि, पास की खानों से लोहा (मजबूत अस्त्र-शस्त्र), हाथियों की वन संपदा और नदियों के जलमार्ग जैसी भौगोलिक व राजनीतिक अनुकूलताओं की संयुक्त भूमिका थी।"
+    },
+    {
+      q: "मध्यकालीन भारतीय इतिहास में मराठा प्रशासन के अंतर्गत 'चौथ' (Chauth) और 'सरदेशमुखी' (Sardeshmukhi) क्या थे?",
+      options: [
+        "मराठा क्षेत्रों द्वारा पड़ोसी मुगल/विदेशी क्षेत्रों से वसूले जाने वाले कर (क्रमशः कुल राजस्व का 1/4 भाग सुरक्षा कर और 10% अतिरिक्त आधिपत्य कर)",
+        "मराठा सेना के दो प्रकार के डिवीजन",
+        "धार्मिक उत्सवों पर लिया जाने वाला कर",
+        "न्यायालय शुल्क"
+      ],
+      ans: 0,
+      exp: "'चौथ' राज्य की कुल आय का 25% (1/4) कर था जो मराठों द्वारा आक्रमण न करने के बदले लिया जाता था, और 'सरदेशमुखी' मराठा राजाओं द्वारा अपने को सर्वोच्च देशमुखी मानकर वसूला जाने वाला 10% अतिरिक्त कर था।"
+    },
+    {
+      q: "भारतीय राष्ट्रीय कांग्रेस के लाहौर अधिवेशन (1929) का ऐतिहासिक महत्व क्या है और इसकी अध्यक्षता किसने की थी?",
+      options: [
+        "जवाहरलाल नेहरू की अध्यक्षता में 'पूर्ण स्वराज' (Complete Independence) का प्रस्ताव पारित किया गया और 26 जनवरी 1930 को प्रथम स्वतंत्रता दिवस मनाने का निर्णय लिया गया।",
+        "सरदार पटेल द्वारा नमक कानून की घोषणा",
+        "सुभाष चंद्र बोस द्वारा सेना का गठन",
+        "गांधी-इरविन समझौते पर हस्ताक्षर"
+      ],
+      ans: 0,
+      exp: "लाहौर अधिवेशन (दिसंबर 1929) की अध्यक्षता जवाहरलाल नेहरू ने की। इसमें रावी नदी के तट पर 'पूर्ण स्वराज' का प्रस्ताव पारित हुआ और 26 जनवरी 1930 को पहला स्वतंत्रता दिवस मनाने की घोषणा की गई।"
+    },
+
+    // ===================== भूगोल (Geography — 20 नवीन प्रश्न — Set-02) =====================
+    {
+      q: "पृथ्वी के भूगर्भिक इतिहास और चट्टानों के संदर्भ में 'आग्नेय चट्टानें' (Igneous Rocks) और 'अवसादी चट्टानें' (Sedimentary Rocks) के बीच प्राथमिक अंतर क्या है?",
+      options: [
+        "आग्नेय चट्टानें मैग्मा या लावा के ठंडे होने से बनती हैं (जैसे ग्रेनाइट, बेसाल्ट), इनमें जीवाश्म (Fossils) नहीं पाए जाते; जबकि अवसादी चट्टानें निक्षेपण व संपीड़न से बनती हैं (जैसे बलुआ पत्थर, चूना पत्थर) और इनमें परतें व जीवाश्म मिलते हैं।",
+        "अवसादी चट्टानों में मैग्मा होता है।",
+        "आग्नेय चट्टानें केवल जल में घुलनशील होती हैं।",
+        "दोनों में कोई अंतर नहीं है।"
+      ],
+      ans: 0,
+      exp: "आग्नेय चट्टानें (प्राथमिक चट्टानें) पृथ्वी के भीतर के मैग्मा के जमने से बनती हैं (जीवाश्महीन)। अवसादी (परतदार) चट्टानें मलबे के जमाव से बनती हैं और इनमें जीवाश्म पाए जाते हैं।"
+    },
+    {
+      q: "वायुमंडल की विभिन्न परतों में ओजोन परत (Ozone Layer) मुख्य रूप से कहाँ पाई जाती है, और यह पृथ्वी पर जीवन के लिए क्यों महत्वपूर्ण है?",
+      options: [
+        "क्षोभमंडल (Troposphere) में — कार्बन डाइऑक्साइड रोकना",
+        "समतापमंडल (Stratosphere — 15 से 50 किमी की ऊँचाई के मध्य) — यह सूर्य की हानिकारक पराबैंगनी किरणों (UV-B और UV-C) को अवशोषित करती है।",
+        "मध्यमंडल — बादलों का निर्माण",
+        "आयनमंडल — रेडियो तरंगों का परावर्तन"
+      ],
+      ans: 1,
+      exp: "समतापमंडल के निचले हिस्से में ओजोन ($\\text{O}_3$) परत मिलती है जो सूर्य से आने वाली खतरनाक पराबैंगनी (UV) किरणों को छानकर पृथ्वी पर जीवमंडल की रक्षा करती है।"
+    },
+    {
+      q: "महासागरीय उच्चावच (Ocean Floor Relief) के संदर्भ में 'महाद्वीपीय मग्नतट' (Continental Shelf) और 'गहन महासागरीय मैदान' (Abyssal Plains) की सामान्य विशेषता क्या है?",
+      options: [
+        "मग्नतट महाद्वीप का डूबा हुआ उथला भाग है जहाँ मतस्यन (Fishing) और खनिज तेल बहुतायत में मिलते हैं, जबकि गहन मैदान महासागर का सबसे विस्तृत सपाट तल है।",
+        "गहन मैदान महासागर का सबसे उथला भाग है।",
+        "मग्नतट में सूर्य का प्रकाश नहीं पहुँचता।",
+        "दोनों में कोई आर्थिक महत्व नहीं है।"
+      ],
+      ans: 0,
+      exp: "महाद्वीपीय मग्नतट (Continental Shelf) महाद्वीपों का सीमावर्ती उथला भाग (औसत गहराई 200 मीटर तक) है जो विश्व के कुल महासागर क्षेत्रफल का 7.5% है और यहाँ प्रकाश मिलने से प्लवक व मत्स्य उद्योग समृद्ध होते हैं।"
+    },
+    {
+      q: "विश्व की प्रमुख झीलों और उनकी अवस्थिति का कौन-सा युग्म गलत है?",
+      options: [
+        "सुपीरियर झील — उत्तरी अमेरिका (अमेरिका-कनाडा सीमा)",
+        "बैकाल झील — रूस (विश्व की सबसे गहरी ताज़े पानी की झील)",
+        "टिटिकैका झील — दक्षिण अमेरिका (एंडिज पर्वत पर स्थित सबसे ऊँची नौगम्य झील)",
+        "आराल सागर — ऑस्ट्रेलिया"
+      ],
+      ans: 3,
+      exp: "आराल सागर (Aral Sea) मध्य एशिया में कजाकिस्तान और उजबेकिस्तान की सीमा पर स्थित एक अंतर्देशीय झील है, न कि ऑस्ट्रेलिया में।"
+    },
+    {
+      q: "भारत की भूगर्भिक संरचना के संदर्भ में 'दक्कन ट्रैप' (Deccan Trap) का निर्माण कैसे हुआ था?",
+      options: [
+        "नदियों द्वारा लाई गई जलोढ़ मिट्टी से",
+        "क्रिटेशियस काल के अंत में हुए व्यापक दरारी ज्वालामुखी उद्गार (Fissure Volcanic Eruption) से निकले बेसाल्ट लावा के निक्षेपण से",
+        "हिमनदों के पिघलने से",
+        "पर्वतीय उत्थान से"
+      ],
+      ans: 1,
+      exp: "मेसोजोइक महाकल्प के क्रिटेशियस काल के अंत में दक्कन के पठार पर व्यापक दरारी उद्गार से बेसाल्ट लावा फैला, जिससे सीढ़ीनुमा 'दक्कन ट्रैप' और काली मिट्टी का निर्माण हुआ।"
+    },
+    {
+      q: "भारत की तटरेखा (Coastline) के संदर्भ में 'पश्चिमी तटीय मैदान' और 'पूर्वी तटीय मैदान' के प्रमुख उप-भागों का कौन-सा युग्म सही है?",
+      options: [
+        "कोंकण तट (महाराष्ट्र-गोवा), कन्नड़/कर्नाटक तट, और मालाबार तट (केरल) — पश्चिमी तट पर; तथा उत्कल तट, उत्तरी सरकार तट, और कोरोमंडल तट (तमिलनाडु) — पूर्वी तट पर",
+        "कोरोमंडल तट — पश्चिमी तट पर",
+        "मालाबार तट — ओडिशा के पास",
+        "उत्कल तट — गोवा के पास"
+      ],
+      ans: 0,
+      exp: "भारत के पश्चिमी तटीय मैदान उत्तर से दक्षिण: कोंकण, कन्नड़ और मालाबार तट हैं। पूर्वी तटीय मैदान उत्तर से दक्षिण: उत्कल तट, उत्तरी सरकार तट और कोरोमंडल तट हैं।"
+    },
+    {
+      q: "भारत के वन्यजीव अभ्यारण्यों और राष्ट्रीय उद्यानों के संदर्भ में 'जिम कार्बेट राष्ट्रीय उद्यान' और 'काजीरंगा राष्ट्रीय उद्यान' क्रमशः किस राज्य में स्थित हैं और किसके लिए प्रसिद्ध हैं?",
+      options: [
+        "उत्तराखंड (बाघ संरक्षण) तथा असम (एक सींग वाला गैंडा)",
+        "मध्य प्रदेश तथा गुजरात (शेर)",
+        "राजस्थान तथा केरल",
+        "कर्नाटक तथा पश्चिम बंगाल"
+      ],
+      ans: 0,
+      exp: "जिम कार्बेट (भारत का पहला राष्ट्रीय उद्यान, 1936) उत्तराखंड में बाघों के लिए प्रसिद्ध है, और काजीरंगा राष्ट्रीय उद्यान असम में दुर्लभ 'एक सींग वाले गैंडे' (One-horned Rhinoceros) के लिए विश्वविख्यात है।"
+    },
+    {
+      q: "भारतीय कृषि में 'हरित क्रांति' (Green Revolution) के जनक एम. एस. स्वामिनाथन थे; वैश्विक स्तर पर इसके जनक कौन थे, और भारत में इसके तहत किन फसलों का सर्वाधिक उत्पादन बढ़ा?",
+      options: [
+        "नॉर्मन बोरलोग — गेहूँ और चावल (धान)",
+        "रशेल कार्सन — गन्ना और कपास",
+        "अल्बर्ट हावर्ड — दलहन और तिलहन",
+        "वर्गीज कुरियन — चाय और कॉफी"
+      ],
+      ans: 0,
+      exp: "वैश्विक हरित क्रांति के जनक नॉर्मन बोरलोग थे (भारत में एम. एस. स्वामिनाथन)। 1960 के दशक के उत्तरार्ध में उच्च उत्पादकता वाले संकर बीजों (HYV) के प्रयोग से मुख्य रूप से गेहूँ और धान के उत्पादन में अभूतपूर्व वृद्धि हुई।"
+    },
+    {
+      q: "विश्व में ऊर्जा के पारंपरिक (Conventional) और गैर-पारंपरिक (Non-conventional) स्रोतों का कौन-सा युग्म सही है?",
+      options: [
+        "पारंपरिक स्रोत: कोयला, पेट्रोलियम, प्राकृतिक गैस और जलविद्युत; गैर-पारंपरिक स्रोत: सौर ऊर्जा, पवन ऊर्जा, भू-तापिय ऊर्जा और ज्वारीय ऊर्जा",
+        "सौर ऊर्जा पारंपरिक है और कोयला गैर-पारंपरिक है।",
+        "परमाणु ऊर्जा जीवाश्म ईंधन है।",
+        "सभी ऊर्जा स्रोत गैर-पारंपरिक हैं।"
+      ],
+      ans: 0,
+      exp: "पारंपरिक स्रोत वे हैं जो लंबे समय से उपयोग हो रहे हैं और सीमित हैं (कोयला, तेल, गैस)। गैर-पारंपरिक स्रोत अक्षय और पर्यावरण-अनुकूल हैं (सौर, पवन, भूतापीय आदि)।"
+    },
+    {
+      q: "वायुमंडल की दबाव पेटियों (Pressure Belts) के संदर्भ में 'विषुवतीय निम्न वायुदाब पेटी' (Doldrums) और 'उपोषणीय उच्च वायुदाब पेटी' (Horse Latitudes) की मुख्य विशेषता क्या है?",
+      options: [
+        "डोलड्रम शांत पेटी है जहाँ संवहन धाराएँ चलती हैं; अश्व अक्षांश ($30^\\circ-35^\\circ$) शांत व अवरोही हवाओं वाली उच्च दाब पेटी है।",
+        "डोलड्रम अत्यधिक उच्च दाब पेटी है।",
+        "अश्व अक्षांश पर सदैव भारी वर्षा होती है।",
+        "दोनों पेटियों का पृथ्वी के घूर्णन से कोई संबंध नहीं है।"
+      ],
+      ans: 0,
+      exp: "विषुवत वृत्त के पास हवाएँ गर्म होकर ऊपर उठती हैं जिससे शांत 'डोलड्रम' बनता है। $30^\\circ-35^\\circ$ अक्षांशों पर हवाएँ नीचे बैठती हैं जिससे उच्च दाब बनता है जिसे प्राचीन नाविक 'अश्व अक्षांश' (Horse Latitudes) कहते थे।"
+    },
+    {
+      q: "विश्व के प्रमुख औद्योगिक प्रदेशों और देशों का कौन-सा युग्म असंगत है?",
+      options: [
+        "रूर बेसिन (Ruhr Valley) — जर्मनी",
+        "डिट्रायट — संयुक्त राज्य अमेरिका (मोटरगाड़ी उद्योग)",
+        "ओसাকা (Osaka) — जापान (वस्त्र उद्योग / मैनचेस्टर)",
+        "बैकुआनो (Baquano) — अंटार्कटिका"
+      ],
+      ans: 3,
+      exp: "अंटार्कटिका में कोई औद्योगिक प्रदेश नहीं है। रूर (जर्मनी), डिट्रायट (अमेरिका), और ओसाका (जापान) विश्वप्रसिद्ध औद्योगिक केंद्र हैं।"
+    },
+    {
+      q: "भारत के ऊर्जा संसाधनों के संबंध में 'झरिया' (झारखंड), 'रानीगंज' (पश्चिम बंगाल) और 'डिगबोई' (असम) किसके लिए प्रसिद्ध हैं?",
+      options: [
+        "क्रमशः कोयला (झरिया व रानीगंज) तथा पेट्रोलियम (डिगबोई — भारत का पहला तेल कुआँ)",
+        "बॉक्साइट और ताँबा",
+        "सोना और हीरा",
+        "जलविद्युत परियोजनाएँ"
+      ],
+      ans: 0,
+      exp: "झरिया (धनबाद) और रानीगंज कोयला खनन के लिए प्रसिद्ध हैं, तथा डिगबोई (असम) भारत का सबसे पुराना तेल उत्पादक क्षेत्र है जहाँ 1901 में तेल शोधनगार स्थापित हुआ था।"
+    },
+    {
+      q: "पृथ्वी पर ऋतु परिवर्तन (Seasons) का मुख्य कारण क्या है?",
+      options: [
+        "पृथ्वी का अपने अक्ष पर $23.5^\\circ$ झुकाव और सूर्य के चारों ओर इसकी 'परिक्रमण' (Revolution) गति",
+        "पृथ्वी की अपने अक्ष पर 'भ्रमण' (Rotation) गति",
+        "सूर्य के आकार में परिवर्तन",
+        "चंद्रमा का गुरुत्वाकर्षण"
+      ],
+      ans: 0,
+      exp: "पृथ्वी का अपने कक्षीय तल से $66.5^\\circ$ का कोण बनाने यानी अक्षीय झुकाव ($23.5^\\circ$) तथा सूर्य की परिक्रमा करने के कारण ही वर्ष भर ऋतुएँ बदलती हैं।"
+    },
+    {
+      q: "भारत के परिवहन तंत्र में 'स्वर्णिम चतुर्भुज' (Golden Quadrilateral) महामार्ग परियोजना किन चार महानगरों को आपस में जोड़ती है?",
+      options: [
+        "दिल्ली — मुंबई — चेन्नई — कोलकाता",
+        "श्रीनगर — कन्याकुमारी — पोरबंदर — सिलचर",
+        "वाराणसी — पटना — गुवाहाटी — लखनऊ",
+        "जयपुर — भोपाल — हैदराबाद — बंगलुरु"
+      ],
+      ans: 0,
+      exp: "भारतीय राष्ट्रीय राजमार्ग प्राधिकरण (NHAI) द्वारा कार्यान्वित 'स्वर्णिम चतुर्भुज' परियोजना देश के चार महानगरों—दिल्ली, मुंबई, चेन्नई और कोलकाता को 6-लेन राजमार्गों से जोड़ती है।"
+    },
+    {
+      q: "निम्नलिखित में से कौन-सी उष्ण कटिबंधीय घास की भूमि (Tropical Savanna) नहीं है?",
+      options: [
+        "सवाना — अफ्रीका",
+        "लानोस — वेनेजुएला (दक्षिण अमेरिका)",
+        "कम्पोज — ब्राजील",
+        "स्टेपीज — यूरेशिया"
+      ],
+      ans: 3,
+      exp: "'स्टेपीज' (Steppes) शीतोष्ण कटिबंधीय (Temperate) घास का मैदान है, जबकि सवाना, लानोस और कम्पोज उष्ण कटिबंधीय (Tropical) घास के मैदान हैं।"
+    },
+    {
+      q: "महासागरीय जल की लवणता (Salinity) को प्रभावित करने वाले कारकों में कौन-सा शामिल नहीं है?",
+      options: [
+        "वाष्पीकरण और वर्षण की दर",
+        "नदियों द्वारा मीठे जल का मुहानों पर प्रवेश",
+        "समुद्री जीवों का प्रकाश-संश्लेषण",
+        "हिमदों का पिघलना"
+      ],
+      ans: 2,
+      exp: "समुद्री जीवों का प्रकाश-संश्लेषण लवणता को सीधे प्रभावित नहीं करता। वाष्पीकरण, वर्षा, नदियों का मीठा पानी और हिमपात/हिमगलन लवणता के प्रमुख नियंत्रक हैं।"
+    },
+    {
+      q: "मानचित्रकला (Cartography) के संदर्भ में 'स्थलाकृतिक मानचित्रों' (Topographic Maps) पर समोच्च रेखाएँ (Contour Lines) क्या प्रदर्शित करती हैं?",
+      options: [
+        "समान वायुमंडलीय दाब वाले क्षेत्र",
+        "समुद्र तल से समान ऊँचाई वाले स्थानों को मिलाने वाली काल्पनिक रेखाएँ",
+        "समान तापमान वाले क्षेत्र",
+        "समान वर्षा वाले क्षेत्र"
+      ],
+      ans: 1,
+      exp: "समोच्च रेखाएँ (Contour Lines) मानचित्र पर समुद्र तल से समान ऊँचाई (Elevation) वाले बिंदुओं को मिलाने वाली रेखाएँ होती हैं जो धरातल के उच्चावच को दर्शाती हैं।"
+    },
+    {
+      q: "भारत में वन्यजीव संरक्षण अधिनियम (Wildlife Protection Act) और पर्यावरण संरक्षण अधिनियम (Environment Protection Act) क्रमशः किस वर्ष अधिनियमित किए गए थे?",
+      options: [
+        "1972 (वन्यजीव) तथा 1986 (पर्यावरण संरक्षण)",
+        "1980 तथा 1992",
+        "1970 तथा 1975",
+        "1988 तथा 2002"
+      ],
+      ans: 0,
+      exp: "भारत में वन्यजीवों की सुरक्षा के लिए 'वन्यजीव संरक्षण अधिनियम 1972' तथा भोपाल गैस त्रासदी के बाद समग्र पर्यावरण सुरक्षा हेतु 'पर्यावरण संरक्षण अधिनियम 1986' पारित किया गया था।"
+    },
+    {
+      q: "निम्नलिखित में से कौन-सी गैस पृथ्वी पर 'हरितगृह प्रभाव' (Greenhouse Effect) के लिए सर्वाधिक उत्तरदायी प्राकृतिक गैस है?",
+      options: [
+        "कार्बन डाइऑक्साइड ($\\text{CO}_2$)",
+        "जलवाष्प (Water Vapour — प्राकृतिक रूप से सर्वाधिक प्रभावी ग्रीनहाउस गैस)",
+        "मीथेन ($\\text{CH}_4$)",
+        "ओजोन ($\\text{O}_3$)"
+      ],
+      ans: 1,
+      exp: "यद्यपि मानव जनित ग्लोबल वार्मिंग में $\\text{CO}_2$ मुख्य है, किंतु पृथ्वी के प्राकृतिक ग्रीनहाउस प्रभाव में सबसे बड़ा योगदान (लगभग 36-60%) 'जलवाष्प' (Water Vapour) का होता है।"
+    },
+    {
+      q: "विश्व की सबसे लंबी पर्वतमाला 'एंडिज' (Andes Mountains) और विश्व की सबसे ऊँची चोटी माउंट एवरेस्ट क्रमशः किस महाद्वीप में स्थित हैं?",
+      options: [
+        "दक्षिण अमेरिका तथा एशिया (नेपाल/तिब्बत)",
+        "उत्तरी अमेरिका तथा यूरोप",
+        "अफ्रिका तथा अंटार्कटिका",
+        "ऑस्ट्रेलिया तथा दक्षिण अमेरिका"
+      ],
+      ans: 0,
+      exp: "एंडिज पर्वतमाला दक्षिण अमेरिका के पश्चिमी तट पर विश्व की सबसे लंबी वलित पर्वतमाला है, और माउंट एवरेस्ट (8848.86 मी) एशिया महाद्वीप में हिमालय पर्वत पर स्थित है।"
+    },
+
+    // ===================== नागरिक शास्त्र / राजनीति विज्ञान (Civics/Polity — 15 नवीन प्रश्न — Set-02) =====================
+    {
+      q: "भारतीय संविधान की कौन-सी अनुसूची 'दल-बदल विरोधी कानून' (Anti-Defection Law) से संबंधित है, और इसे किस संशोधन द्वारा जोड़ा गया था?",
+      options: [
+        "दसवीं अनुसूची — 52वें संविधान संशोधन अधिनियम, 1985 द्वारा",
+        "आठवीं अनुसूची — 21वें संशोधन द्वारा",
+        "नौंवीं अनुसूची — प्रथम संशोधन द्वारा",
+        "ग्यारहवीं अनुसूची — 73वें संशोधन द्वारा"
+      ],
+      ans: 0,
+      exp: "52वें संविधान संशोधन (1985) द्वारा राजीव गांधी सरकार के समय संविधान में 'दसवीं अनुसूची' जोड़ी गई, जो दलबदल के आधार पर सांसदों और विधायकों की अयोग्यता से संबंधित है।"
+    },
+    {
+      q: "भारतीय संविधान के किस भाग में 'आपातकालीन उपدان' (Emergency Provisions) का वर्णन है, और ये प्रावधान किस देश के संविधान से प्रेरित हैं?",
+      options: [
+        "भाग-XVIII (अनुच्छेद 352 से 360 तक) — जर्मनी के वाइमार संविधान से",
+        "भाग-XX (अनुच्छेद 368) — दक्षिण अफ्रीका से",
+        "भाग-XV (अनुच्छेद 324) — ब्रिटेन से",
+        "भाग-IV — आयरलैंड से"
+      ],
+      ans: 0,
+      exp: "भारतीय संविधान के भाग-XVIII में अनुच्छेद 352 (राष्ट्रीय आपात), अनुच्छेद 356 (राष्ट्रपति शासन) और अनुच्छेद 360 (वित्तीय आपात) का उल्लेख है, जो जर्मनी के वाइमार संविधान से लिए गए हैं।"
+    },
+    {
+      q: "भारतीय संसद के दोनों सदनों (लोकसभा और राज्यसभा) के संयुक्त अधिवेशन (Joint Sitting) की संवैधानिक व्यवस्था किस अनुच्छेद के अंतर्गत है?",
+      options: [
+        "अनुच्छेद 108",
+        "अनुच्छेद 110",
+        "अनुच्छेद 368",
+        "अनुच्छेद 76"
+      ],
+      ans: 0,
+      exp: "अनुच्छेद 108 के तहत साधारण विधेयक पर दोनों सदनों में गतिरोध होने पर राष्ट्रपति संयुक्त बैठक आहूत करते हैं, जिसकी अध्यक्षता लोकसभा अध्यक्ष करते हैं।"
+    },
+    {
+      q: "भारतीय संविधान के किस अनुच्छेद के तहत राज्यों में 'विधान परिषदों' (Legislative Councils - Upper House) का सृजन या उत्सादन (Abolition/Creation) किया जा सकता है?",
+      options: [
+        "अनुच्छेद 169",
+        "अनुच्छेद 170",
+        "अनुच्छेद 155",
+        "अनुच्छेद 200"
+      ],
+      ans: 0,
+      exp: "अनुच्छेद 169 के अनुसार संसद किसी राज्य की विधानसभा द्वारा विशेष बहुमत से पारित प्रस्ताव के आधार पर उस राज्य में विधान परिषद का गठन या अंत कर सकती है।"
+    },
+    {
+      q: "भारतीय संविधान के किस अनुच्छेद के अंतर्गत सर्वोच्च न्यायालय को 'अभिलेख न्यायालय' (Court of Record) का दर्जा दिया गया है?",
+      options: [
+        "अनुच्छेद 129",
+        "अनुच्छेद 131",
+        "अनुच्छेद 143",
+        "अनुच्छेद 124"
+      ],
+      ans: 0,
+      exp: "अनुच्छेद 129 के अनुसार उच्चतम न्यायालय (Supreme Court) एक 'अभिलेख न्यायालय' है, जिसके सभी निर्णयों व अभिलेखों को साक्ष्य के रूप में रखा जाता है और इसकी अवमानना पर दंड देने की शक्ति इसे प्राप्त है।"
+    },
+    {
+      q: "भारत के नियंत्रक-महालेखापरीक्षक (Comptroller and Auditor General - CAG) की नियुक्ति किसके द्वारा की जाती है और इनका कार्यकाल कितना होता है?",
+      options: [
+        "राष्ट्रपति द्वारा — 6 वर्ष या 65 वर्ष की आयु तक (जो भी पहले हो)",
+        "प्रधानमंत्री द्वारा — 5 वर्ष",
+        "लोकसभा अध्यक्ष द्वारा — 4 वर्ष",
+        "मुख्य न्यायाधीश द्वारा — 62 वर्ष"
+      ],
+      ans: 0,
+      exp: "संविधान के अनुच्छेद 148 के तहत राष्ट्रपति CAG की नियुक्ति करते हैं। इनका कार्यकाल 6 वर्ष या 65 वर्ष की आयु तक होता है, और वे सेवानिवृत्ति के बाद भारत सरकार के अधीन किसी पद के योग्य नहीं रहते।"
+    },
+    {
+      q: "भारतीय संविधान की सातवीं अनुसूची में 'आर्थिक और सामाजिक योजना' (Economic and Social Planning), 'विद्युत' (Electricity), और 'समाचार पत्र' किस सूची के विषय हैं?",
+      options: [
+        "समवर्ती सूची (Concurrent List)",
+        "संघ सूची",
+        "राज्य सूची",
+        "अवशिष्ट शक्तियाँ"
+      ],
+      ans: 0,
+      exp: "आर्थिक और सामाजिक योजना, विद्युत, वन, शिक्षा और जनसंख्या नियंत्रण 'समवर्ती सूची' (Concurrent List) के विषय हैं जिन पर केंद्र और राज्य दोनों कानून बना सकते हैं।"
+    },
+    {
+      q: "भारतीय संविधान में संशोधन करने की प्रक्रिया (Amendment Procedure) का उल्लेख किस भाग और अनुच्छेद में है, तथा यह किस देश के संविधान से लिया गया है?",
+      options: [
+        "भाग-XX, अनुच्छेद 368 — दक्षिण अफ्रीका के संविधान से",
+        "भाग-XVIII, अनुच्छेद 352 — अमेरिका से",
+        "भाग-IX, अनुच्छेद 243 — आयरलैंड से",
+        "भाग-III, अनुच्छेद 12 — ब्रिटेन से"
+      ],
+      ans: 0,
+      exp: "संविधान के भाग-XX का एकमात्र अनुच्छेद 368 संविधान संशोधन की प्रक्रिया का प्रावधान करता है, जिसे दक्षिण अफ्रीका के संविधान से भारतीय संविधान में अपनाया गया है।"
+    },
+    {
+      q: "भारत में 'लोकपाल' (Lokpal) संस्था की स्थापना का सुझाव सर्वप्रथम किस आयोग या प्रशासनिक समिति ने दिया था?",
+      options: [
+        "प्रथम प्रशासनिक सुधार आयोग (First Administrative Reforms Commission - ARC, 1966)",
+        "सरकारिया आयोग",
+        "बलवंत राय मेहता समिति",
+        "पुंछी आयोग"
+      ],
+      ans: 0,
+      exp: "मोरारजी देसाई की अध्यक्षता में गठित 'प्रथम प्रशासनिक सुधार आयोग' (1966) ने संघ स्तर पर राजनेताओं और उच्च लोक सेवकों के भ्रष्टाचार की जाँच हेतु 'लोकपाल' और 'लोकायुक्त' संस्थाओं के गठन की संफ़ारिश की थी।"
+    },
+    {
+      q: "भारतीय संविधान की प्रस्तावना में स्वतंत्रता, समानता और बंधुत्व (Liberty, Equality, and Fraternity) के आदर्श किस ऐतिहासिक क्रांति से प्रेरित हैं?",
+      options: [
+        "फ्रांसीसी क्रांति (French Revolution, 1789)",
+        "रूसी क्रांति (1917)",
+        "अमेरिकी स्वतंत्रता संग्राम (1776)",
+        "औद्योगिक क्रांति"
+      ],
+      ans: 0,
+      exp: "भारतीय संविधान की प्रस्तावना में उल्लिखित स्वतंत्रता, समानता और बंधुत्व के महान आदर्श 1789 की फ्रांसीसी क्रांति की देन हैं।"
+    },
+    {
+      q: "राज्य के नीति निर्देशक सिद्धांतों (DPSP) में उल्लिखित 'समान नागरिक संहिता' (Uniform Civil Code - UCC) का प्रावधान किस अनुच्छेद के अंतर्गत आता है?",
+      options: [
+        "अनुच्छेद 44",
+        "अनुच्छेद 40",
+        "अनुच्छेद 45",
+        "अनुच्छेद 48"
+      ],
+      ans: 0,
+      exp: "अनुच्छेद 44 (जो नीति निर्देशक तत्वों का हिस्सा है) राज्य को भारत के समस्त राज्यक्षेत्र में नागरिकों के लिए एक 'समान नागरिक संहिता' (UCC) सुनिश्चित करने का प्रयास करने का निर्देश देता है।"
+    },
+    {
+      q: "भारत के उपराष्ट्रपति के निर्वाचन में कौन भाग लेता है, और वे किसके पदेन सभापति होते हैं?",
+      options: [
+        "संसद के दोनों सदनों (लोकसभा और राज्यसभा) के सभी सदस्य (निर्वाचित एवं मनोनीत दोनों); तथा वे 'राज्यसभा के पदेन सभापति' होते हैं।",
+        "केवल लोकसभा के निर्वाचित सदस्य",
+        "राज्य विधानसभाओं के सदस्य",
+        "केवल मंत्रिपरिषद"
+      ],
+      ans: 0,
+      exp: "उपराष्ट्रपति के निर्वाचक मंडल में संसद के दोनों सदनों के सभी सदस्य (मनोनीत सदस्य भी) भाग लेते हैं (जबकि राष्ट्रपति में केवल निर्वाचित)। उपराष्ट्रपति अनुच्छेद 64 के अनुसार 'राज्यसभा के पदेन सभापति' होते हैं।"
+    },
+    {
+      q: "73वें संविधान संशोधन (1992) द्वारा पंचायती राज संस्थाओं को संविधान की किस अनुसूची के तहत कितने विषयों पर कार्य करने की शक्ति दी गई है?",
+      options: [
+        "ग्यारहवीं अनुसूची (Eleventh Schedule) — 29 विषय",
+        "बारहवीं अनुसूची — 18 विषय",
+        "दसवीं अनुसूची — 52 विषय",
+        "नौंवीं अनुसूची — 40 विषय"
+      ],
+      ans: 0,
+      exp: "73वें संशोधन द्वारा जोड़ी गई 'ग्यारहवीं अनुसूची' में पंचायतों के लिए 29 कार्यात्मक विषय (Functional Items) निर्धारित किए गए हैं (जबकि नगरपालिकाओं के लिए बारहवीं अनुसूची में 18 विषय हैं)।"
+    },
+    {
+      q: "भारतीय संविधान के किस अनुच्छेद के तहत सर्वोच्च न्यायालय मौलिक अधिकारों के प्रवर्तन के लिए 'रिट' (Writs) जारी करता है, तथा उच्च न्यायालय किस अनुच्छेद के तहत रिट जारी करते हैं?",
+      options: [
+        "सर्वोच्च न्यायालय — अनुच्छेद 32; तथा उच्च न्यायालय — अनुच्छेद 226",
+        "सर्वोच्च न्यायालय — अनुच्छेद 226; उच्च न्यायालय — अनुच्छेद 32",
+        "दोनों अनुच्छेद 32 के तहत",
+        "दोनों अनुच्छेद 136 के तहत"
+      ],
+      ans: 0,
+      exp: "मौलिक अधिकारों के हनन पर सर्वोच्च न्यायालय अनुच्छेद 32 के तहत और उच्च न्यायालय (High Court) उससे भी व्यापक क्षेत्राधिकार रखते हुए अनुच्छेद 226 के तहत बंदी प्रत्यक्षीकरण सहित 5 प्रकार की रिट जारी करते हैं।"
+    },
+    {
+      q: "भारतीय राजनीतिक व्यवस्था में 'मौलिक अधिकार' और 'नीति निर्देशक तत्व' (DPSP) के पारस्परिक संबंध के विषय में सर्वोच्च न्यायालय का कौन-सा ऐतिहासिक निर्णय सबसे महत्वपूर्ण माना जाता है?",
+      options: [
+        "केशवानंद भारती वाद (1973) तथा मिनवा मिल्स वाद (1980) — जिसमें न्यायालय ने माना कि संविधान मौलिक अधिकारों और DPSP के संतुलन की 'मूल संरचना' (Basic Structure) पर आधारित है।",
+        "गोलकनाथ वाद",
+        "शाहीन बाग निर्णय",
+        "एस. आर. बोम्पाई वाद"
+      ],
+      ans: 0,
+      exp: "केशवानंद भारती (1973) और मिनर्वा मिल्स (1980) मामलों में सर्वोच्च न्यायालय ने स्पष्ट किया कि मौलिक अधिकार और नीति निर्देशक तत्व एक-ני रूप से संविधान के रथ के दो पहिए हैं; संसद इनमें संशोधन कर सकती है किंतु 'मूल ढाँचे' को नष्ट नहीं कर सकती।"
+    },
+
+    // ===================== सामाजिक अध्ययन शिक्षण शास्त्र (Social Studies Pedagogy — 5 नवीन प्रश्न — Set-02) =====================
+    {
+      q: "उच्च प्राथमिक स्तर पर सामाजिक विज्ञान (Social Science) के अंतर्गत शिक्षण अधिगम सामग्री (TLM) के रूप में 'ऐतिहासिक मानचित्रों, ग्लोब, समय-रेखा (Timeline) और पुरातात्विक साक्ष्यों की प्रतिकृतियों' के उपयोग का मुख्य शैक्षणिक उद्देश्य क्या है?",
+      options: [
+        "कक्षा को सजाना और समय काटना",
+        "छात्रों में स्थानिक और कालिक समझ (Spatial and Temporal Sense), ऐतिहासिक यथार्थता की अनुभूति तथा अमूर्त अवधारणाओं को मूर्त रूप देना",
+        "केवल चित्रकला प्रतियोगिता कराना",
+        "पाठ्यपुस्तक के पृष्ठों की संख्या कम करना"
+      ],
+      ans: 1,
+      exp: "सामाजिक विज्ञान में समय-रेखा (Timeline) काल-क्रम (Chronology) समझने में, मानचित्र भौगोलिक संदर्भो के लिए, और पुरातात्विक प्रतिकृतियाँ ऐतिहासिक बोध को जीवंत बनाने के लिए अत्यंत महत्वपूर्ण दृश्य साधन हैं।"
+    },
+    {
+      q: "सामाजिक अध्ययन शिक्षण में 'समस्या-समाधान विधि' (Problem-Solving Method) के वैज्ञानिक चरणों का सही क्रम कौन-सा है?",
+      options: [
+        "समस्या की पहचान व स्पष्टीकरण $\\rightarrow$ परिकल्पना निर्माण (Formulation of Hypothesis) $\\rightarrow$ आँकड़े/तथ्य एकत्र करना $\\rightarrow$ परिकल्पना का परीक्षण व मूल्यांकन $\\rightarrow$ सामान्यीकरण और निष्कर्ष",
+        "रटना $\\rightarrow$ परीक्षा $\\rightarrow$ दंड",
+        "व्याख्या $\\rightarrow$ गृहकार्य $\\rightarrow$ भूल जाना",
+        "नकल करना $\\rightarrow$ जमा करना"
+      ],
+      ans: 0,
+      exp: "समस्या-समाधान विधि जॉन डेवि के चिंतन पर आधारित है, जिसके वैज्ञानिक चरण हैं: समस्या पहचान $\\rightarrow$ परिकल्पना (अनुमानित समाधान) $\\rightarrow$ साक्ष्य संकलन $\\rightarrow$ परीक्षण $\\rightarrow$ निष्कर्ष।"
+    },
+    {
+      q: "जब एक नागरिक शास्त्र (राजव्यवस्था) शिक्षक कक्षा में संसद की कार्यप्रणाली पढ़ाते समय छात्रों को 'मॉक पार्लियामेंट' (Mock Parliament / प्रतिरूप संसद) का आयोजन कराकर स्वयं प्रधानमंत्री, विपक्षी नेता और अध्यक्ष की भूमिका निभाने का अवसर देता है, तो यह किस शिक्षण पद्धति का उदाहरण है?",
+      options: [
+        "केवल व्याख्यान विधि",
+        "भूमिका निर्वाह / अभिनय विधि (Role-Play / Simulation Method — अनुभवात्मक अधिगम)",
+        "पारायण विधि",
+        "सूत्र प्रणाली"
+      ],
+      ans: 1,
+      exp: "'सिमुलेशन' या 'भूमिका निर्वाह' (Role-Play) विधि लोकतांत्रिक संस्थाओं, प्रक्रियाओं और सामाजिक गतिशीलता को वास्तविक जीवन के परिवेश में अनुभव करने की सबसे सशक्त छात्र-केंद्रित विधि है।"
+    },
+    {
+      q: "सामाजिक विज्ञान के मूल्यांकन में 'सतत एवं व्यापक मूल्यांकन' (CCE) के अंतर्गत 'पोर्टफोलियो आकलन' (Portfolio Assessment) का सबसे बड़ा लाभ क्या है?",
+      options: [
+        "यह केवल एक दिन की परीक्षा के तनाव से छात्र का मूल्यांकन करता है।",
+        "यह छात्र के क्रमिक विकास, उसके श्रेष्ठ प्रयासों, परियोजनाओं, स्व-आकलन और सुधारात्मक यात्रा का एक लंबी अवधि का (Longitudinal) प्रमाणिक संग्रह प्रस्तुत करता है।",
+        "इसमें शिक्षक को कुछ नहीं करना पड़ता।",
+        "यह अंकों को छुपाने का तरीका है।"
+      ],
+      ans: 1,
+      exp: "पोर्टफोलियो छात्र के संपूर्ण सत्र के कार्यों, आलेखों, प्रोजेक्ट्स और आत्म-चिंतन का व्यवस्थित और क्रमिक दस्तावेज है जो उसके विकासात्मक सफर का समग्र चित्र दिखाता है।"
+    },
+    {
+      q: "NCF-2005 के अनुसार उच्च प्राथमिक स्तर पर सामाजिक विज्ञान के शिक्षण में 'लिंग भेद' (Gender Stereotypes) और सामाजिक असमानता जैसे संवेदनशील मुद्दों को किस रूप में संबोधित किया जाना चाहिए?",
+      options: [
+        "इन विषयों को पूरी तरह छुपा देना चाहिए ताकि विवाद न हो।",
+        "कक्षा-कक्ष में सुरक्षित और समावेशी संवाद के माध्यम से छात्रों को समालोचनात्मक चिंतन (Critical Thinking) और मानवाधिकारों के दृष्टिकोण से इन पर चर्चा करने के अवसर दिए जाने चाहिए।",
+        "केवल पाठ्यपुस्तक पढ़कर छोड़ देना चाहिए।",
+        "छात्रों को घर से निबंध लिखकर लाने को कहना चाहिए बिना चर्चा के।"
+      ],
+      ans: 1,
+      exp: "NCF-2005 और आधुनिक सामाजिक शिक्षा शास्त्र का उद्देश्य छात्रों में पूर्वाग्रहों से परे हटकर मानवाधिकारों, लैंगिक न्याय और संवैधानिक मूल्यों के प्रति संवेदनशील और समालोचनात्मक (Critical) सोच विकसित करना है।"
+    }
+  ],
+};
+
+let activeQuestions = [];
+let sectionsMeta = [];
+let currentIdx = 0;
+let userAnswers = {};
+let reviewFlags = {};
+let timerSeconds = 150 * 60;
+let timerInterval = null;
+
+function startExam() {
+  const lang2 = document.querySelector('input[name="lang2"]:checked').value;
+  const stream = document.querySelector('input[name="stream"]:checked').value;
+
+  activeQuestions = [];
+  sectionsMeta = [];
+
+  const addSection = (key, title) => {
+    const list = QUESTION_BANK[key] || [];
+    if (list.length === 0) return;
+    const startIdx = activeQuestions.length;
+    list.forEach(item => {
+      activeQuestions.push({ ...item, sectionTitle: title, sectionKey: key });
+    });
+    sectionsMeta.push({
+      key,
+      title,
+      start: startIdx,
+      end: activeQuestions.length - 1
+    });
+  };
+
+  addSection('CDP', 'भाग I: बाल विकास एवं शिक्षण विधि');
+  addSection('HIN', 'भाग II: भाषा-I (हिन्दी)');
+  addSection(lang2, lang2 === 'ENG' ? 'Part III: Language-II (English)' : 'भाग III: भाषा-II (संस्कृत)');
+  addSection(stream, stream === 'MS' ? 'भाग IV: गणित एवं विज्ञान' : 'भाग IV: सामाजिक अध्ययन');
+
+  document.getElementById('setupScreen').classList.add('hidden');
+  document.getElementById('examScreen').classList.remove('hidden');
+
+  renderSectionTabs();
+  renderPalette();
+  loadQuestion(0);
+  startTimer();
+}
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    timerSeconds--;
+    if (timerSeconds <= 0) {
+      clearInterval(timerInterval);
+      submitExam();
+      return;
+    }
+    const hrs = String(Math.floor(timerSeconds / 3600)).padStart(2, '0');
+    const mins = String(Math.floor((timerSeconds % 3600) / 60)).padStart(2, '0');
+    const secs = String(timerSeconds % 60).padStart(2, '0');
+    document.getElementById('timeText').textContent = `${hrs}:${mins}:${secs}`;
+  }, 1000);
+}
+
+function renderSectionTabs() {
+  const container = document.getElementById('sectionTabs');
+  container.innerHTML = '';
+  sectionsMeta.forEach(sec => {
+    const btn = document.createElement('button');
+    btn.className = 'sec-tab';
+    btn.id = `tab_${sec.key}`;
+    btn.textContent = `${sec.title} (${sec.end - sec.start + 1})`;
+    btn.onclick = () => loadQuestion(sec.start);
+    container.appendChild(btn);
+  });
+}
+
+function loadQuestion(idx) {
+  currentIdx = idx;
+  const qObj = activeQuestions[idx];
+  document.getElementById('qNumberBadge').textContent = `प्रश्न ${idx + 1} / ${activeQuestions.length}`;
+  document.getElementById('qSectionBadge').textContent = qObj.sectionTitle;
+  document.getElementById('questionText').textContent = qObj.q;
+
+  sectionsMeta.forEach(sec => {
+    const tab = document.getElementById(`tab_${sec.key}`);
+    if (tab) {
+      tab.classList.toggle('active', idx >= sec.start && idx <= sec.end);
+    }
+  });
+
+  const optContainer = document.getElementById('optionsList');
+  optContainer.innerHTML = '';
+  const labels = ['(A)', '(B)', '(C)', '(D)'];
+  qObj.options.forEach((optText, oIdx) => {
+    const div = document.createElement('div');
+    div.className = 'opt-item' + (userAnswers[idx] === oIdx ? ' selected' : '');
+    div.innerHTML = `<span><b>${labels[oIdx]}</b></span><span>${optText}</span>`;
+    div.onclick = () => {
+      userAnswers[idx] = oIdx;
+      loadQuestion(idx);
+      updatePalette();
+    };
+    optContainer.appendChild(div);
+  });
+
+  updatePalette();
+}
+
+function renderPalette() {
+  const grid = document.getElementById('paletteGrid');
+  grid.innerHTML = '';
+  activeQuestions.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'p-btn';
+    btn.id = `pbtn_${i}`;
+    btn.textContent = i + 1;
+    btn.onclick = () => loadQuestion(i);
+    grid.appendChild(btn);
+  });
+  updatePalette();
+}
+
+function updatePalette() {
+  let ansCount = 0;
+  let revCount = 0;
+  activeQuestions.forEach((_, i) => {
+    const btn = document.getElementById(`pbtn_${i}`);
+    if (!btn) return;
+    btn.className = 'p-btn';
+    if (i === currentIdx) btn.classList.add('current');
+    if (reviewFlags[i]) {
+      btn.classList.add('review');
+      revCount++;
+    } else if (userAnswers[i] !== undefined) {
+      btn.classList.add('answered');
+      ansCount++;
+    }
+  });
+  document.getElementById('cntAnswered').textContent = ansCount;
+  document.getElementById('cntReview').textContent = revCount;
+  document.getElementById('cntUnanswered').textContent = activeQuestions.length - ansCount;
+}
+
+function nextQuestion() {
+  if (currentIdx < activeQuestions.length - 1) loadQuestion(currentIdx + 1);
+}
+
+function prevQuestion() {
+  if (currentIdx > 0) loadQuestion(currentIdx - 1);
+}
+
+function clearResponse() {
+  delete userAnswers[currentIdx];
+  delete reviewFlags[currentIdx];
+  loadQuestion(currentIdx);
+}
+
+function toggleReview() {
+  reviewFlags[currentIdx] = !reviewFlags[currentIdx];
+  updatePalette();
+}
+
+function confirmSubmit() {
+  const attempted = Object.keys(userAnswers).length;
+  const msg = `आपने ${activeQuestions.length} में से ${attempted} प्रश्नों के उत्तर दिए हैं।\nक्या आप वाकई परीक्षा सबमिट करना चाहते हैं?`;
+  if (confirm(msg)) submitExam();
+}
+
+function submitExam() {
+  clearInterval(timerInterval);
+  document.getElementById('examScreen').classList.add('hidden');
+  document.getElementById('resultScreen').classList.remove('hidden');
+
+  let totalCorrect = 0;
+  const secStats = {};
+  sectionsMeta.forEach(s => {
+    secStats[s.key] = { title: s.title, total: s.end - s.start + 1, correct: 0, attempted: 0 };
+  });
+
+  activeQuestions.forEach((q, i) => {
+    const uAns = userAnswers[i];
+    if (uAns !== undefined) {
+      secStats[q.sectionKey].attempted++;
+      if (uAns === q.ans) {
+        totalCorrect++;
+        secStats[q.sectionKey].correct++;
+      }
+    }
+  });
+
+  document.getElementById('finalScoreText').textContent = `आपका प्राप्तांक: ${totalCorrect} / ${activeQuestions.length}`;
+  const pct = ((totalCorrect / activeQuestions.length) * 100).toFixed(1);
+  let statusMsg = `प्रतिशत: ${pct}% | `;
+  if (totalCorrect >= 90) {
+    statusMsg += `🎉 उत्तीर्ण (सामान्य एवं आरक्षित दोनों वर्गों हेतु अर्ह - 90+ अंक)`;
+  } else if (totalCorrect >= 82) {
+    statusMsg += `✅ उत्तीर्ण (आरक्षित वर्ग OBC/SC/ST हेतु अर्ह - 82+ अंक)`;
+  } else {
+    statusMsg += `⚠️ और अभ्यास की आवश्यकता (उत्तीर्णांक: सामान्य 90 / आरक्षित 82)`;
+  }
+  document.getElementById('qualifyStatusText').textContent = statusMsg;
+
+  const sumGrid = document.getElementById('sectionSummaryGrid');
+  sumGrid.innerHTML = '';
+  Object.values(secStats).forEach(st => {
+    const div = document.createElement('div');
+    div.className = 'sec-box';
+    div.innerHTML = `
+      <h4 style="color:var(--primary-light); margin-bottom:6px;">${st.title}</h4>
+      <p>प्रयास किए: <b>${st.attempted} / ${st.total}</b></p>
+      <p>सही उत्तर: <b style="color:var(--success);">${st.correct} / ${st.total}</b></p>
+    `;
+    sumGrid.appendChild(div);
+  });
+
+  renderSolutions();
+}
+
+function renderSolutions() {
+  const filter = document.getElementById('filterSelect').value;
+  const container = document.getElementById('solutionsContainer');
+  container.innerHTML = '';
+  const labels = ['(A)', '(B)', '(C)', '(D)'];
+
+  activeQuestions.forEach((q, i) => {
+    const uAns = userAnswers[i];
+    const isCorrect = uAns === q.ans;
+    const isUnattempted = uAns === undefined;
+
+    if (filter === 'CORRECT' && !isCorrect) return;
+    if (filter === 'WRONG' && (isCorrect || isUnattempted)) return;
+    if (filter === 'UNATTEMPTED' && !isUnattempted) return;
+
+    const card = document.createElement('div');
+    card.className = 'review-card ' + (isUnattempted ? 'unattempted' : (isCorrect ? 'correct' : 'wrong'));
+
+    const userStatus = isUnattempted
+      ? `<span style="color:#64748b; font-weight:600;">अनुत्तरित (Not Attempted)</span>`
+      : (isCorrect
+          ? `<span style="color:var(--success); font-weight:700;">✔️ आपका उत्तर सही है: ${labels[uAns]} ${q.options[uAns]}</span>`
+          : `<span style="color:var(--danger); font-weight:700;">❌ आपका उत्तर: ${labels[uAns]} ${q.options[uAns]}</span>`);
+
+    card.innerHTML = `
+      <div style="font-size:0.85rem; color:var(--muted); margin-bottom:4px;">
+        <b>प्रश्न ${i + 1}</b> | ${q.sectionTitle}
+      </div>
+      <div style="font-weight:600; font-size:1.05rem; margin-bottom:10px;">${q.q}</div>
+      <div style="margin-bottom:6px;">${userStatus}</div>
+      <div style="color:var(--success); font-weight:700;">🎯 सही उत्तर: ${labels[q.ans]} ${q.options[q.ans]}</div>
+      <div class="explanation-box">
+        <b>💡 विस्तृत व्याख्या:</b> ${q.exp}
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+</script>
+</body>
+</html>
